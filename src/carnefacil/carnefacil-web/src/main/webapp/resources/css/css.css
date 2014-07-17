@@ -1,0 +1,134 @@
+.pagina {
+	font-family: "Book Antiqua";
+	font-size: 16px;
+	padding-left: 10px;
+	background-color: #E4E4E4;
+	height: 35px;
+	line-height: 35px;
+}
+.pagina a {
+	text-decoration: none;
+	color: #003366;
+	font-weight: bold;
+	padding: 5px;
+}
+.pagina a:hover {
+	color: #CC0000;
+	background-color: #FFFFFF;
+}
+
+/*FIM PAGINA��O*/
+a:link {
+	text-decoration:none;
+}
+
+a:hover {
+	color: #000000;
+	font-style: 1;
+	font-weight: 1;
+	text-decoration: none;
+	font-family: Book Antiqua;
+}
+
+a:visited {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+
+.campo_formulario {
+	font-family: Trebuchet MS;
+	font-size: 14px;
+	font-weight: normal;
+	color: #050811;
+	background: #9DA3C3;
+	border: none;
+}
+
+.campo_formulario_login {
+	font-family: Trebuchet MS;
+	font-size: 18px;
+	font-weight: normal;
+	color: #050811;
+	background: #9DA3C3;
+	border: 1px #9DA3C3;
+}
+
+.Fonte_login {
+	font-family: Trebuchet MS;
+	font-size: 18px;
+	font-weight: normal;
+	color: #050811;
+}
+
+.Botao_login {
+	font-family: Trebuchet MS;
+	font-size: 18px;
+	font-weight: normal;
+	color: #050811;
+}
+
+.Fonte_15 {
+	font-family: Trebuchet MS;
+	font-size: 15px;
+	font-weight: normal;
+	color: #050811;
+}
+
+/* Formularios */
+#div_buttonfoto {
+	position:relative; 
+	width:auto; 
+	height:auto;
+	padding-left:10px;
+	padding-top:10px;
+	text-align:left;
+}
+
+#div_form {
+	position:relative; 
+	width:100%; 
+	min-height:300px;
+	text-align:left;
+	padding-left:10px;
+	padding-top:20px;
+	margin-top:10px;
+}
+
+.div_form_label {
+	display: block;
+	font-size: 110%;
+	padding-right: 20px;
+	color: #345485;
+	font-family: Century Gothic;
+	font-style: 1;
+	font-weight: 1;
+}
+
+#div_form input, textarea {
+	clear: both;
+	font-size: 140%;
+	padding: 2px 5px;
+	width: 80%;
+}
+#div_form input:focus{
+    clear: both;
+	font-size: 140%;
+	padding: 2px 5px;
+	width: 80%;
+}
+
+#div_form input[type=submit] {
+	clear:both;
+	width:125px;
+	height:31px;
+	text-align:center;
+}
+
+#div_form input[type=reset] {
+	clear:both;
+	width:125px;
+	height:31px;
+	text-align:center;
+}

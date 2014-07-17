@@ -1,36 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-	template="/WEB-INF/templates/template.xhtml">
-	<ui:define name="content">
-		<h1><h:outputText value="Hello From JSF" /></h1>
-		Message : #{homeBean.message}<br />
-		<br />
-		<h2>Tasks</h2>
-		<table>
-			<ui:repeat value="#{taskBB.tasks}" var="v_task">
-				<tr>
-					<td>#{v_task.id}</td>
-					<td>#{v_task.description}</td>
-				</tr>
-			</ui:repeat>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Gerador de Carnês - Sistema de Associados</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="css/css.css" />
+</h:head>
+<h:body>
+	<h:form>
+		<table width="500" border="0" align="center" cellpadding="0"
+			cellspacing="0" background="resources/img/tela_login_nova2.png">
+			<tr>
+				<td height="607" align="center" valign="bottom" scope="col"><table
+						width="500" border="0" align="center" cellpadding="0"
+						cellspacing="0">
+
+						<tr>
+							<th scope="col"></th>
+						</tr>
+						<tr>
+							<th scope="col"></th>
+						</tr>
+						<tr>
+							<th scope="col"><table width="400" border="0" align="center"
+									cellpadding="2" cellspacing="0">
+									<tr>
+										<td width="139" align="right" class="Fonte_login" scope="col">Usu&aacute;rio:</td>
+										<td width="253" align="left" scope="col"><input
+											name="textfield" type="text" class="campo_formulario_login"
+											id="textfield" size="20" /></td>
+									</tr>
+									<tr>
+										<td align="right" class="Fonte_login" scope="col">Senha:</td>
+										<td align="left" scope="col"><input name="textfield2"
+											type="password" class="campo_formulario_login"
+											id="textfield2" size="15" /></td>
+									</tr>
+									<tr>
+										<td align="center" scope="col">&nbsp;</td>
+										<td align="left" scope="col"><input name="button"
+											type="submit" class="Botao_login" id="button" value="Acessar" /></td>
+									</tr>
+								</table></th>
+						</tr>
+						<tr>
+							<th scope="col">&nbsp;</th>
+						</tr>
+						<tr>
+							<th scope="col">&nbsp;</th>
+						</tr>
+					</table></td>
+			</tr>
 		</table>
+	</h:form>
 
-		<h:form>
-			<div jsf:id="wrapper"
-				style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
-				<h:inputText value="#{taskBB.task.description}" id="taskDesc" p:placeholder="Type a task ID" maxlength="48" required="true" label="Task">
-					<f:validateLength maximum="48"/>
-				</h:inputText>
-				<h:commandButton action="#{taskBB.saveTask}" value="Add" />
-				<h:message for="taskDesc" style="color : red;padding-left : 8px"/>
-			</div>
-
-		</h:form>
-		
-	</ui:define>
-</ui:composition>
+</h:body>
+</html>

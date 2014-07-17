@@ -1,7 +1,7 @@
 package br.com.carnefacil.web.controllers;
 
+import br.com.carnefacil.model.Task;
 import br.com.carnefacil.services.TaskDao;
-import br.com.carnefacil.web.model.Task;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package br.com.carnefacil.services;
 
-import br.com.carnefacil.web.model.Task;
+import br.com.carnefacil.model.Task;
 
 import java.util.List;
 

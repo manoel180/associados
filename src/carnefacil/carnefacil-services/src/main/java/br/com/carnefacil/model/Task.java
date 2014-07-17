@@ -1,4 +1,4 @@
-package br.com.carnefacil.web.model;
+package br.com.carnefacil.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
