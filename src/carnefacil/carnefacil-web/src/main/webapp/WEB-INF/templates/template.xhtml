@@ -17,23 +17,8 @@
 			</h1>
 			Usuario: TXXXXXXXXX<br/>
 			Tempo: XX:XX
-			<!-- Menu -->
-			<h:form>
-			<p:menubar>
-				<p:submenu label="CADASTROS">
-					<p:menuitem value="Novo Associado"/>
-					<p:menuitem value="Novo Usuário"/>
-				</p:submenu>
-				<p:submenu label="GERAR CARNÊS">
-					<p:menuitem value="SUB1"/>
-				</p:submenu>
-				<p:menuitem value="FINANCEIRO"/>
-				<p:menuitem value="RELATÓRIOS"/>
-				<p:menuitem value="CONFIGURAÇÕES"/>
-				<p:menuitem value="SAIR"/>
-			</p:menubar>
-			</h:form>
-		</h:panelGroup>
+			<ui:include src="/WEB-INF/templates/menu.xhtml"/>
+					</h:panelGroup>
 		<h:panelGroup id="container" layout="block">
 			<h:panelGroup id="content" layout="block">
 				<ui:insert name="content" />
