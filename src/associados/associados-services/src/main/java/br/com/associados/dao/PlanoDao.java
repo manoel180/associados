@@ -23,7 +23,7 @@ public class PlanoDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Plano> list() {
-		return entityManager.createQuery("select p from Plano p")
+		return entityManager.createQuery("From Planos")
 				.getResultList();
 	}
 
