@@ -11,18 +11,8 @@
 	<packaging>war</packaging>
 	<name>web</name>
 
-	<repositories>
-		<repository>
-			<id>repositorio-primefaces</id>
-			<url>http://repository.primefaces.org</url>
-		</repository>
-	</repositories>
-	<dependencies>
 
-		<dependency>
-		<groupId>br.com.associados</groupId>
-			<artifactId>associados-services</artifactId>
-		</dependency>
+	<dependencies>
 
 		<dependency>
 			<groupId>com.sun.faces</groupId>

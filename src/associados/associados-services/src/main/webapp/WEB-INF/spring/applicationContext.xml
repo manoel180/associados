@@ -27,11 +27,10 @@
 		</property>		
 	</bean>
 
-	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/associados" />
-		<property name="username" value="root" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/associados" />
+		<property name="user" value="root" />
 		<property name="password" value="1234" />
 	</bean>
 

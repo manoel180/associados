@@ -1,4 +1,4 @@
-package br.com.associados.web.controllers;
+package br.com.associados.services;
 
 import java.util.ArrayList;
 import java.util.List;
