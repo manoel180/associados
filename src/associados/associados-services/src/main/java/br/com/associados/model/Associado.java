@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="Associados")
+@Table(name="associados")
 @Entity
 public class Associado {
 
@@ -20,4 +20,5 @@ public class Associado {
 	
 	@Column
 	private Boolean ativo;
+	
 }

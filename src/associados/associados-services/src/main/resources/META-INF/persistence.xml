@@ -8,12 +8,12 @@
 	<persistence-unit name="associadoUNIT"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.associados.model.Plano</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 
 			<!-- SEM as propriedades URL, login, senha e driver -->
-
+			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
