@@ -1,54 +1,54 @@
 package br.com.associados.model;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+/**
+ * The persistent class for the planos database table.
+ * 
+ */
 @Entity
 @Table(name="planos")
-public class Plano {
+public class Plano implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idplanos;
 
-	@Column(length = 48)
+	private Byte ativo;
+
 	private String description;
-	
-	@Column
-	private Boolean ativo;
 
-	public Long getId() {
-		return id;
+
+	public int getIdplanos() {
+		return this.idplanos;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdplanos(int idplanos) {
+		this.idplanos = idplanos;
+	}
+
+	public Byte getAtivo() {
+		return this.ativo;
+	}
+
+	public void setAtivo(Byte ativo) {
+		this.ativo = ativo;
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	/**
-	 * @return the ativo
-	 */
-	public Boolean getAtivo() {
-		return ativo;
-	}
-
-	/**
-	 * @param ativo the ativo to set
-	 */
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
 	}
 
 }
