@@ -3,7 +3,6 @@ package br.com.associados.services;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -25,7 +24,7 @@ import br.com.associados.model.Plano;
  * Root resource (exposed at "planos" path)
  */
 @Path("/planos")
-public class PlanoService {
+public class AssociadoService {
 
 	@Autowired
 	private CadastroController cadastroController;
