@@ -16,8 +16,7 @@
 		     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<context:component-scan base-package="br.com.associados" />
-
-	<import resource="classpath:spring/db.xml" />
+	<context:annotation-config />
+	<context:component-scan base-package="br.com.associados.web" />
 
 </beans>

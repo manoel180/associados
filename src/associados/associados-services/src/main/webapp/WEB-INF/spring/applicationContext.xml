@@ -23,7 +23,6 @@
 				<property name="showSql" value="true" />
 				<property name="generateDdl" value="true" />
 				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-				<property name="database" value="MYSQL"/>
 			</bean>
 		</property>		
 	</bean>
