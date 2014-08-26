@@ -14,7 +14,7 @@
 	<context:component-scan base-package="br.com.associados" />
 
 
-	<tx:annotation-driven />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 		<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -23,6 +23,7 @@
 				<property name="showSql" value="true" />
 				<property name="generateDdl" value="true" />
 				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+				<property name="database" value="MYSQL"/>
 			</bean>
 		</property>		
 	</bean>

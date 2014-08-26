@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name="usuarios")
-@XmlRootElement
+@XmlRootElement(name="user")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 

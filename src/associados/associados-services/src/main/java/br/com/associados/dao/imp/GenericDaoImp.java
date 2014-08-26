@@ -6,13 +6,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import br.com.associados.dao.GenericDao;
 
 public class GenericDaoImp<T> implements GenericDao<T>{
 
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
     protected EntityManager em;
 
     private Class<T> type;
@@ -51,7 +52,8 @@ public class GenericDaoImp<T> implements GenericDao<T>{
 	public List<T> listAll() {
 	        Query query = this.em
 	                .createQuery("FROM "+ type.getSimpleName());
-        return query.getResultList();
+	        List<T> result = query.getResultList();
+        return result;
 	}
 
 }

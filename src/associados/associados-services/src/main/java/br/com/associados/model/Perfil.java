@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -33,9 +32,9 @@ public class Perfil implements Serializable {
 	@ManyToMany(mappedBy="perfis")
 	private List<Funcionalidade> funcionalidades;
 
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="perfis")
-	private List<Usuario> usuarios;
+//	//bi-directional many-to-many association to Usuario
+//	@ManyToMany(mappedBy="perfis")
+//	private List<Usuario> usuarios;
 
 	public Perfil() {
 	}
@@ -70,14 +69,6 @@ public class Perfil implements Serializable {
 
 	public void setFuncionalidades(List<Funcionalidade> funcionalidades) {
 		this.funcionalidades = funcionalidades;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 }
