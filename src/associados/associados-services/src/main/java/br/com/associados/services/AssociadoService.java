@@ -34,7 +34,6 @@ public class AssociadoService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response newPlano(Plano plano) {
 
-		String output = plano.toString();
 
 		return Response.status(200).entity(plano).build();
 
@@ -44,8 +43,6 @@ public class AssociadoService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updatePlano(Plano plano) {
-
-		String output = plano.toString();
 
 		return Response.status(200).entity(plano).build();
 

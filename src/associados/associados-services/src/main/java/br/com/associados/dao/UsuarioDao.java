@@ -4,4 +4,6 @@ import br.com.associados.model.Usuario;
 
 public interface UsuarioDao extends GenericDao<Usuario>{
 
+	Usuario getUsuarioById(Long id);
+
 }

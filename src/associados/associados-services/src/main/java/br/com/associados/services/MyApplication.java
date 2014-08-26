@@ -7,6 +7,7 @@ public class MyApplication  extends ResourceConfig {
 	 public MyApplication () {
 	        register(RequestContextFilter.class);
 	        register(PlanoService.class);
+	        register(UsuarioService.class);
 	    }
 
 }

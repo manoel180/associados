@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,13 +17,13 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.associados.controller.CadastroController;
-import br.com.associados.model.Plano;
+import br.com.associados.model.Usuario;
 
 /**
  * Root resource (exposed at "planos" path)
  */
-@Path("/planos")
-public class PlanoService {
+@Path("/usuarios")
+public class UsuarioService {
 
 	@Autowired
 	private CadastroController cadastroController;
@@ -32,62 +31,43 @@ public class PlanoService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response newPlano(Plano plano) {
+	public Response newUsuario(Usuario usuario) {
 
-		return Response.status(200).entity(plano).build();
+		return Response.status(200).entity(usuario).build();
 
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updatePlano(Plano plano) {
+	public Response updateUsuario(Usuario usuario) {
 
-		return Response.status(200).entity(plano).build();
+		return Response.status(200).entity(usuario).build();
 
 	}
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public Response deleteEmployee(@PathParam("id") Long id) throws ClassNotFoundException, SQLException {
+	public Response deleteUsuario(@PathParam("id") Long id) throws ClassNotFoundException, SQLException {
 
 	    return Response.status(200).build();
 	}
-
-	/**
-	 * @return
-	 */
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Plano> getPlano() {
-		return cadastroController.listAllPlanos();
-	}
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public Plano getPlano(@PathParam("id") Integer id) {
-		return cadastroController.listAllPlanos().get(id);
+	public Usuario getUsuarioById(@PathParam("id") Long id) {
+		return cadastroController.getUsuarioById(id);
 	}
-
+		
 	/**
-	 * 
-	 * @param id
-	 * @param status
 	 * @return
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}/{status}")
-	public Plano getPlano(@PathParam("id") Integer id,
-			@DefaultValue("true") @PathParam("status") Boolean status) {
-		return cadastroController.listAllPlanos().get(id);
+	public List<Usuario> getUsuarios() {
+		return cadastroController.listAllUsuarios();
 	}
 
 }
