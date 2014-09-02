@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -22,22 +20,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name="usuarios")
-@XmlRootElement(name="user")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@XmlElement
 	private Long idusuarios;
 
-	@XmlElement
-	private byte ativo;
+	private Boolean ativo;
 
-	@XmlElement
 	private String login;
 
-	@XmlElement
 	private String senha;
 
 	//bi-directional many-to-many association to Perfil
@@ -64,11 +57,11 @@ public class Usuario implements Serializable {
 		this.idusuarios = idusuarios;
 	}
 
-	public byte getAtivo() {
+	public Boolean getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(byte ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 

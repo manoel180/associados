@@ -4,38 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-
-/**
- * The persistent class for the associados database table.
- * 
- */
-@Entity
-@Table(name="associados")
-public class Associado extends br.com.associados.model.Associado implements Serializable {
+public class Associados implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idassociados;
 
 	private byte ativo;
 
 	private String cpf;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="dt_nascimento")
 	private Date dtNascimento;
 
 	private String email;
@@ -48,23 +26,13 @@ public class Associado extends br.com.associados.model.Associado implements Seri
 
 	private byte sexo;
 
-	@Column(name="tel_celular")
 	private String telCelular;
 
-	@Column(name="tel_residencial")
 	private String telResidencial;
 
-	//bi-directional many-to-one association to FuncoesEclesiastica
-	@ManyToOne
-	@JoinColumn(name="idfuncoes_eclesiasticas")
-	private FuncoesEclesiastica funcoesEclesiastica;
+	private FuncoesEclesiasticas funcoesEclesiastica;
 
-	//bi-directional many-to-one association to Foto
-	@OneToMany(mappedBy="associado")
-	private List<Foto> fotos;
-
-	public Associado() {
-	}
+	private List<Fotos> fotos;
 
 	public int getIdassociados() {
 		return this.idassociados;
@@ -154,32 +122,32 @@ public class Associado extends br.com.associados.model.Associado implements Seri
 		this.telResidencial = telResidencial;
 	}
 
-	public FuncoesEclesiastica getFuncoesEclesiastica() {
+	public FuncoesEclesiasticas getFuncoesEclesiastica() {
 		return this.funcoesEclesiastica;
 	}
 
-	public void setFuncoesEclesiastica(FuncoesEclesiastica funcoesEclesiastica) {
+	public void setFuncoesEclesiastica(FuncoesEclesiasticas funcoesEclesiastica) {
 		this.funcoesEclesiastica = funcoesEclesiastica;
 	}
 
-	public List<Foto> getFotos() {
+	public List<Fotos> getFotos() {
 		return this.fotos;
 	}
 
-	public void setFotos(List<Foto> fotos) {
+	public void setFotos(List<Fotos> fotos) {
 		this.fotos = fotos;
 	}
 
-	public Foto addFoto(Foto foto) {
+	public Fotos addFoto(Fotos foto) {
 		getFotos().add(foto);
-		foto.setAssociado(this);
+		foto.setAssociados(this);
 
 		return foto;
 	}
 
-	public Foto removeFoto(Foto foto) {
+	public Fotos removeFoto(Fotos foto) {
 		getFotos().remove(foto);
-		foto.setAssociado(null);
+		foto.setAssociados(null);
 
 		return foto;
 	}

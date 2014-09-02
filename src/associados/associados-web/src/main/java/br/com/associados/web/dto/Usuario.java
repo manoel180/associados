@@ -1,22 +1,18 @@
 package br.com.associados.web.dto;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
-@XmlRootElement
-public class Usuario {
+public class Usuario{
 	
-	@XmlElement
 	private Long idusuarios;
 
-	@XmlElement
-	private byte ativo;
+	private Boolean ativo;
 
-	@XmlElement
 	private String login;
 
-	@XmlElement
 	private String senha;
+	
+	private List<Perfil> perfis;
 
 	/**
 	 * @return the idusuarios
@@ -35,14 +31,14 @@ public class Usuario {
 	/**
 	 * @return the ativo
 	 */
-	public byte getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 
 	/**
 	 * @param ativo the ativo to set
 	 */
-	public void setAtivo(byte ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
@@ -72,5 +68,13 @@ public class Usuario {
 	 */
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
 	}
 }

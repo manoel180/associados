@@ -100,7 +100,7 @@
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-web</artifactId>
-				<version>3.2.4.RELEASE</version>
+				<version>3.2.5.RELEASE</version>
 				<type>jar</type>
 				<scope>compile</scope>
 				<exclusions>
@@ -179,5 +179,6 @@
 	<modules>
 		<module>associados-web</module>
 		<module>associados-services</module>
+		<module>associados-model</module>
 	</modules>
 </project>
