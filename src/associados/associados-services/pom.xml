@@ -81,11 +81,6 @@
 			<version>5.1.31</version>
 		</dependency>
 
-		<dependency>
-			<groupId>br.com.associados.model</groupId>
-			<artifactId>associados-model</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<packaging>war</packaging>
 

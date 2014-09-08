@@ -1,14 +1,8 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 
 /**
@@ -17,33 +11,40 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="perfis")
+@NamedQuery(name="Perfil.findAll", query="SELECT p FROM Perfil p")
 public class Perfil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@Column(unique=true, nullable=false)
+	private String id;
 
 	private byte ativo;
 
+	@Column(length=60)
 	private String name;
 
 	//bi-directional many-to-many association to Funcionalidade
 	@ManyToMany(mappedBy="perfis")
 	private List<Funcionalidade> funcionalidades;
 
-//	//bi-directional many-to-many association to Usuario
-//	@ManyToMany(mappedBy="perfis")
-//	private List<Usuario> usuarios;
+	//bi-directional many-to-one association to PerfisHasFuncionalidade
+	@OneToMany(mappedBy="perfi")
+	private List<PerfisHasFuncionalidade> perfisHasFuncionalidades;
+
+	//bi-directional many-to-many association to Usuario
+	@ManyToMany(mappedBy="perfis")
+	private List<Usuario> usuarios;
 
 	public Perfil() {
 	}
 
-	public Long getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -69,6 +70,36 @@ public class Perfil implements Serializable {
 
 	public void setFuncionalidades(List<Funcionalidade> funcionalidades) {
 		this.funcionalidades = funcionalidades;
+	}
+
+	public List<PerfisHasFuncionalidade> getPerfisHasFuncionalidades() {
+		return this.perfisHasFuncionalidades;
+	}
+
+	public void setPerfisHasFuncionalidades(List<PerfisHasFuncionalidade> perfisHasFuncionalidades) {
+		this.perfisHasFuncionalidades = perfisHasFuncionalidades;
+	}
+
+	public PerfisHasFuncionalidade addPerfisHasFuncionalidade(PerfisHasFuncionalidade perfisHasFuncionalidade) {
+		getPerfisHasFuncionalidades().add(perfisHasFuncionalidade);
+		perfisHasFuncionalidade.setPerfi(this);
+
+		return perfisHasFuncionalidade;
+	}
+
+	public PerfisHasFuncionalidade removePerfisHasFuncionalidade(PerfisHasFuncionalidade perfisHasFuncionalidade) {
+		getPerfisHasFuncionalidades().remove(perfisHasFuncionalidade);
+		perfisHasFuncionalidade.setPerfi(null);
+
+		return perfisHasFuncionalidade;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }

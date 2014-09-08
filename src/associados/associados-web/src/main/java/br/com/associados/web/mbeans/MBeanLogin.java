@@ -13,22 +13,32 @@ import br.com.associados.web.util.Servicos;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@ManagedBean(name="mBeanPlano")
+@ManagedBean(name="mBeanLogin")
 @RequestScoped
 public class MBeanLogin {
 
-	public List<Usuario> getMessage() {
+	private String login;
+	public Usuario getUsuario() {
 		Type listType = new TypeToken<List<Usuario>>() {}.getType();
 		Gson gson = new Gson();
-		List<Usuario> list = gson.fromJson(Connection.getConnection(Servicos.USUARIOS), listType);
-		return list;
+		Usuario user = gson.fromJson(Connection.getConnection(Servicos.USUARIOS+"/"+login), Usuario.class);
+		return user;
 	}
 
 	public void login() {
+		getUsuario();
 	}
 	
 	public void logout() {
 		
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 }

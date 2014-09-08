@@ -1,9 +1,7 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 /**
  * The primary key class for the boletos database table.
@@ -14,13 +12,13 @@ public class BoletoPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(insertable=false, updatable=false)
+	@Column(insertable=false, updatable=false, unique=true, nullable=false)
 	private int idassociados;
 
-	@Column(insertable=false, updatable=false)
+	@Column(insertable=false, updatable=false, unique=true, nullable=false)
 	private int idplanos;
 
-	@Column(insertable=false, updatable=false)
+	@Column(insertable=false, updatable=false, unique=true, nullable=false)
 	private int idtiposLancamentos;
 
 	public BoletoPK() {

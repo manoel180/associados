@@ -1,15 +1,9 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 /**
@@ -18,6 +12,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="boletos")
+@NamedQuery(name="Boleto.findAll", query="SELECT b FROM Boleto b")
 public class Boleto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,12 +23,32 @@ public class Boleto implements Serializable {
 	@Column(name="dt_vencimento")
 	private Date dtVencimento;
 
+	@Column(length=255)
 	private String observacoes;
 
 	@Column(name="taxa_bancaria")
 	private byte taxaBancaria;
 
+	@Column(precision=10, scale=2)
 	private BigDecimal valor;
+
+	//bi-directional many-to-one association to Associado
+	@ManyToOne
+	@JoinColumn(name="idassociados", nullable=false, insertable=false, updatable=false)
+	private Associado associado;
+
+	//bi-directional many-to-one association to Plano
+	@ManyToOne
+	@JoinColumn(name="idplanos", nullable=false, insertable=false, updatable=false)
+	private Plano plano;
+
+	//bi-directional many-to-one association to TiposLancamento
+	@ManyToOne
+	@JoinColumn(name="idtiposLancamentos", nullable=false, insertable=false, updatable=false)
+	private TiposLancamento tiposLancamento;
+
+	public Boleto() {
+	}
 
 	public BoletoPK getId() {
 		return this.id;
@@ -73,6 +88,30 @@ public class Boleto implements Serializable {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Associado getAssociado() {
+		return this.associado;
+	}
+
+	public void setAssociado(Associado associado) {
+		this.associado = associado;
+	}
+
+	public Plano getPlano() {
+		return this.plano;
+	}
+
+	public void setPlano(Plano plano) {
+		this.plano = plano;
+	}
+
+	public TiposLancamento getTiposLancamento() {
+		return this.tiposLancamento;
+	}
+
+	public void setTiposLancamento(TiposLancamento tiposLancamento) {
+		this.tiposLancamento = tiposLancamento;
 	}
 
 }

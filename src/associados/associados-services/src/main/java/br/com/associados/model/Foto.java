@@ -1,16 +1,7 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 /**
@@ -25,16 +16,18 @@ public class Foto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	private int idfotos;
 
 	@Lob
 	private byte[] file;
 
+	@Column(nullable=false, length=60)
 	private String nome;
 
 	//bi-directional many-to-one association to Associado
 	@ManyToOne
-	@JoinColumn(name="idassociados")
+	@JoinColumn(name="idassociados", nullable=false)
 	private Associado associado;
 
 	public Foto() {

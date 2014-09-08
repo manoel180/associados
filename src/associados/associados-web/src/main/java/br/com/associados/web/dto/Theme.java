@@ -1,4 +1,4 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 
 public class Theme {

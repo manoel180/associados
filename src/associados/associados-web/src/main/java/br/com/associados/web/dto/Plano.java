@@ -1,32 +1,18 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
 
-/**
- * The persistent class for the planos database table.
- * 
- */
-@Entity
-@Table(name="planos")
-@NamedQuery(name="Plano.findAll", query="SELECT p FROM Plano p")
 public class Plano implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
 	private int idplanos;
 
 	private byte ativo;
 
-	@Column(length=48)
 	private String description;
 
-	//bi-directional many-to-one association to Boleto
-	@OneToMany(mappedBy="plano")
 	private List<Boleto> boletos;
 
 	public Plano() {

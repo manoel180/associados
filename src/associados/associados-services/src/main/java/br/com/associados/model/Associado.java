@@ -1,20 +1,13 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
+
+import javax.persistence.*;
+
+import org.hibernate.validator.constraints.Email;
+
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 /**
@@ -23,41 +16,55 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="associados")
-public class Associado extends br.com.associados.model.Associado implements Serializable {
+@NamedQuery(name="Associado.findAll", query="SELECT a FROM Associado a")
+public class Associado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	private int idassociados;
 
-	private byte ativo;
+	private Boolean ativo;
 
+	@Column(length=13)
 	private String cpf;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="dt_nascimento")
+	@Column(name="dt_nascimento", nullable=false)
 	private Date dtNascimento;
 
+	@Column(length=60)
+	@Email
 	private String email;
 
+	@Column(length=60)
+	@Email
 	private String email2;
 
+	@Column(length=60)
 	private String name;
 
+	@Column(length=45)
 	private String passaporte;
 
-	private byte sexo;
+	@Enumerated(EnumType.ORDINAL)
+	private Sexo sexo;
 
-	@Column(name="tel_celular")
+	@Column(name="tel_celular", length=11)
 	private String telCelular;
 
-	@Column(name="tel_residencial")
+	@Column(name="tel_residencial", length=11)
 	private String telResidencial;
 
 	//bi-directional many-to-one association to FuncoesEclesiastica
 	@ManyToOne
-	@JoinColumn(name="idfuncoes_eclesiasticas")
+	@JoinColumn(name="idfuncoes_eclesiasticas", nullable=false)
 	private FuncoesEclesiastica funcoesEclesiastica;
+
+	//bi-directional many-to-one association to Boleto
+	@OneToMany(mappedBy="associado")
+	private List<Boleto> boletos;
 
 	//bi-directional many-to-one association to Foto
 	@OneToMany(mappedBy="associado")
@@ -74,11 +81,11 @@ public class Associado extends br.com.associados.model.Associado implements Seri
 		this.idassociados = idassociados;
 	}
 
-	public byte getAtivo() {
+	public Boolean getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(byte ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
@@ -130,11 +137,11 @@ public class Associado extends br.com.associados.model.Associado implements Seri
 		this.passaporte = passaporte;
 	}
 
-	public byte getSexo() {
+	public Sexo getSexo() {
 		return this.sexo;
 	}
 
-	public void setSexo(byte sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -160,6 +167,28 @@ public class Associado extends br.com.associados.model.Associado implements Seri
 
 	public void setFuncoesEclesiastica(FuncoesEclesiastica funcoesEclesiastica) {
 		this.funcoesEclesiastica = funcoesEclesiastica;
+	}
+
+	public List<Boleto> getBoletos() {
+		return this.boletos;
+	}
+
+	public void setBoletos(List<Boleto> boletos) {
+		this.boletos = boletos;
+	}
+
+	public Boleto addBoleto(Boleto boleto) {
+		getBoletos().add(boleto);
+		boleto.setAssociado(this);
+
+		return boleto;
+	}
+
+	public Boleto removeBoleto(Boleto boleto) {
+		getBoletos().remove(boleto);
+		boleto.setAssociado(null);
+
+		return boleto;
 	}
 
 	public List<Foto> getFotos() {

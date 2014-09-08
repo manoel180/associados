@@ -1,17 +1,8 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 
 /**
@@ -26,8 +17,10 @@ public class Funcionalidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	@Column(unique=true, nullable=false)
+	private int id;
 
+	@Column(length=255)
 	private String nome;
 
 	//bi-directional many-to-many association to Perfil
@@ -35,10 +28,10 @@ public class Funcionalidade implements Serializable {
 	@JoinTable(
 		name="perfis_has_funcionalidades"
 		, joinColumns={
-			@JoinColumn(name="funcionalidades_id")
+			@JoinColumn(name="funcionalidades_id", nullable=false)
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="perfis_id")
+			@JoinColumn(name="perfis_id", nullable=false)
 			}
 		)
 	private List<Perfil> perfis;
@@ -46,11 +39,11 @@ public class Funcionalidade implements Serializable {
 	public Funcionalidade() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

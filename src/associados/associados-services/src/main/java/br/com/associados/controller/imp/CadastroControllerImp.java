@@ -78,6 +78,10 @@ public class CadastroControllerImp implements CadastroController {
 	public Usuario getUsuarioById(Long id) {
 		return usuarioDao.getUsuarioById(id);
 	}
+	@Override
+	public Usuario getUsuarioByLogin(String login) {
+		return usuarioDao.getUsuarioByLogin(login);
+	}
 	
 	
 	/**

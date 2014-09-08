@@ -1,17 +1,20 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 import java.io.Serializable;
 import java.util.List;
 
 
-public class FuncoesEclesiasticas implements Serializable {
+public class FuncoesEclesiastica implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int idfuncoesEclesiasticas;
 
 	private String descricacao;
 
-	private List<Associados> associados;
+	private List<Associado> associados;
+
+	public FuncoesEclesiastica() {
+	}
 
 	public int getIdfuncoesEclesiasticas() {
 		return this.idfuncoesEclesiasticas;
@@ -29,12 +32,26 @@ public class FuncoesEclesiasticas implements Serializable {
 		this.descricacao = descricacao;
 	}
 
-	public List<Associados> getAssociados() {
+	public List<Associado> getAssociados() {
 		return this.associados;
 	}
 
-	public void setAssociados(List<Associados> associados) {
+	public void setAssociados(List<Associado> associados) {
 		this.associados = associados;
+	}
+
+	public Associado addAssociado(Associado associado) {
+		getAssociados().add(associado);
+		associado.setFuncoesEclesiastica(this);
+
+		return associado;
+	}
+
+	public Associado removeAssociado(Associado associado) {
+		getAssociados().remove(associado);
+		associado.setFuncoesEclesiastica(null);
+
+		return associado;
 	}
 
 }

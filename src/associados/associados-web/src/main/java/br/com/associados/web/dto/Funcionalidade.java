@@ -1,25 +1,26 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class Funcionalidades implements Serializable {
+
+public class Funcionalidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String id;
+	private int id;
 
 	private String nome;
 
-	private List<Perfis> perfis;
+	private List<Perfil> perfis;
 
-	public Funcionalidades() {
+	public Funcionalidade() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -31,11 +32,11 @@ public class Funcionalidades implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Perfis> getPerfis() {
+	public List<Perfil> getPerfis() {
 		return this.perfis;
 	}
 
-	public void setPerfis(List<Perfis> perfis) {
+	public void setPerfis(List<Perfil> perfis) {
 		this.perfis = perfis;
 	}
 

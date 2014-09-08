@@ -6,4 +6,6 @@ public interface UsuarioDao extends GenericDao<Usuario>{
 
 	Usuario getUsuarioById(Long id);
 
+	Usuario getUsuarioByLogin(String login);
+
 }

@@ -8,7 +8,6 @@
 	<persistence-unit name="associadoUNIT"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.associados.model.Perfil</class>
 		<class>br.com.associados.model.Associado</class>
 		<class>br.com.associados.model.Boleto</class>
 		<class>br.com.associados.model.BoletoPK</class>
@@ -16,11 +15,13 @@
 		<class>br.com.associados.model.Foto</class>
 		<class>br.com.associados.model.Funcionalidade</class>
 		<class>br.com.associados.model.FuncoesEclesiastica</class>
+		<class>br.com.associados.model.Perfil</class>
+		<class>br.com.associados.model.PerfisHasFuncionalidade</class>
+		<class>br.com.associados.model.PerfisHasFuncionalidadePK</class>
 		<class>br.com.associados.model.Plano</class>
 		<class>br.com.associados.model.TiposLancamento</class>
 		<class>br.com.associados.model.Usuario</class>
 
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 
 			<!-- SEM as propriedades URL, login, senha e driver -->

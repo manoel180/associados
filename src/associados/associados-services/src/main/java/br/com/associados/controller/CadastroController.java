@@ -32,4 +32,6 @@ public interface CadastroController {
 	List<Usuario> listAllUsuarios();
 
 	Usuario getUsuarioById(Long id);
+
+	Usuario getUsuarioByLogin(String login);
 }

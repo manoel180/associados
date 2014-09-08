@@ -1,12 +1,9 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 import java.io.Serializable;
 
-/**
- * The primary key class for the boletos database table.
- * 
- */
 public class BoletoPK implements Serializable {
+	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
 	private int idassociados;
@@ -15,6 +12,8 @@ public class BoletoPK implements Serializable {
 
 	private int idtiposLancamentos;
 
+	public BoletoPK() {
+	}
 	public int getIdassociados() {
 		return this.idassociados;
 	}

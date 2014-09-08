@@ -1,9 +1,8 @@
-package br.com.associados.model;
+package br.com.associados.web.dto;
 
 import java.io.Serializable;
 
-
-public class Fotos implements Serializable {
+public class Foto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int idfotos;
@@ -12,7 +11,10 @@ public class Fotos implements Serializable {
 
 	private String nome;
 
-	private Associados associado;
+	private Associado associado;
+
+	public Foto() {
+	}
 
 	public int getIdfotos() {
 		return this.idfotos;
@@ -38,11 +40,11 @@ public class Fotos implements Serializable {
 		this.nome = nome;
 	}
 
-	public Associados getAssociados() {
+	public Associado getAssociado() {
 		return this.associado;
 	}
 
-	public void setAssociados(Associados associado) {
+	public void setAssociado(Associado associado) {
 		this.associado = associado;
 	}
 

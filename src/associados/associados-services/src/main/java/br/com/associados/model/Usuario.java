@@ -1,17 +1,8 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 
 /**
@@ -20,28 +11,33 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="usuarios")
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idusuarios;
+	@Column(unique=true, nullable=false)
+	private int idusuarios;
 
-	private Boolean ativo;
+	@Column(nullable=false)
+	private byte ativo;
 
+	@Column(nullable=false, length=10)
 	private String login;
 
+	@Column(nullable=false, length=45)
 	private String senha;
 
 	//bi-directional many-to-many association to Perfil
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(
 		name="perfis_has_usuarios"
 		, joinColumns={
-			@JoinColumn(name="usuarios_idusuarios")
+			@JoinColumn(name="usuarios_idusuarios", nullable=false)
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="perfis_id")
+			@JoinColumn(name="perfis_id", nullable=false)
 			}
 		)
 	private List<Perfil> perfis;
@@ -49,19 +45,19 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Long getIdusuarios() {
+	public int getIdusuarios() {
 		return this.idusuarios;
 	}
 
-	public void setIdusuarios(Long idusuarios) {
+	public void setIdusuarios(int idusuarios) {
 		this.idusuarios = idusuarios;
 	}
 
-	public Boolean getAtivo() {
+	public byte getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(Boolean ativo) {
+	public void setAtivo(byte ativo) {
 		this.ativo = ativo;
 	}
 

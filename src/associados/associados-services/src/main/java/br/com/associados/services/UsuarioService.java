@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -60,14 +61,25 @@ public class UsuarioService {
 	public Usuario getUsuarioById(@PathParam("id") Long id) {
 		return cadastroController.getUsuarioById(id);
 	}
-		
 	/**
 	 * @return
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() throws Exception{
+		System.out.println("ola");
 		return cadastroController.listAllUsuarios();
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/usuario")
+	public Usuario getUsuarioByLogin(@QueryParam("login") String login, @QueryParam("password") String password,@QueryParam("id") Long id) {
+		Usuario user = cadastroController.getUsuarioByLogin(login);
+			return user;
+	}
+		
+	
 
 }
