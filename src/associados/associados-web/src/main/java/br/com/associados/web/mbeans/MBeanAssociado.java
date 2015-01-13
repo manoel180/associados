@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
 @RequestScoped
 public class MBeanAssociado extends mBeanGerneric{
 	
-	Associado associado;
+	private Associado associado;
 	
 	public List<Usuario> getMessage() {
 		Type listType = new TypeToken<List<Usuario>>() {}.getType();
@@ -41,6 +41,16 @@ public class MBeanAssociado extends mBeanGerneric{
 	@Override
 	public void excluir() {
 		
+	}
+
+
+	public Associado getAssociado() {
+		return associado;
+	}
+
+
+	public void setAssociado(Associado associado) {
+		this.associado = associado;
 	}
 
 }
