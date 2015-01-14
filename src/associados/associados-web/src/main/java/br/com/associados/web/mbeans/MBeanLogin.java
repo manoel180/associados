@@ -21,12 +21,15 @@ public class MBeanLogin {
 	public Usuario getUsuario() {
 		Type listType = new TypeToken<List<Usuario>>() {}.getType();
 		Gson gson = new Gson();
-		Usuario user = gson.fromJson(Connection.getConnection(Servicos.USUARIOS+"/"+login), Usuario.class);
+		Usuario user = gson.fromJson(Connection.getConnection(Servicos.USUARIOS+"login="+login), Usuario.class);
 		return user;
 	}
 
-	public void login() {
-		getUsuario();
+	public String login() {
+		if(getUsuario() != null) {
+			return "home.jsf";
+		}
+		return "";
 	}
 	
 	public void logout() {

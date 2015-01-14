@@ -3,6 +3,7 @@ package br.com.associados.web.mbeans;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -26,7 +27,11 @@ public class MBeanAssociado extends mBeanGerneric{
 		List<Usuario> list = gson.fromJson(Connection.getConnection(Servicos.USUARIOS), listType);
 		return list;
 	}
-	
+	 
+	@PostConstruct
+	public void init() {
+		associado = new Associado();
+	}
 
 	@Override
 	public void salvar() {

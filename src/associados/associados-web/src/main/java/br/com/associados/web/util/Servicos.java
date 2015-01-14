@@ -1,7 +1,7 @@
 package br.com.associados.web.util;
 
 public enum Servicos {
-	USUARIOS("usuarios"),
+	USUARIOS("usuarios/search?"),
 	PLANOS("planos"),
 	PERFIS("perfis"),
 	ASSOCIADOS("associados"),

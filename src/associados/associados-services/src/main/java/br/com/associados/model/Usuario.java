@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int idusuarios;
+	private Long idusuarios;
 
 	@Column(nullable=false)
 	private byte ativo;
@@ -45,11 +45,11 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public int getIdusuarios() {
+	public Long getIdusuarios() {
 		return this.idusuarios;
 	}
 
-	public void setIdusuarios(int idusuarios) {
+	public void setIdusuarios(Long idusuarios) {
 		this.idusuarios = idusuarios;
 	}
 

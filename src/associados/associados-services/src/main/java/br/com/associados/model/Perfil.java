@@ -17,8 +17,7 @@ public class Perfil implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private String id;
+	private int idPerfil;
 
 	private byte ativo;
 
@@ -40,12 +39,12 @@ public class Perfil implements Serializable {
 	public Perfil() {
 	}
 
-	public String getId() {
-		return this.id;
+	public int getIdPerfil() {
+		return this.idPerfil;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIdPerfil(int id) {
+		this.idPerfil = id;
 	}
 
 	public byte getAtivo() {

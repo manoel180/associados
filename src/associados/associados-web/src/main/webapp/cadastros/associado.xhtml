@@ -13,22 +13,24 @@
 				<comp:input label="nome" value="#{mBeanAssociado.associado.name}"/>
 				<!-- Sexo -->
 				<!-- CPF -->
-				<comp:input label="cpf" value=""/>
+				<comp:input label="cpf" value="#{mBeanAssociado.associado.cpf}"/>
 				<!-- Passaporte -->
-				<comp:input label="Passaporte" value=""/>
+				<comp:input label="Passaporte" value="#{mBeanAssociado.associado.passaporte}"/>
 				
 				<!-- Function Eclesiastica -->
-				<comp:input label="Função Eclesiastica" value=""/>
+				<comp:input label="Função Eclesiastica" value="#{mBeanAssociado.associado.funcoesEclesiastica}"/>
 				<!-- Telefone Fixo -->
-				<comp:input label="Tel. Fixo" value=""/>
+				<comp:input label="Tel. Fixo" value="#{mBeanAssociado.associado.telResidencial}"/>
 				<!-- Celular -->
-				<comp:input label="Tel. Celular" value=""/>
+				<comp:input label="Tel. Celular" value="#{mBeanAssociado.associado.telCelular}"/>
 				<!-- Dt nascimento -->
-				<comp:input label="Data nascimento" value=""/>
+				<comp:input label="Data nascimento" value="#{mBeanAssociado.associado.dtNascimento}"/>
 				<!-- Email -->
-				<comp:input label="Email" value=""/>
+				<comp:input label="Email" value="#{mBeanAssociado.associado.email}"/>
+				<!-- Email -->
+				<comp:input label="Email Secundário" value="#{mBeanAssociado.associado.email2}"/>
 				<!-- Cep -->
-				<comp:input label="CEP" value=""/>
+				<comp:input label="CEP" value="#{mBeanAssociado.associado.ativo}"/>
 				<!-- Logradouro -->
 				<comp:input label="Logradouro" value=""/>
 				<!-- Numero -->
@@ -40,8 +42,8 @@
 				<!-- Estado -->
 				<comp:input label="Estado" value=""/>
 				<!-- País -->
-				<comp:input label="País" value=""/>
+				<comp:input label="País" value="#{mBeanAssociado.associado.ativo}"/>
 				<!-- Botão Finalizar Cadastro -->
-				<comp:button label="#{msg.btnFinalizar}"/>
+				<comp:button action="#{mBeanAssociado.salvar}"/>
 	</ui:define>
 </ui:composition>

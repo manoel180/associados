@@ -17,17 +17,18 @@ public class Endereco implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private String id;
+	private int idEndereco;
 
 	public Endereco() {
 	}
 
-	public String getId() {
-		return this.id;
+	public int getIdEndereco() {
+		return idEndereco;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIdEndereco(int idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
+	
 }

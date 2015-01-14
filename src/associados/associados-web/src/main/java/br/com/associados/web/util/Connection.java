@@ -9,7 +9,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 
 public abstract class Connection {
-	private static final String URL = "http://localhost:8088/associados-services/";
+	private static final String URL = "http://localhost:8080/associados-services/";
 	private static Client c ;
 	private static void openConnection() {
 		ClientConfig clientConfig = new DefaultClientConfig();

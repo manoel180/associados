@@ -3,6 +3,7 @@ package br.com.associados.services;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -67,17 +68,21 @@ public class UsuarioService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Usuario> getUsuarios() throws Exception{
-		System.out.println("ola");
 		return cadastroController.listAllUsuarios();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/usuario")
+	@Path("/search/")
 	public Usuario getUsuarioByLogin(@QueryParam("login") String login, @QueryParam("password") String password,@QueryParam("id") Long id) {
-		Usuario user = cadastroController.getUsuarioByLogin(login);
-			return user;
+		try {
+			Usuario user = cadastroController.getUsuarioByLogin(login);
+			return user;	
+		}catch(Exception ex){
+		}
+		return null;
+		
 	}
 		
 	
