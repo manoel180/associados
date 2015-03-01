@@ -14,7 +14,7 @@ import br.com.associados.web.util.Servicos;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@ManagedBean(name="mBeanPlano")
+@ManagedBean
 @RequestScoped
 public class MBeanPlano extends mBeanGerneric{
 
@@ -28,7 +28,7 @@ public class MBeanPlano extends mBeanGerneric{
 	public List<Usuario> getMessage() {
 		Type listType = new TypeToken<List<Usuario>>() {}.getType();
 		Gson gson = new Gson();
-		List<Usuario> list = gson.fromJson(Connection.getConnection(Servicos.USUARIOS), listType);
+		List<Usuario> list = gson.fromJson(Connection.getConnection(Servicos.PLANOS), listType);
 		return list;
 	}
 

@@ -2,20 +2,24 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"    
-    xmlns:composite="http://java.sun.com/jsf/composite"
-    xmlns:p="http://primefaces.org/ui">
-    <!-- INTERFACE -->
-    <composite:interface>
-    <composite:attribute name="label"/>
-    <composite:attribute name="value"/>
-    
-    </composite:interface>
-          
-    <!-- IMPLEMENTATION -->
-    <composite:implementation>
-<p:outputLabel value="#{cc.attrs.label}"/> <br/><p:inputText value="#{cc.attrs.value}"/>
-<br/>
-    </composite:implementation>    
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+<!-- INTERFACE -->
+<composite:interface>
+	<composite:attribute name="label" />
+	<composite:attribute name="id" />
+	<composite:attribute name="value" />
+	<composite:attribute name="required" default="true" />
+</composite:interface>
+
+<!-- IMPLEMENTATION -->
+<composite:implementation>
+	<div id="#{cc.attrs.id}_div">
+		<p:outputLabel value="#{cc.attrs.label}"  for="#{cc.attrs.id}_txt" />
+		<p:inputText id="#{cc.attrs.id}_txt"  value="#{cc.attrs.value}" required="#{cc.attrs.required}" />
+	</div>
+	
+</composite:implementation>
 
 </html>

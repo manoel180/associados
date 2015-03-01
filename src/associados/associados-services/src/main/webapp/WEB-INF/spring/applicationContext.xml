@@ -27,12 +27,14 @@
 		</property>		
 	</bean>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/associados" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
-	</bean>
+	</bean> -->
+	
+    
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 

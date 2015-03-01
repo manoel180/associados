@@ -1,47 +1,52 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
-  height: auto;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-body > .container {
-padding: 60px;
-}
-.footer {
-	position: absolute;
-bottom: 0;
-width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #edefe5;
+	position: relative;
+	min-height: 100%;
+	height: auto;
+	width: 960px;
+	margin: 0 auto;
 }
 
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+	margin: 0 auto;
+}
+
+
+body>.container {
+	padding: 60em;
+	height: 100%;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #edefe5;
+	width: 100%;
+}
 
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
-
-
 .container .text-muted {
-  margin: 0;
+	
+	min-height: 100%;
 }
 
-.footer > .container {
-  min-height: 100%;
+.footer>.container {
+	min-height: 100%;
+	
 }
 
 code {
-  font-size: 80%;
+	font-size: 80%;
 }
 
-.top{
-background-image: url("#{resource['img:bg_topo.jpg']}");
-background-repeat: no-repeat;
-width: 100%;
-max-width: 100% 
+.top {
+	background-image: url("#{resource['img:bg_topo.jpg']}");
+	height: 147px !important;
 }

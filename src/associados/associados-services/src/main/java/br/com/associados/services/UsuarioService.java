@@ -3,7 +3,6 @@ package br.com.associados.services;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;

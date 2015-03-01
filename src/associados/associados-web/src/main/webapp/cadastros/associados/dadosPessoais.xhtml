@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
+
+	<!-- Tipo Pessoa -->
+	<comp:input id="nome" label="Tipo Pessoa"
+		value="#{mBeanAssociado.associado.name}" required="true" />
+
+	<!-- Nome -->
+
+	<comp:input label="nome" value="#{mBeanAssociado.associado.name}"
+		required="true" />
+	<!-- Sexo -->
+
+	<!-- CPF -->
+	<comp:inputMask id="cpf" label="cpf"
+		value="#{mBeanAssociado.associado.cpf}" required="true"
+		mask="999.999.999-99" />
+
+	<!-- Passaporte -->
+	<comp:input label="Passaporte"
+		value="#{mBeanAssociado.associado.passaporte}" />
+
+	<!-- Function Eclesiastica -->
+	<comp:input label="Função Eclesiastica"
+		value="#{mBeanAssociado.associado.funcoesEclesiastica}" />
+	<!-- Telefone Fixo -->
+	<comp:input label="Tel. Fixo"
+		value="#{mBeanAssociado.associado.telResidencial}" />
+	<!-- Celular -->
+	<comp:input label="Tel. Celular"
+		value="#{mBeanAssociado.associado.telCelular}" />
+	<!-- Dt nascimento -->
+	<comp:input label="Data nascimento"
+		value="#{mBeanAssociado.associado.dtNascimento}" />
+	<!-- Email -->
+	<comp:input label="Email" value="#{mBeanAssociado.associado.email}" />
+	<!-- Email -->
+	<comp:input label="Email Secundário"
+		value="#{mBeanAssociado.associado.email2}" />
+	<!-- Cep -->
+	<comp:input label="CEP" value="#{mBeanAssociado.associado.ativo}" />
+	<!-- Logradouro -->
+	<comp:input label="Logradouro"
+		value="#{mBeanAssociado.associado.email}" />
+	<!-- Numero -->
+	<comp:input label="Número" value="#{mBeanAssociado.associado.email}" />
+	<!-- Complemento -->
+	<comp:input label="Complemento"
+		value="#{mBeanAssociado.associado.email}" />
+	<!-- Cidade -->
+	<comp:input label="Cidade" value="#{mBeanAssociado.associado.email}" />
+	<!-- Estado -->
+	<comp:input label="Estado" value="#{mBeanAssociado.associado.email}" />
+	<!-- País -->
+	<comp:input label="País" value="#{mBeanAssociado.associado}" />
+
+</ui:composition>

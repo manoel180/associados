@@ -7,7 +7,7 @@
 		<artifactId>associados</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>associados-web</artifactId>
+	<artifactId>associados-jsf</artifactId>
 	<packaging>war</packaging>
 	<name>web</name>
 
@@ -18,18 +18,10 @@
 		</repository>
 	</repositories>
 
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
-
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -56,7 +48,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.0</version>
+			<version>5.1</version>
 		</dependency>
 
 		<dependency>
@@ -93,6 +85,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>associados</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
@@ -102,23 +95,14 @@
 				<configuration>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<webResources>
-						<resource>
-							<directory>src/main/webapp/WEB-INF/lib</directory>
-							<includes>
-								<include>**/*.jar</include>
-							</includes>
-							<targetPath>WEB-INF/lib</targetPath>
-						</resource>
-					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>

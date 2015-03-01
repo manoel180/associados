@@ -7,6 +7,7 @@
 
 	<persistence-unit name="associadoUNIT"
 		transaction-type="RESOURCE_LOCAL">
+		 <jta-data-source>java:jboss/datasources/associados-ds</jta-data-source>
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.associados.model.Associado</class>
 		<class>br.com.associados.model.Boleto</class>

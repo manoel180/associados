@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<composite:interface>
+	<!-- PROMPTS -->
+	<composite:attribute name="label" required="true" />
+
+	<composite:attribute name="value" required="true" />
+	<composite:attribute name="maxlength" default="50" />
+	<composite:attribute name="minDate" />
+	<composite:attribute name="columns" default="2" />
+	<composite:attribute name="classeCss" />
+	<composite:attribute name="pattern" default="dd/MM/yyyy" />
+	<composite:attribute name="right" default="4px" />
+	<composite:attribute name="size" default="30" />
+	<composite:attribute name="align" default="left" />
+	<composite:attribute name="roles" />
+	<composite:attribute name="required" default="false" />
+	<composite:attribute name="disabled" default="false" />
+
+
+</composite:interface>
+
+<composite:implementation>
+
+	<div id="#{cc.clientId}"
+		style="position: relative; text-align: #{cc.attrs.align};">
+
+			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" for="#{cc.clientId}_calendar"/><h:message styleClass="ui-outputlabel ui-state-error" for="#{cc.clientId}_calendar"/>
+		<br />
+		<p:calendar id="#{cc.clientId}_calendar" size="#{cc.attrs.size}" showButtonPanel="true" readonlyInput="true" 
+			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}" 
+			readonly="#{cc.attrs.disabled}"
+			mindate="#{cc.attrs.minDate}" required="#{cc.attrs.required}"
+			locale="#{localeController.currentLocale}" navigator="true"
+			effect="fold"
+			value="#{cc.attrs.value}" pattern="#{cc.attrs.pattern}" />
+		<p:spacer width="10px" />
+	</div>
+</composite:implementation>
+</html>

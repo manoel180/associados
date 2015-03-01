@@ -1,20 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"    
-    xmlns:composite="http://java.sun.com/jsf/composite"
-    xmlns:p="http://primefaces.org/ui">
-    <!-- INTERFACE -->
-    <composite:interface>
-    <composite:attribute name="label" default="#{msg.btnFinalizar}"/>
-    <composite:attribute name="action"  method-signature="java.lang.String action()"/>
-    
-    </composite:interface>
-          
-    <!-- IMPLEMENTATION -->
-    <composite:implementation>
-		<p:commandButton value="#{cc.attrs.label}" action="#{cc.attrs.action}"/>
-    </composite:implementation>    
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<!-- Atributos para o commandButton -->
+		<composite:attribute name="value" displayName="value" default="#{msg.btnFinalizar}"/>
+		<composite:attribute name="css" displayName="css" />
+		<composite:attribute name="ajax" displayName="ajax" default="true" />
+		<composite:attribute name="action" displayName="action"
+			method-signature="java.lang.String action()" />
+		<composite:attribute name="actionListener"
+			displayName="actionListener" method-signature="void action()" />
+		<composite:attribute name="roles" />
+		<composite:attribute name="update" />
+		<composite:attribute name="onclick" />
 
-</html>
+		<composite:attribute name="onsuccess" />
+		<composite:attribute name="label" default="#{msg.btnFinalizar}" />
+	</composite:interface>
+
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<p:commandButton id="#{cc.clientId}" value="#{cc.attrs.value}"
+			ajax="#{cc.attrs.ajax}" styleClass="#{cc.attrs.css}"
+			update="#{cc.attrs.update}"
+			actionListener="#{cc.attrs.actionListener}" label="#{cc.attrs.label}"
+			rendered="#{(cc.attrs.roles == null ? true : p:ifAnyGranted(cc.attrs.roles))}"
+			onclick="#{cc.attrs.onclick}"/>
+
+	</composite:implementation>
+
+</ui:composition>

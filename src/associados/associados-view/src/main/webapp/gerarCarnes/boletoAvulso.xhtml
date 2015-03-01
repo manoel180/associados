@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
+	<ui:define name="content">
+		<!-- Associado -->
+		<comp:input label="Associado" value="" />
+		<!-- Tipo Lancamento -->
+		<comp:input label="Tipo de lançamento" value="" />
+		<!-- Vencimento -->
+		<comp:input label="Data vencimento" value="" />
+
+		<!-- Valor-->
+		<comp:input label="Valor" value="" />
+
+		<!-- Taxa bancaria-->
+		<comp:input label="Taxa bancária" value="" />
+
+		<!-- Observacoes -->
+		<comp:input label="Observações" value="" />
+
+		<!-- Botão Gerar Boleto -->
+		<comp:button label="#{msg.btnGerarBoleto}" />
+	</ui:define>
+</ui:composition>
