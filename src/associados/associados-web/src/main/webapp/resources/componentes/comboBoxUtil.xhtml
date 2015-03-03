@@ -38,17 +38,15 @@
 
 <composite:implementation>
 
-	<div id="#{cc.clientId}"
-		style=" position: relative;  text-align: #{cc.attrs.align}; ">
+	<div id="#{cc.clientId}">
 
-		<h:outputLabel escape="false"
-			rendered="#{cc.attrs.required}"
+		<h:outputLabel escape="false" rendered="#{cc.attrs.required}"
 			value="#{cc.attrs.label}&lt;font color=red>*	&lt;/font>"
 			styleClass="obrigatorio" />
-		<h:outputLabel  value="#{cc.attrs.label}"
+		<h:outputLabel value="#{cc.attrs.label}"
 			rendered="#{!cc.attrs.required}" styleClass="outPut" />
 
-		<br />
+		
 
 		<h:selectOneMenu id="#{cc.attrs.id}" label="#{cc.attrs.label}"
 			value="#{cc.attrs.value}" items="#{cc.attrs.selectItens}"
@@ -65,9 +63,9 @@
 			</f:selectItems>
 
 			<f:converter converterId="#{cc.attrs.converter}" />
-			<p:ajax listener="#{cc.attrs.valueChangeListener}" event="change"  
-						update="#{cc.attrs.update}" process="#{cc.attrs.process}" />
-
+			<p:ajax listener="#{cc.attrs.valueChangeListener}" event="change"
+				update="#{cc.attrs.update}" process="#{cc.attrs.process}" />
+<composite:insertChildren/>
 		</h:selectOneMenu>
 
 	</div>

@@ -9,7 +9,7 @@
 	template="/WEB-INF/templates/template.xhtml"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
-		<p:tabView id="tabView">
+		<p:tabView id="tabView" prependId="false">
 			<p:tab title="Dados Pessoais" id="ddsPessoais">
 				<ui:include src="dadosPessoais.xhtml" />
 			</p:tab>
@@ -18,8 +18,6 @@
 			</p:tab>
 		</p:tabView>
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button actionListener="#{mBeanAssociado.salvar}"
-			update=":formI:msgs" />
-	<p:commandButton actionListener="#{mBeanAssociado.salvar}" update=":formI:msgs"/>
+		<comp:button actionListener="#{mBeanAssociado.salvar}" update=":msgs" />
 	</ui:define>
 </ui:composition>

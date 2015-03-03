@@ -22,6 +22,7 @@
 	<composite:attribute name="disabled" default="false" />
 	<composite:attribute name="required" default="false" />
 	<composite:attribute name="mask" />
+	<composite:attribute name="placeholder"/>
 	<composite:clientBehavior name="change" event="change"
 		targets="#{cc.attrs.id}_txt" />
 	<composite:editableValueHolder name="value"
@@ -37,6 +38,7 @@
 			mask="#{cc.attrs.mask}" styleClass="inputtext"
 			value="#{cc.attrs.value}" maxlength="#{cc.attrs.maxlength}"
 			required="#{cc.attrs.required}"
+			placeholder="#{cc.attrs.placeholder}"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}" />
 	</div>
 </composite:implementation>

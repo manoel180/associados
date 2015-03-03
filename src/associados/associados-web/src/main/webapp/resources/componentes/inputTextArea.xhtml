@@ -7,7 +7,7 @@
 
 <composite:interface>
 	<!-- PROMPTS -->
-	<composite:attribute name="label"  />
+	<composite:attribute name="label" />
 
 	<composite:attribute name="value" />
 
@@ -16,31 +16,36 @@
 	<composite:attribute name="cols" default="80" />
 	<composite:attribute name="rows" default="5" />
 	<composite:attribute name="validadores" />
-	<composite:attribute name="required" default="false"/>
-	<composite:attribute name="disabled" default="false"/>
+	<composite:attribute name="required" default="false" />
+	<composite:attribute name="disabled" default="false" />
 	<composite:attribute name="roles" />
 	<composite:attribute name="maxlength" />
-	<composite:attribute name="autoResize" default="true"/>
-	
-	
+	<composite:attribute name="autoResize" default="true" />
+
+
 </composite:interface>
 
 <composite:implementation>
-		
-	<div id="#{cc.clientId}" 
-		style=" position: relative; text-align: #{cc.attrs.align};">
-		
+
+	<div id="#{cc.clientId}"
+		style="position: relative; text-align: #{cc.attrs.align">
+
 		<c:if test="#{cc.attrs.required}">
-			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" for="#{cc.clientId}_txt"/><h:message styleClass="ui-outputlabel ui-state-error" for="#{cc.clientId}_txt"/>
+			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}"
+				for="#{cc.clientId}_txt" />
+			<h:message styleClass="ui-outputlabel ui-state-error"
+				for="#{cc.clientId}_txt" />
 		</c:if>
 		<c:if test="#{!cc.attrs.required}">
-			<h:outputLabel value="#{cc.attrs.label}"
-				styleClass="outPut" />
+			<h:outputLabel value="#{cc.attrs.label}" styleClass="outPut" />
 		</c:if>
-		<br/>
-		<p:inputTextarea id="#{cc.clientId}_txt" cols="#{cc.attrs.cols}" rows="#{cc.attrs.rows}" maxlength="#{cc.attrs.maxlength}" autoResize="#{cc.attrs.autoResize}" 
-		required="#{cc.attrs.required}" label="#{cc.attrs.label}" readonly="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}" 
-			styleClass="textarea" value="#{cc.attrs.value}" >
+		<br />
+		<p:inputTextarea id="#{cc.clientId}_txt" cols="#{cc.attrs.cols}"
+			rows="#{cc.attrs.rows}" maxlength="#{cc.attrs.maxlength}"
+			autoResize="#{cc.attrs.autoResize}" required="#{cc.attrs.required}"
+			label="#{cc.attrs.label}"
+			readonly="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
+			styleClass="textarea" value="#{cc.attrs.value}">
 		</p:inputTextarea>
 
 	</div>

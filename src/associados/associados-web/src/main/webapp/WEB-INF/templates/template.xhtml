@@ -16,6 +16,7 @@
 				content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 			<link rel="shortcut icon" type="image/png"
 				href="#{request.contextPath}/resources/main/images/favicon.png" />
+				
 		</f:facet>
 
 		<!-- Latest compiled and minified CSS -->
@@ -44,18 +45,33 @@
 				<p:focus />
 				<ui:insert name="content" />
 
-				<p:growl id="msgs" showDetail="true" life="5000" sticky="true"
-					autoUpdate="true" />
+
 			</h:form>
+			<p:growl id="msgs" showDetail="true" showSummary="false" life="5000"
+				autoUpdate="true" />
 		</div>
 
-		<div class="footer">
+	<div class="footer">
 			<div class="container">
 				<p class="text-muted">
 					#{msg.footerText}<br />Desenvolvido por Manoel Neto&copy;
 				</p>
 			</div>
 		</div>
+		
+<script type="text/javascript">
+        $(document).ready(function () {
+            var $docH = $(document).height();
+            // The document height will grow as the content on the page grows.
+            $('.footer').css({
+                /*
+                The default height of .navbar is 50px with a 1px border,
+                change this 52 if you change the height of your footer.
+                */
+                top: ($docH - 61) + 'px'
+            });
+        });
+    </script>
 
 	</h:body>
 </f:view>

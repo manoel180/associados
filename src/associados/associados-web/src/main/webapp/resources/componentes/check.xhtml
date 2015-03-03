@@ -10,12 +10,12 @@
 <composite:interface>
 	<!-- PROMPTS -->
 	<composite:attribute name="label" />
-	<composite:attribute name="value"  />
+	<composite:attribute name="value" />
 
 	<composite:attribute name="right" />
 	<composite:attribute name="align" default="left" />
 	<composite:attribute name="update" />
-	
+
 	<composite:attribute name="roles" />
 	<composite:attribute name="disabled" default="false" />
 	<composite:attribute name="change" default="false" />
@@ -26,21 +26,23 @@
 <composite:implementation>
 
 	<div id="#{cc.clientId}"
-		style=" position: relative; text-align: #{cc.attrs.align};">
+		style="position: relative; text-align: #{cc.attrs.align">
 
 		<h:panelGrid columns="2" border="0">
 			<p:selectBooleanCheckbox id="#{cc.clientId}_chk"
 				disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
-				value="#{cc.attrs.value}" required="#{cc.attrs.required}" 
-				label="#{cc.attrs.label}" >
-				<c:if test="#{cc.attrs.change}"> 
-						<f:ajax  event="change" execute="@this"
-						render="#{cc.attrs.update}"  />
-					</c:if>
-				
-			</p:selectBooleanCheckbox>				
+				value="#{cc.attrs.value}" required="#{cc.attrs.required}"
+				label="#{cc.attrs.label}">
+				<c:if test="#{cc.attrs.change}">
+					<f:ajax event="change" execute="@this" render="#{cc.attrs.update}" />
+				</c:if>
 
-			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" for="#{cc.clientId}_chk"/><h:message styleClass="ui-outputlabel ui-state-error" for="#{cc.clientId}_chk"/>
+			</p:selectBooleanCheckbox>
+
+			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}"
+				for="#{cc.clientId}_chk" />
+			<h:message styleClass="ui-outputlabel ui-state-error"
+				for="#{cc.clientId}_chk" />
 		</h:panelGrid>
 
 	</div>

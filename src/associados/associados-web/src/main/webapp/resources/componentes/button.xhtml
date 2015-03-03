@@ -9,7 +9,8 @@
 	<!-- INTERFACE -->
 	<composite:interface>
 		<!-- Atributos para o commandButton -->
-		<composite:attribute name="value" displayName="value" default="#{msg.btnFinalizar}"/>
+		<composite:attribute name="value" displayName="value"
+			default="#{msg.btnFinalizar}" />
 		<composite:attribute name="css" displayName="css" />
 		<composite:attribute name="ajax" displayName="ajax" default="true" />
 		<composite:attribute name="action" displayName="action"
@@ -31,7 +32,7 @@
 			update="#{cc.attrs.update}"
 			actionListener="#{cc.attrs.actionListener}" label="#{cc.attrs.label}"
 			rendered="#{(cc.attrs.roles == null ? true : p:ifAnyGranted(cc.attrs.roles))}"
-			onclick="#{cc.attrs.onclick}"/>
+			onclick="#{cc.attrs.onclick}" />
 
 	</composite:implementation>
 

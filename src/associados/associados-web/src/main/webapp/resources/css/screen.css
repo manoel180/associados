@@ -14,7 +14,6 @@ body {
 	margin: 0 auto;
 }
 
-
 body>.container {
 	padding: 60em;
 	height: 100%;
@@ -22,24 +21,24 @@ body>.container {
 
 .footer {
 	position: absolute;
-	bottom: 0;
+	/* bottom: 0; */
 	/* Set the fixed height of the footer here */
 	height: 60px;
 	background-color: #edefe5;
 	width: 100%;
+	margin-top: 5px;
+	padding-top: 5px;
 }
 
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 .container .text-muted {
-	
 	min-height: 100%;
 }
 
 .footer>.container {
 	min-height: 100%;
-	
 }
 
 code {

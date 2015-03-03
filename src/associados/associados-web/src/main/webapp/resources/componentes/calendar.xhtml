@@ -28,17 +28,20 @@
 <composite:implementation>
 
 	<div id="#{cc.clientId}"
-		style="position: relative; text-align: #{cc.attrs.align};">
+		style="position: relative; text-align: #{cc.attrs.align">
 
-			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" for="#{cc.clientId}_calendar"/><h:message styleClass="ui-outputlabel ui-state-error" for="#{cc.clientId}_calendar"/>
+		<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}"
+			for="#{cc.clientId}_calendar" />
+		<h:message styleClass="ui-outputlabel ui-state-error"
+			for="#{cc.clientId}_calendar" />
 		<br />
-		<p:calendar id="#{cc.clientId}_calendar" size="#{cc.attrs.size}" showButtonPanel="true" readonlyInput="true" 
-			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}" 
-			readonly="#{cc.attrs.disabled}"
-			mindate="#{cc.attrs.minDate}" required="#{cc.attrs.required}"
+		<p:calendar id="#{cc.clientId}_calendar" size="#{cc.attrs.size}"
+			showButtonPanel="true" readonlyInput="true"
+			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
+			readonly="#{cc.attrs.disabled}" mindate="#{cc.attrs.minDate}"
+			required="#{cc.attrs.required}"
 			locale="#{localeController.currentLocale}" navigator="true"
-			effect="fold"
-			value="#{cc.attrs.value}" pattern="#{cc.attrs.pattern}" />
+			effect="fold" value="#{cc.attrs.value}" pattern="#{cc.attrs.pattern}" />
 		<p:spacer width="10px" />
 	</div>
 </composite:implementation>

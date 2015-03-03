@@ -40,6 +40,8 @@ public class Associado implements Serializable {
 
 	// bi-directional many-to-one association to Foto
 	private List<Foto> fotos;
+	
+	private Endereco endereco;
 
 	/**
 	 * @return the idassociados
@@ -236,5 +238,13 @@ public class Associado implements Serializable {
 	public void setFotos(List<Foto> fotos) {
 		this.fotos = fotos;
 	}
+
+        public Endereco getEndereco() {
+                return endereco;
+        }
+
+        public void setEndereco(Endereco endereco) {
+                this.endereco = endereco;
+        }
 
 }

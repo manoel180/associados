@@ -16,10 +16,12 @@
 <!-- IMPLEMENTATION -->
 <composite:implementation>
 	<div id="#{cc.attrs.id}_div">
-		<p:outputLabel value="#{cc.attrs.label}"  for="#{cc.attrs.id}_txt" />
-		<p:inputText id="#{cc.attrs.id}_txt"  value="#{cc.attrs.value}" required="#{cc.attrs.required}" />
-	</div>
 	
+		<p:outputLabel value="#{cc.attrs.label}" for="#{cc.attrs.id}_txt" />
+		<p:inputText id="#{cc.attrs.id}_txt" value="#{cc.attrs.value}"
+			required="#{cc.attrs.required}" />
+	</div>
+
 </composite:implementation>
 
 </html>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:jsf="http://xmlns.jcp.org/jsf"
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -12,36 +11,43 @@
 		value="#{mBeanAssociado.associado.name}" required="true" />
 
 	<!-- Nome -->
-
 	<comp:input label="nome" value="#{mBeanAssociado.associado.name}"
 		required="true" />
 	<!-- Sexo -->
+	<comp:comboBoxUtil label="Sexo" id="sexo"
+		value="#{mBeanAssociado.associado.sexo}">
+		<f:selectItem itemValue="0" itemLabel="Masculino" />
+		<f:selectItem itemValue="1" itemLabel="Feminino" />
+	</comp:comboBoxUtil>
 
 	<!-- CPF -->
 	<comp:inputMask id="cpf" label="cpf"
 		value="#{mBeanAssociado.associado.cpf}" required="true"
-		mask="999.999.999-99" />
+		mask="999.999.999-99" placeholder="___.___.___-__" />
 
 	<!-- Passaporte -->
 	<comp:input label="Passaporte"
 		value="#{mBeanAssociado.associado.passaporte}" />
 
 	<!-- Function Eclesiastica -->
-	<comp:input label="Função Eclesiastica"
+	<comp:comboBoxUtil label="Função Eclesiastica"
 		value="#{mBeanAssociado.associado.funcoesEclesiastica}" />
 	<!-- Telefone Fixo -->
-	<comp:input label="Tel. Fixo"
+	<comp:inputMask label="Tel. Fixo" mask="(99) 99999-9999"
+		placeholder="(__) _____-____"
 		value="#{mBeanAssociado.associado.telResidencial}" />
 	<!-- Celular -->
-	<comp:input label="Tel. Celular"
+	<comp:inputMask label="Tel. Celular" mask="(99) 999999-9999"
+		placeholder="(__) ____-____"
 		value="#{mBeanAssociado.associado.telCelular}" />
 	<!-- Dt nascimento -->
 	<comp:input label="Data nascimento"
 		value="#{mBeanAssociado.associado.dtNascimento}" />
 	<!-- Email -->
-	<comp:input label="Email" value="#{mBeanAssociado.associado.email}" />
+	<comp:email id="email1" label="Email"
+		value="#{mBeanAssociado.associado.email}"  />
 	<!-- Email -->
-	<comp:input label="Email Secundário"
+	<comp:email id="email2" label="Email Secundário"
 		value="#{mBeanAssociado.associado.email2}" />
 	<!-- Cep -->
 	<comp:input label="CEP" value="#{mBeanAssociado.associado.ativo}" />
@@ -49,7 +55,7 @@
 	<comp:input label="Logradouro"
 		value="#{mBeanAssociado.associado.email}" />
 	<!-- Numero -->
-	<comp:input label="Número" value="#{mBeanAssociado.associado.email}" />
+	<comp:input label="Número" value="#{mBeanAssociado.associado.endereco}" />
 	<!-- Complemento -->
 	<comp:input label="Complemento"
 		value="#{mBeanAssociado.associado.email}" />
@@ -58,6 +64,6 @@
 	<!-- Estado -->
 	<comp:input label="Estado" value="#{mBeanAssociado.associado.email}" />
 	<!-- País -->
-	<comp:input label="País" value="#{mBeanAssociado.associado}" />
+	<comp:input label="País" value="Brasil" />
 
-</ui:composition>
+</ui:fragment>

@@ -27,7 +27,7 @@
 		<java.version>1.8</java.version>
 		<junit.version>4.11</junit.version>
 
-		<jsf.version>2.2.8</jsf.version>
+		<jsf.version>2.2.10</jsf.version>
 		<hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
 		<entitymanager.version>4.3.1.Final</entitymanager.version>
 		<commons.collections.version>3.1</commons.collections.version>
@@ -48,13 +48,11 @@
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-api</artifactId>
 				<version>${jsf.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-impl</artifactId>
 				<version>${jsf.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 
 			<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
@@ -179,7 +177,6 @@
 		
 		<module>associados-services</module>
     
-    <module>associados-ng</module>
-    <module>associados-view</module>
+		<module>associados-web</module>
 	</modules>
 </project>
