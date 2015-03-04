@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -8,5 +8,31 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 
+	<!-- Tipo Pessoa -->
+	<comp:comboBoxUtil id="plano" label="Escolha o plano" required="true" />
 
-</ui:composition>
+	<div>
+		<comp:input label="Associado" value="#{mBeanAssociado.associado.name}" />
+		<comp:input label="Cidade" value="#{mBeanAssociado.associado.name}" />
+		<comp:input label="Estado" value="#{mBeanAssociado.associado.name}" />
+		<comp:input label="País" value="Brasil" />
+		<comp:input label="CPF" value="#{mBeanAssociado.associado.cpf}" />
+		<comp:input label="Validade" value="#{mBeanAssociado.associado.name}" />
+		<comp:input label="Cartão" value="#{mBeanAssociado.associado.name}" />
+		<h:form>
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}"
+					update="photo" />
+				<p:commandButton type="button" value="Capture"
+					onclick="PF('pc').capture()" />
+				<p:outputPanel id="photo">
+					<p:graphicImage
+						name="photos/#{photoCamView.filename}.jpeg"
+						rendered="#{not empty photoCamView.filename}" />
+				</p:outputPanel>
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+
+</ui:fragment>
