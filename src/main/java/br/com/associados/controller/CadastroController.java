@@ -3,7 +3,9 @@ package br.com.associados.controller;
 import java.util.List;
 
 import br.com.associados.model.Associado;
+import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
+import br.com.associados.model.Perfil;
 import br.com.associados.model.Plano;
 import br.com.associados.model.Usuario;
 
@@ -37,5 +39,11 @@ public interface CadastroController {
 	Usuario getUsuarioByLogin(String login);
 
 	List<FuncoesEclesiastica> listAllFuncaoEclesiastica();
+
+	List<?> listAllPerfis();
+
+	List<Funcionalidade> listAllFuncionalidades();
+
+	void salvarPerfil(Perfil perfil);
 
 }

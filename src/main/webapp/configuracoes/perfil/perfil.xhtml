@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
+	<ui:define name="content">
+		<!-- Perfil -->
+		<comp:input label="Nome" value="" />
+		
+		<!-- Status-->
+		<comp:input label="Status" value="" />
+		
+		<!-- Funcionalidades -->
+		<p:pickList ></p:pickList>
+
+		<!-- Botão Finalizar Cadastro -->
+		<comp:button label="#{msg.btnFinalizar}" />
+	</ui:define>
+</ui:composition>

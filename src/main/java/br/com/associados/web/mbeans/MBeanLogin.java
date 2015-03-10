@@ -1,13 +1,15 @@
 package br.com.associados.web.mbeans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import br.com.associados.model.Usuario;
 
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class MBeanLogin {
 
 	private String login;
@@ -19,10 +21,8 @@ public class MBeanLogin {
 	}
 
 	public String login() {
-		if(true) {
-			return "home.jsf";
-		}
-		return "home.jsf";
+		return SecurityContextHolder.getContext()
+        .getAuthentication().getName();
 	}
 	
 	public void logout() {

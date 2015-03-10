@@ -9,15 +9,28 @@
 	template="/WEB-INF/templates/template.xhtml"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
+		
 		<!-- Nome -->
-		<comp:input label="Nome" value="" />
+		<comp:input label="Nome" value="#{mBeanUsuario.usuario.nome}" />
+		
+		<!-- Login -->
+		<comp:input label="Login" value="#{mBeanUsuario.usuario.login}" />
+		
 		<!-- Senha -->
-		<comp:input label="Senha" value="" />
+		<comp:password label="Senha" value="#{mBeanUsuario.usuario.senha}" />
+		
 		<!-- repetir senha -->
-		<comp:input label="Repetir senha" value="" />
+		<comp:password label="Repetir senha" value="" />
 
 		<!-- Status-->
-		<comp:input label="Status" value="" />
+		<comp:comboBoxUtil label="Status" value="#{mBeanUsuario.usuario.ativo}" entity="false" noSelectLabel="true">
+			<f:selectItem itemLabel="Ativo" itemValue="true" />
+			<f:selectItem itemLabel="Inativo" itemValue="false"/>
+		</comp:comboBoxUtil>
+		
+		
+		<!-- Perfil-->
+		<p:pickList label="Perfis" value="#{mBeanUsuario.perfis}" var="perfil" itemValue="#{perfil}" itemLabel="#{perfil.name}" ></p:pickList>
 
 		<!-- Botão Finalizar Cadastro -->
 		<comp:button label="#{msg.btnFinalizar}" />

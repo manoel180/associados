@@ -23,6 +23,9 @@ public class Usuario implements Serializable {
 	@Column(nullable=false)
 	private boolean ativo;
 
+	@Column(nullable=false, length=60)
+	private String nome;
+	
 	@Column(nullable=false, length=10)
 	private String login;
 
@@ -83,6 +86,14 @@ public class Usuario implements Serializable {
 
 	public void setPerfis(List<Perfil> perfis) {
 		this.perfis = perfis;
+	}
+
+	public String getNome() {
+	    return nome;
+	}
+
+	public void setNome(String nome) {
+	    this.nome = nome;
 	}
 
 }

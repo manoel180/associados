@@ -21,17 +21,29 @@
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bar1">
-				<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">CADASTROS <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a
-								href="#{request.contextPath}/cadastros/associados/associado.jsf">Novo
-									Associado</a></li>
-							<li><a href="#{request.contextPath}/cadastros/usuario.jsf">Novo
-									Usuário</a></li>
-						</ul></li>
-				</ul>
+				<f:subview
+					rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado,Cadastrar_Usuario,Visualizar_Usuario')}">
+					<ul class="nav navbar-nav">
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">CADASTROS <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<f:subview
+									rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado')}">
+									<li><a
+										href="#{request.contextPath}/cadastros/associados/associado.jsf">Novo
+											Associado</a></li>
+								</f:subview>
+								<f:subview
+									rendered="#{p:ifAnyGranted('Cadastrar_Usuario,Visualizar_Usuario')}">
+									<li><a href="#{request.contextPath}/cadastros/usuario.jsf">Novo
+											Usuário</a></li>
+								</f:subview>
+							</ul></li>
+					</ul>
+				</f:subview>
+				<f:subview
+					rendered="#{p:ifAnyGranted('Boleto_Avulso,Carne_Simples,Carne_Lote,Listar_Lote')}">
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">GERAR CARNÊS <span class="caret"></span></a>
@@ -49,7 +61,7 @@
 								href="#{request.contextPath}/gerarCarnes/listarLotes.jsf">Listar
 									lotes</a></li>
 						</ul></li>
-				</ul>
+				</ul></f:subview>
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">FINANCEIRO<span class="caret"></span></a>
@@ -95,18 +107,27 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">CONFIGURAÇÕES<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Perfil
-									de usuários</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Categorias
-									e Valores</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Layout
-									carteirinhas</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Dados
-									do boleto</a></li>
+							<f:subview
+								rendered="#{p:ifAnyGranted('Cadastrar_Perfil,Visualizar_Perfil')}">
+								<li><a
+									href="#{request.contextPath}/configuracoes/perfil/perfil.jsf">Perfil
+										de usuários</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Cadastrar_Cat_Valores')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Categorias
+										e Valores</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Layout_Carteiras')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Layout
+										carteirinhas</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Dados_Boleto')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Dados
+										do boleto</a></li>
+							</f:subview>
 						</ul></li>
 				</ul>
 			</div>

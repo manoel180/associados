@@ -16,26 +16,30 @@
 				content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 			<link rel="shortcut icon" type="image/png"
 				href="#{request.contextPath}/resources/main/images/favicon.png" />
-				
+
 		</f:facet>
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet"
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-		<!-- Latest compiled and minified JavaScript -->
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+		
+		<h:outputScript name="bootstrap.min.js" library="js"/>
+		<h:outputStylesheet name="bootstrap.min.css" library="css" />
 		<h:outputStylesheet name="screen.css" library="css" />
 		<h:outputStylesheet name="css/tema.css" />
 	</h:head>
 	<h:body>
 		<h:panelGroup id="header" layout="block"
 			styleClass="top img-responsive">
+
+			<center>
 			<h1>
 				<a href="home.jsf">Gerador de Carnês </a>
 			</h1>
-			Usuario: TXXXXXXXXX<br />
+			</center>
+			<div align="right" class="userLogged">
+				<span> <b>Usuario:</b></span>
+				#{mBeanLogin.login()}
+			</div>
+
+			<br />
 
 		</h:panelGroup>
 		<ui:include src="/WEB-INF/templates/menu.xhtml" />
@@ -51,15 +55,15 @@
 				autoUpdate="true" />
 		</div>
 
-	<div class="footer">
+		<div class="footer">
 			<div class="container">
 				<p class="text-muted">
 					#{msg.footerText}<br />Desenvolvido por Manoel Neto&copy;
 				</p>
 			</div>
 		</div>
-		
-<script type="text/javascript">
+
+		<script type="text/javascript">
         $(document).ready(function () {
             var $docH = $(document).height();
             // The document height will grow as the content on the page grows.

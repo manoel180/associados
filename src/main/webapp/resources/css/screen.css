@@ -19,6 +19,10 @@ body>.container {
 	height: 100%;
 }
 
+h1 {
+	margin-top: 0px;
+}
+
 .footer {
 	position: absolute;
 	/* bottom: 0; */
@@ -48,4 +52,9 @@ code {
 .top {
 	background-image: url("#{resource['img:bg_topo.jpg']}");
 	height: 147px !important;
+}
+
+.userLogged {
+	padding-right: 25px;
+	margin-top: 30px;
 }

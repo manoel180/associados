@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 import br.com.associados.controller.CadastroController;
 import br.com.associados.dao.AssociadoDao;
 import br.com.associados.dao.FuncaoEclesiasticaDao;
+import br.com.associados.dao.FuncionalidadeDao;
+import br.com.associados.dao.PerfilDao;
 import br.com.associados.dao.PlanoDao;
 import br.com.associados.dao.UsuarioDao;
 import br.com.associados.model.Associado;
+import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
+import br.com.associados.model.Perfil;
 import br.com.associados.model.Plano;
 import br.com.associados.model.Usuario;
 
@@ -29,6 +33,12 @@ public class CadastroControllerImp implements CadastroController {
 
 	@Autowired
 	UsuarioDao usuarioDao;
+	
+	@Autowired
+	PerfilDao perfilDao;
+	
+	@Autowired
+	FuncionalidadeDao funcionalidadeDao; 
 	
 	/**
 	 * Associados
@@ -105,5 +115,29 @@ public class CadastroControllerImp implements CadastroController {
 	public List<Plano> listAllPlanos(){
 		return planoDao.listAll();
 	}
+	
+	/**
+	 * Perfis
+	 */
+	@Override
+	public void salvarPerfil(Perfil perfil) {
+	 	perfilDao.save(perfil);
+	    
+	}
+	@Override
+	public List<?> listAllPerfis() {
+	    // TODO Auto-generated method stub
+	    return perfilDao.listAll();
+	}
+	
+	/**
+	 * Funcionalidades
+	 */
+	@Override
+	public List<Funcionalidade> listAllFuncionalidades() {
+	    // TODO Auto-generated method stub
+	    return funcionalidadeDao.listAll();
+	}
+	
 	
 }
