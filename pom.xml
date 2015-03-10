@@ -46,13 +46,7 @@
             <scope>provided</scope>
         </dependency>
         
-        <dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-
-		<!-- JPA Persistence Dependencies -->
+ 		<!-- JPA Persistence Dependencies -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
