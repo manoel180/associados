@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+	<!-- PROMPTS -->
+	<composite:attribute name="value" required="true" />
+	<composite:attribute name="label" />
+	<composite:attribute name="itemLabel" required="true" />
+	<composite:attribute name="itemValue" required="true" />
+
+	<composite:attribute name="right" default="4px" />
+	<composite:attribute name="align" default="left" />
+	<composite:attribute name="var" />
+	<composite:attribute name="disabled" />
+	<composite:attribute name="roles" />
+
+	<composite:attribute name="converter" />
+	<composite:attribute name="targetCaption" />
+	<composite:attribute name="sourceCaption" />
+
+</composite:interface>
+
+<composite:implementation>
+
+	<div id="#{cc.clientId}"
+		style="position: relative; text-align: #{cc.attrs.align">
+
+		<h:outputLabel id="#{cc.clientId}_output" value="#{cc.attrs.label}" />
+		<br />
+		<div id="#{cc.clientId}_pl"
+			style="position: relative; text-align: #{cc.attrs.align">
+			<p:pickList id="#{cc.clientId}_pickList" value="#{cc.attrs.value}"
+				converter="#{cc.attrs.converter}" itemValue="#{cc.attrs.itemValue}"
+				itemLabel="#{cc.attrs.itemLabel}"
+				disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
+				showSourceFilter="#{(cc.attrs.roles == null ? true : p:ifAnyGranted(cc.attrs.roles))}"
+				showTargetFilter="#{(cc.attrs.roles == null ? true : p:ifAnyGranted(cc.attrs.roles))}"
+				filterMatchMode="contains">
+				<composite:insertChildren />
+				<c:set target="#{component}" property="var" value="#{cc.attrs.var}" />
+				<c:if test="#{not empty cc.attrs.targetCaption}">
+					<f:facet name="targetCaption">#{cc.attrs.targetCaption}</f:facet>
+				</c:if>
+				<c:if test="#{not empty cc.attrs.sourceCaption}">
+					<f:facet name="sourceCaption">#{cc.attrs.sourceCaption}</f:facet>
+				</c:if>
+
+			</p:pickList>
+		</div>
+	</div>
+</composite:implementation>
+</html>

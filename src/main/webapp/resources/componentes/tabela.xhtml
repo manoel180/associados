@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<composite:interface displayName="Tabela"
+		shortDescription="Monta uma tabela a partir de uma lista de objetos">
+		<!-- Atributos para o commandButton -->
+		<composite:attribute name="value" required="true" displayName="value" />
+		<composite:attribute name="paginatorAlwaysVisible" default="auto" />
+		<composite:attribute name="css" displayName="css" />
+		<composite:attribute name="obj" displayName="obj" required="false" />
+		<composite:attribute name="readonly" displayName="readonly"
+			default="false" />
+		<composite:attribute name="renderExcluir" default="true" />
+		<composite:attribute name="renderEditar" default="true" />
+		<composite:attribute name="renderOpcoes" default="true" />
+		<composite:attribute name="linhas" displayName="linhas" default="15" />
+		<composite:attribute name="linhasTemplate"
+			displayName="linhasTemplate" default="5,10,15,25,50" />
+		<composite:attribute name="actionEditar" displayName="action"
+			method-signature="java.lang.String action(java.lang.Object)" />
+		<composite:attribute name="actionExcluir" displayName="action"
+			method-signature="java.lang.String action(java.lang.Object)" />
+		<composite:attribute name="roles" />
+		<composite:attribute name="editable" default="false" />
+		<composite:attribute name="editMode" />
+		<composite:attribute name="target" />
+		<composite:attribute name="valueFiltro" />
+
+	</composite:interface>
+	<composite:implementation>
+		<p:dataTable id="#{cc.clientId}" value="#{cc.attrs.value}"
+			emptyMessage="#{msgSistema.MSG024}"
+			paginatorAlwaysVisible="#{cc.attrs.paginatorAlwaysVisible}"
+			resizableColumns="false" paginator="true" rows="#{cc.attrs.linhas}"
+			scrollable="false" scrollRows="10"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="#{cc.attrs.linhasTemplate}"
+			editable="#{cc.attrs.editable}" editMode="#{cc.attrs.editMode}"
+			scrollHeight="150" paginatorPosition="bottom" style="width: 100%;">
+			<c:set target="#{component}" property="var" value="#{cc.attrs.obj}" />
+			<composite:insertChildren />
+			<p:column headerText="#{msgSistema.lblOpcoes}"
+				rendered="#{cc.attrs.renderOpcoes}" width="10%">
+				<center>
+					<p:commandButton value="#{msgSistema.lblEditar}"
+						icon="ui-icon-pencil" process="@this" ajax="false"
+						action="#{cc.attrs.actionEditar}"
+						rendered="#{cc.attrs.renderEditar}">
+						<f:setPropertyActionListener target="#{cc.attrs.target}"
+							value="#{cc.attrs.valueFiltro}" />
+					</p:commandButton>
+					<p:commandButton value="#{msgSistema.btnExcluir}"
+						icon="ui-icon-trash"
+						rendered="#{p:ifAnyGranted(cc.attrs.roles) and cc.attrs.renderExcluir}"
+						process="@this" actionListener="#{cc.attrs.actionExcluir}"
+						onclick="popupExcluisaoPesquisa.show()" />
+					<p:commandButton value="Visualizar" rendered="false" />
+				</center>
+			</p:column>
+		</p:dataTable>
+
+	</composite:implementation>
+</ui:composition>

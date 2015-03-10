@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<composite:interface>
+	<!-- PROMPTS -->
+	<composite:attribute name="label" />
+	<composite:attribute name="value" />
+
+	<composite:attribute name="right" />
+	<composite:attribute name="align" default="left" />
+	<composite:attribute name="update" />
+
+	<composite:attribute name="roles" />
+	<composite:attribute name="disabled" default="false" />
+	<composite:attribute name="change" default="false" />
+	<composite:attribute name="required" default="false" />
+
+</composite:interface>
+
+<composite:implementation>
+
+	<div id="#{cc.clientId}"
+		style="position: relative; text-align: #{cc.attrs.align">
+
+		<h:panelGrid columns="2" border="0">
+			<p:selectBooleanCheckbox id="#{cc.clientId}_chk"
+				disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
+				value="#{cc.attrs.value}" required="#{cc.attrs.required}"
+				label="#{cc.attrs.label}">
+				<c:if test="#{cc.attrs.change}">
+					<f:ajax event="change" execute="@this" render="#{cc.attrs.update}" />
+				</c:if>
+
+			</p:selectBooleanCheckbox>
+
+			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}"
+				for="#{cc.clientId}_chk" />
+			<h:message styleClass="ui-outputlabel ui-state-error"
+				for="#{cc.clientId}_chk" />
+		</h:panelGrid>
+
+	</div>
+</composite:implementation>
+</html>
