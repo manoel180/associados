@@ -26,7 +26,7 @@
 		</property>
 	</bean>
 	<jee:jndi-lookup id="dataSource"
-		jndi-name="java:jboss/datasources/associados-ds" />
+		jndi-name="java:jboss/datasources/MySQLDS" />
 
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
