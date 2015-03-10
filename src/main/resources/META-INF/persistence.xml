@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+      http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="associadoUNIT"
+		transaction-type="RESOURCE_LOCAL">
+		 <jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.associados.model.Associado</class>
+		<class>br.com.associados.model.Boleto</class>
+		<class>br.com.associados.model.BoletoPK</class>
+		<class>br.com.associados.model.Endereco</class>
+		<class>br.com.associados.model.Foto</class>
+		<class>br.com.associados.model.Funcionalidade</class>
+		<class>br.com.associados.model.FuncoesEclesiastica</class>
+		<class>br.com.associados.model.Perfil</class>
+		<class>br.com.associados.model.Plano</class>
+		<class>br.com.associados.model.TiposLancamento</class>
+		<class>br.com.associados.model.Usuario</class>
+		<class>br.com.associados.model.Cidade</class>
+		<class>br.com.associados.model.Estado</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<!-- SEM as propriedades URL, login, senha e driver -->
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
