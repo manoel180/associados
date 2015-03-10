@@ -205,7 +205,7 @@
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <outputDirectory>deployments</outputDirectory>
-              		  <warName>associados</warName>
+              		  <warName>ROOT</warName>
               		  <warSourceDirectory>src/main/webapp</warSourceDirectory>
                 </configuration>
             </plugin>
