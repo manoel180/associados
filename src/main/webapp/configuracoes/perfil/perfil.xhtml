@@ -10,13 +10,13 @@
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
 		<!-- Perfil -->
-		<comp:input label="Nome" value="" />
+		<comp:input label="Nome" value="#{mBeanPerfil.perfil.name}" />
 		
 		<!-- Status-->
-		<comp:input label="Status" value="" />
+		<comp:input label="Status" value="#{mBeanPerfil.perfil.ativo}" />
 		
 		<!-- Funcionalidades -->
-		<p:pickList ></p:pickList>
+		<p:pickList label="Funcionalidades" value="#{mBeanPerfil.funcionalidades}" var="funcionalidade" itemValue="#{funcionalidade}" itemLabel="#{funcionalidade.nome}" />
 
 		<!-- Botão Finalizar Cadastro -->
 		<comp:button label="#{msg.btnFinalizar}" />
