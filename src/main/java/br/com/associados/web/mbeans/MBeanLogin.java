@@ -1,15 +1,15 @@
 package br.com.associados.web.mbeans;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 
 import br.com.associados.model.Usuario;
 
 
-@ManagedBean
-@SessionScoped
+
+@Controller("mBeanLogin")
+@Scope("session")
 public class MBeanLogin {
 
 	private String login;
