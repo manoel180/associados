@@ -3,10 +3,10 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
 	<!-- Menu -->
-	<h:form id="formMenu">
-
 
 		<nav class="navbar navbar-default" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -130,9 +130,16 @@
 							</f:subview>
 						</ul></li>
 				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+<form action="#{request.contextPath}/j_spring_security_logout" method="post">
+  <input type="submit" value="Sair" />
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+						</li>
+						</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</nav>
-	</h:form>
 
 </ui:composition>

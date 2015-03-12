@@ -14,6 +14,10 @@
 		<security:intercept-url pattern="/j_spring_security_check"
 			access="permitAll" />
 
+		<security:intercept-url pattern="/j_spring_security_logout"
+			access="permitAll" />
+
+
 		<security:intercept-url pattern="/home.jsf"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/resources/**"
@@ -37,14 +41,14 @@
 
 		<!-- access denied page -->
 		<security:access-denied-handler
-			error-page="/home.jsf" />
+			error-page="/error.jsf" />
 
 		<security:form-login login-page="/login.jsf"
 			default-target-url="/home.jsf" authentication-failure-url="/login.jsf?error" />
-		<security:logout logout-success-url="/login.jsf?logout" />
+			 <security:logout   logout-success-url="/login.jsf" delete-cookies="true" invalidate-session="true" /> 
 
 		<!-- enable csrf protection -->
-		<security:csrf />  
+		<security:csrf />
 		<security:session-management
 			invalid-session-url="/login.jsf">
 			<security:concurrency-control

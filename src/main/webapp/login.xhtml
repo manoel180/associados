@@ -44,9 +44,9 @@
 									</tr>
 									<tr>
 										<td align="center" scope="col">&nbsp;</td>
-										<td align="left" scope="col"><h:commandButton 
-												value="Acessar" class="Botao_login"
-												 /></td>
+										<td align="left" scope="col">
+											<input type="submit" value="Acessar" class="Botao_login"/>
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/></td>
 									</tr>
 								</table></th>
 						</tr>
@@ -59,8 +59,7 @@
 					</table></td>
 			</tr>
 		</table>
-		<h:inputHidden id="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+
 	</form>
 
 </h:body>

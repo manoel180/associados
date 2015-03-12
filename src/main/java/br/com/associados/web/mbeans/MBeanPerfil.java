@@ -29,7 +29,7 @@ public class MBeanPerfil extends mBeanGerneric {
 
     @PostConstruct
     public void init() {
-
+	perfil = new Perfil();
 	poupalateCombos();
 
     }
@@ -45,6 +45,7 @@ public class MBeanPerfil extends mBeanGerneric {
     public void salvar() {
 
 	try {
+	    getPerfil().setFuncionalidades(funcionalidades.getTarget());
 	    cadastroController.salvarPerfil(getPerfil());
 	} catch (Exception e) {
 	    e.printStackTrace();

@@ -43,16 +43,8 @@ public class MBeanAssociado extends mBeanGerneric{
                 associado.getEndereco().getCidade().setEstado(new Estado());
                 estado = new Estado();
                 poupalateCombos();
-                associado.setName("Manoel");
         }
 
-        public void udpateTab(TabChangeEvent event){
-                FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
-                event.getTab().processUpdates(FacesContext.getCurrentInstance());
-                //FacesContext.getCurrentInstance().addMessage(null, msg); 
-              //  RequestContext context = RequestContext.getCurrentInstance();  
-             //   context.release();
-        }
         private void poupalateCombos() {
                 funcaoEclesiasticas = cadastroController
                                 .listAllFuncaoEclesiastica();
@@ -61,11 +53,11 @@ public class MBeanAssociado extends mBeanGerneric{
 
         @Override
         public void salvar() {
-
-                // Usuario user =
-                // gson.fromJson(Connection.getConnection(Servicos.USUARIOS+"login="+login),
-                // Usuario.class);
-                // return user;
+            	try {
+		    cadastroController.salvarAssociado(associado);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
         }
 
         @Override
