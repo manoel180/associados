@@ -11,6 +11,8 @@
 
 		<security:intercept-url pattern="/login.jsf"
 			access="permitAll" />
+		<security:intercept-url pattern="/j_spring_security_check"
+			access="permitAll" />
 
 		<security:intercept-url pattern="/home.jsf"
 			access="isAuthenticated()" />
@@ -42,7 +44,7 @@
 		<security:logout logout-success-url="/login.jsf?logout" />
 
 		<!-- enable csrf protection -->
-		<security:csrf />
+		<security:csrf />  
 		<security:session-management
 			invalid-session-url="/login.jsf">
 			<security:concurrency-control

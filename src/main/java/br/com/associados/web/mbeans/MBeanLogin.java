@@ -4,25 +4,25 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
-import br.com.associados.model.Usuario;
-
 
 
 @Controller("mBeanLogin")
 @Scope("session")
+//@ManagedBean
+//@SessionScoped
 public class MBeanLogin {
 
 	private String login;
-	public Usuario getUsuario() {
-		//Type listType = new TypeToken<List<Usuario>>() {}.getType();
-		//Gson gson = new Gson();
-		//Usuario user = gson.fromJson(Connection.getConnection(Servicos.USUARIOS+"login="+login), Usuario.class);
-		return null;
-	}
-
+	
 	public String login() {
+	    try {
 		return SecurityContextHolder.getContext()
-        .getAuthentication().getName();
+			.getAuthentication().getName();
+		
+	    } catch (Exception e) {
+		// TODO: handle exception
+	    }
+	    return "";
 	}
 	
 	public void logout() {

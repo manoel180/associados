@@ -37,6 +37,8 @@
 			<div align="right" class="userLogged">
 				<span> <b>Usuario:</b></span>
 				#{mBeanLogin.login()}
+				${SecurityContextHolder.getContext()
+			.getAuthentication().getName()}
 			</div>
 
 			<br />
