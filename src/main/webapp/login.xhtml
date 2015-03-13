@@ -9,8 +9,8 @@
 	<h:outputStylesheet name="css/css.css" />
 </h:head>
 <h:body>
-	 <form role="form" method="post"
-                        action="${request.contextPath}/j_spring_security_check">
+	<form role="form" method="post"
+		action="${request.contextPath}/j_spring_security_check">
 		<table width="500" border="0" align="center" cellpadding="0"
 			cellspacing="0" background="resources/img/tela_login_nova2.png">
 			<tr>
@@ -28,25 +28,25 @@
 							<th scope="col"><table width="400" border="0" align="center"
 									cellpadding="2" cellspacing="0">
 									<tr>
-									 <center>
-                <h:outputText value="Usuário ou senha incorretos!" rendered="#{request.getParameter('error') != null}" style="color: darkred"/>
-            </center>
+										<center> <h:outputText
+											value="Usuário ou senha incorretos!"
+											rendered="#{request.getParameter('error') != null}"
+											style="color: darkred" /> </center>
 										<td width="139" align="right" class="Fonte_login" scope="col">Usu&aacute;rio:</td>
 										<td width="253" align="left" scope="col"><h:inputText
-												value="#{mBeanLogin.login}" class="campo_formulario_login"
+												class="campo_formulario_login"
 												id="j_username" size="20" required="true" /></td>
 									</tr>
 									<tr>
 										<td align="right" class="Fonte_login" scope="col">Senha:</td>
-										<td align="left" scope="col"><h:inputSecret id="j_password" 
-											class="campo_formulario_login"
-											size="15" required="true"/></td>
+										<td align="left" scope="col"><h:inputSecret
+												id="j_password" class="campo_formulario_login" size="15"
+												required="true" /></td>
 									</tr>
 									<tr>
 										<td align="center" scope="col">&nbsp;</td>
-										<td align="left" scope="col">
-											<input type="submit" value="Acessar" class="Botao_login"/>
-  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/></td>
+										<td align="left" scope="col"><input type="submit"
+											value="Acessar" class="Botao_login" /></td>
 									</tr>
 								</table></th>
 						</tr>

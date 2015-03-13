@@ -8,13 +8,10 @@ import org.springframework.stereotype.Controller;
 
 @Controller("mBeanLogin")
 @Scope("session")
-//@ManagedBean
-//@SessionScoped
 public class MBeanLogin {
 
-	private String login;
 	
-	public String login() {
+	public String getLogin() {
 	    try {
 		return SecurityContextHolder.getContext()
 			.getAuthentication().getName();
@@ -23,18 +20,6 @@ public class MBeanLogin {
 		// TODO: handle exception
 	    }
 	    return "";
-	}
-	
-	public void logout() {
-		
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 }

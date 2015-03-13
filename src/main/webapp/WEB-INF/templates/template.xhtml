@@ -35,8 +35,8 @@
 			</h1>
 			</center>
 			<div align="right" class="userLogged">
-				<span> <b>Usuario:</b></span>
-				${SecurityContextHolder.getContext().getAuthentication().getName()}
+				<span> <b>Usuario:</b> #{mBeanLogin.login} </span>
+				
 			</div>
 
 			<br />
@@ -51,7 +51,7 @@
 
 
 			</h:form>
-			<p:growl id="msgs" showDetail="true" showSummary="false" life="5000"
+			<p:growl id="msgs" showDetail="true" showSummary="true" life="5000"
 				autoUpdate="true" />
 		</div>
 

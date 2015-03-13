@@ -11,12 +11,6 @@
 
 		<security:intercept-url pattern="/login.jsf"
 			access="permitAll" />
-		<security:intercept-url pattern="/j_spring_security_check"
-			access="permitAll" />
-
-		<security:intercept-url pattern="/j_spring_security_logout"
-			access="permitAll" />
-
 
 		<security:intercept-url pattern="/home.jsf"
 			access="isAuthenticated()" />
@@ -45,10 +39,9 @@
 
 		<security:form-login login-page="/login.jsf"
 			default-target-url="/home.jsf" authentication-failure-url="/login.jsf?error" />
-			 <security:logout   logout-success-url="/login.jsf" delete-cookies="true" invalidate-session="true" /> 
+		<security:logout logout-success-url="/login.jsf"
+			delete-cookies="true" invalidate-session="true" />
 
-		<!-- enable csrf protection -->
-		<security:csrf />
 		<security:session-management
 			invalid-session-url="/login.jsf">
 			<security:concurrency-control
@@ -63,7 +56,7 @@
 			<security:jdbc-user-service role-prefix=""
 				data-source-ref="dataSource"
 				users-by-username-query="select login, senha, ativo from usuarios where login = ?"
-				authorities-by-username-query="select login, role from getUser where login =?  " />
+				authorities-by-username-query="select login, role from getuser where login =?  " />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
