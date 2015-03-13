@@ -12,12 +12,12 @@
 		<comp:input label="Nome" value="#{mBeanPerfil.perfil.name}" />
 		
 		<!-- Status-->
-		<comp:input label="Status" value="#{mBeanPerfil.perfil.ativo}" />
+		<comp:check label="Status" value="#{mBeanPerfil.perfil.ativo}"  />
 		
 		<!-- Funcionalidades -->
 		<p:pickList label="Funcionalidades" value="#{mBeanPerfil.funcionalidades}" var="func" itemValue="#{func}" itemLabel="#{msgFuncionalidades[func.nome]}" />
 
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button label="#{msg.btnFinalizar}"  actionListener="#{mBeanPerfil.salvar}" />
+		<comp:button label="#{msg.btnFinalizar}" update=":msgs"  actionListener="#{mBeanPerfil.salvar}" />
 	</ui:define>
 </ui:composition>

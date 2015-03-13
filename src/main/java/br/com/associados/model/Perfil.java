@@ -20,7 +20,7 @@ public class Perfil implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPerfil;
 
-    private byte ativo;
+    private Boolean ativo;
 
     @Column(length = 60)
     private String name;
@@ -45,11 +45,11 @@ public class Perfil implements Serializable {
 	this.idPerfil = id;
     }
 
-    public byte getAtivo() {
+    public Boolean getAtivo() {
 	return this.ativo;
     }
 
-    public void setAtivo(byte ativo) {
+    public void setAtivo(Boolean ativo) {
 	this.ativo = ativo;
     }
 
