@@ -18,5 +18,6 @@
 			<base-name>funcionalidades</base-name>
 			<var>msgFuncionalidades</var>
 		</resource-bundle>
+		<message-bundle>Messages</message-bundle>
 	</application>
 </faces-config>

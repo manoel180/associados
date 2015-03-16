@@ -45,8 +45,8 @@ public class MBeanPerfil extends mBeanGerneric {
     public void salvar() {
 
 	try {
-	    getPerfil().setFuncionalidades(funcionalidades.getTarget());
-	    cadastroController.salvarPerfil(getPerfil());
+	    perfil.setPerfilFuncionalidades(funcionalidades.getTarget());
+	    cadastroController.salvarPerfil(perfil);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

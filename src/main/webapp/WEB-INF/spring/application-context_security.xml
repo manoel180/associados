@@ -21,16 +21,16 @@
 
 
 		<security:intercept-url pattern="/cadastros/usuario.jsf"
-			access="hasAnyRole('Cadastrar_Usuario', 'Visualizar_Usuario')" />
+			access="hasAnyRole('Cadastrar_Usuario', 'Visualizar_Usuario', 'ROLE_ADMIN')" />
 
 		<security:intercept-url pattern="/cadastros/**"
-			access="hasAnyRole('Cadastrar_Associado', 'Visualizar_Associado')" />
+			access="hasAnyRole('Cadastrar_Associado', 'Visualizar_Associado','ROLE_ADMIN')" />
 
 		<security:intercept-url pattern="/configuracoes/perfil/**"
-			access="hasAnyRole('Cadastrar_Perfil', 'Visualizar_Perfil')" />
+			access="hasAnyRole('Cadastrar_Perfil', 'Visualizar_Perfil', 'ROLE_ADMIN')" />
 
 		<security:intercept-url pattern="/**"
-			access="hasAnyRole('Cadastrar_Associado', 'Visualizar_Associado')" />
+			access="hasAnyRole('Cadastrar_Associado', 'Visualizar_Associado','ROLE_ADMIN')" />
 
 
 		<!-- access denied page -->
@@ -57,7 +57,11 @@
 				data-source-ref="dataSource"
 				users-by-username-query="select login, senha, ativo from usuarios where login = ?"
 				authorities-by-username-query="select login, role from getuser where login =?  " />
+				<security:user-service >
+		<security:user name="admin" password="admin" authorities="ROLE_ADMIN, Cadastrar_Perfil"  />
+	    </security:user-service>
 		</security:authentication-provider>
+		
 	</security:authentication-manager>
 
 </beans>

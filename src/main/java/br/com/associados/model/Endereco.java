@@ -2,7 +2,10 @@ package br.com.associados.model;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the enderecos database table.
@@ -11,13 +14,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "enderecos")
 @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e")
-public class Endereco implements Serializable {
+public class Endereco extends AbstractBean implements Serializable {
         private static final long serialVersionUID = 1L;
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(unique = true, nullable = false)
-        private int idEndereco;
+      
         
         private String cep;
         
@@ -32,13 +32,6 @@ public class Endereco implements Serializable {
         @ManyToOne
         private Cidade cidade;
 
-        public int getIdEndereco() {
-                return idEndereco;
-        }
-
-        public void setIdEndereco(int idEndereco) {
-                this.idEndereco = idEndereco;
-        }
 
         public Cidade getCidade() {
                 return cidade;

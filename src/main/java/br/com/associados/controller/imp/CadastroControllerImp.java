@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.associados.controller.CadastroController;
 import br.com.associados.dao.AssociadoDao;
@@ -20,6 +22,7 @@ import br.com.associados.model.Plano;
 import br.com.associados.model.Usuario;
 
 @Service
+@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 public class CadastroControllerImp implements CadastroController {
 
 	@Autowired
@@ -53,7 +56,7 @@ public class CadastroControllerImp implements CadastroController {
 	}
 	@Override
 	public void deleteAssociado(Associado associado) {
-		associadoDao.delete(associado.getIdassociados());
+		associadoDao.delete(associado.getId());
 	}
 	
 	
@@ -78,7 +81,7 @@ public class CadastroControllerImp implements CadastroController {
 	}
 	@Override
 	public void deleteUsuario(Usuario usuario) {
-		usuarioDao.delete(usuario.getIdusuarios());
+		usuarioDao.delete(usuario.getId());
 	}
 	
 	@Override
@@ -109,7 +112,7 @@ public class CadastroControllerImp implements CadastroController {
 	}
 	@Override
 	public void deletePlano(Plano plano) {
-		planoDao.delete(plano.getIdplanos());
+		planoDao.delete(plano.getId());
 	}
 	@Override
 	public List<Plano> listAllPlanos(){
@@ -120,6 +123,7 @@ public class CadastroControllerImp implements CadastroController {
 	 * Perfis
 	 */
 	@Override
+	@Transactional
 	public void salvarPerfil(Perfil perfil) {
 	 	perfilDao.save(perfil);
 	    
@@ -133,6 +137,7 @@ public class CadastroControllerImp implements CadastroController {
 	/**
 	 * Funcionalidades
 	 */
+	@Transactional(readOnly=true)
 	@Override
 	public List<Funcionalidade> listAllFuncionalidades() {
 	    // TODO Auto-generated method stub

@@ -82,7 +82,6 @@ public class MBeanAssociado extends mBeanGerneric{
          * @return the funcaoEclesiasticas
          */
         public List<FuncoesEclesiastica> getFuncaoEclesiasticas() {
-                System.out.println("n");
                 return funcaoEclesiasticas;
                 
         }

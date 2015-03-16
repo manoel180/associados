@@ -1,8 +1,14 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -11,14 +17,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="usuarios")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
-public class Usuario implements Serializable {
+public class Usuario extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private Long idusuarios;
 
 	@Column(nullable=false)
 	private boolean ativo;
@@ -46,14 +46,6 @@ public class Usuario implements Serializable {
 	private List<Perfil> perfis;
 
 	public Usuario() {
-	}
-
-	public Long getIdusuarios() {
-		return this.idusuarios;
-	}
-
-	public void setIdusuarios(Long idusuarios) {
-		this.idusuarios = idusuarios;
 	}
 
 	public boolean getAtivo() {

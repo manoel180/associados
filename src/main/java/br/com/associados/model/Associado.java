@@ -8,9 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -27,13 +24,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="associados")
 @NamedQuery(name="Associado.findAll", query="SELECT a FROM Associado a")
-public class Associado implements Serializable {
+public class Associado extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private int idassociados;
 
 	private Boolean ativo;
 
@@ -80,17 +72,6 @@ public class Associado implements Serializable {
 	//bi-directional many-to-one association to Foto
 	@OneToMany(mappedBy="associado")
 	private List<Foto> fotos;
-
-	public Associado() {
-	}
-
-	public int getIdassociados() {
-		return this.idassociados;
-	}
-
-	public void setIdassociados(int idassociados) {
-		this.idassociados = idassociados;
-	}
 
 	public Boolean getAtivo() {
 		return this.ativo;

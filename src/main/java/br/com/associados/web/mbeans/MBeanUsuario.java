@@ -23,13 +23,15 @@ public class MBeanUsuario extends mBeanGerneric {
     private DualListModel<Perfil> perfis;
     private List<Perfil> perfisSource;
     private List<Perfil> perfisSelects;
+    private String senha;
+    
 
     @Autowired
     private CadastroController cadastroController;
 
     @PostConstruct
     public void init() {
-
+	usuario = new Usuario();
 	poupalateCombos();
 
     }
@@ -45,6 +47,7 @@ public class MBeanUsuario extends mBeanGerneric {
     public void salvar() {
 
 	try {
+	    usuario.setPerfis(perfis.getTarget());
 	    cadastroController.salvarUsuario(usuario);
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -81,6 +84,14 @@ public class MBeanUsuario extends mBeanGerneric {
 
     public void setPerfis(DualListModel<Perfil> perfis) {
 	this.perfis = perfis;
+    }
+
+    public String getSenha() {
+	return senha;
+    }
+
+    public void setSenha(String senha) {
+	this.senha = senha;
     }
 
 

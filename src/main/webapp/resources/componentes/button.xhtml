@@ -1,39 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:composite="http://java.sun.com/jsf/composite"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" >
 	<!-- INTERFACE -->
-	<composite:interface>
+	<composite:interface >
 		<!-- Atributos para o commandButton -->
+		<composite:attribute name="id" displayName="id" />
 		<composite:attribute name="value" displayName="value"
 			default="#{msg.btnFinalizar}" />
 		<composite:attribute name="css" displayName="css" />
-		<composite:attribute name="ajax" displayName="ajax" default="true" />
-		<composite:attribute name="action" displayName="action"
-			method-signature="java.lang.String action()" />
+		
 		<composite:attribute name="actionListener"
-			displayName="actionListener" method-signature="void action()" />
+			displayName="actionListener" targets="#{cc.attrs.id}_btn" />
 		<composite:attribute name="roles" />
 		<composite:attribute name="update" />
 		<composite:attribute name="onclick" />
 
 		<composite:attribute name="onsuccess" />
-		<composite:attribute name="label" default="#{msg.btnFinalizar}" />
 	</composite:interface>
 
 	<!-- IMPLEMENTATION -->
 	<composite:implementation>
-		<p:commandButton id="#{cc.clientId}" value="#{cc.attrs.value}"
-			ajax="#{cc.attrs.ajax}" styleClass="#{cc.attrs.css}"
+		<p:commandButton id="#{cc.attrs.id}_btn" value="#{cc.attrs.value}"
 			update="#{cc.attrs.update}"
-			actionListener="#{cc.attrs.actionListener}" label="#{cc.attrs.label}"
-			rendered="#{(cc.attrs.roles == null ? true : p:ifAnyGranted(cc.attrs.roles))}"
+			validateClient="true" 
 			onclick="#{cc.attrs.onclick}" />
 
 	</composite:implementation>
 
-</ui:composition>
+</ui:component>

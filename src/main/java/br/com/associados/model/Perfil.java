@@ -1,10 +1,17 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 
 /**
  * The persistent class for the perfis database table.
@@ -12,38 +19,20 @@ import java.util.List;
  */
 @Entity
 @Table(name = "perfis")
-@NamedQuery(name = "Perfil.findAll", query = "SELECT p FROM Perfil p")
-public class Perfil implements Serializable {
+public class Perfil extends AbstractBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idPerfil;
 
     private Boolean ativo;
 
     @Column(length = 60)
     private String name;
 
-    // bi-directional many-to-many association to Funcionalidade
-    @ManyToMany
-    @JoinTable(name = "perfis_has_funcionalidades", joinColumns = { @JoinColumn(name = "perfil", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "funcionalidade", nullable = false) })
-    private List<Funcionalidade> funcionalidades;
-
-    // bi-directional many-to-many association to Usuario
-    @ManyToMany(mappedBy = "perfis")
-    private List<Usuario> usuarios;
-
-    public Perfil() {
-    }
-
-    public int getIdPerfil() {
-	return this.idPerfil;
-    }
-
-    public void setIdPerfil(int id) {
-	this.idPerfil = id;
-    }
+    @ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
+    @JoinTable(name="perfis_has_funcionalidades",
+			   joinColumns=@JoinColumn(name="PERFIL_ID", nullable = false, updatable = false),
+			   inverseJoinColumns={@JoinColumn( name="FUNCIONALIDADE_ID", nullable = false, updatable = false)})
+    private List<Funcionalidade> perfilFuncionalidades;
 
     public Boolean getAtivo() {
 	return this.ativo;
@@ -61,20 +50,13 @@ public class Perfil implements Serializable {
 	this.name = name;
     }
 
-    public List<Funcionalidade> getFuncionalidades() {
-	return this.funcionalidades;
+
+    public List<Funcionalidade> getPerfilFuncionalidades() {
+	return perfilFuncionalidades;
     }
 
-    public void setFuncionalidades(List<Funcionalidade> funcionalidades) {
-	this.funcionalidades = funcionalidades;
-    }
-
-    public List<Usuario> getUsuarios() {
-	return this.usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-	this.usuarios = usuarios;
+    public void setPerfilFuncionalidades(List<Funcionalidade> perfilFuncionalidades) {
+	this.perfilFuncionalidades = perfilFuncionalidades;
     }
 
 }

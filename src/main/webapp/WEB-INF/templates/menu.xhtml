@@ -21,20 +21,20 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bar1">
 			<f:subview
-				rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado,Cadastrar_Usuario,Visualizar_Usuario')}">
+				rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado,Cadastrar_Usuario,Visualizar_Usuario,ROLE_ADMIN')}">
 				<ul class="nav navbar-nav">
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">CADASTROS <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<f:subview
-								rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado')}">
+								rendered="#{p:ifAnyGranted('Cadastrar_Associado,Visualizar_Associado,ROLE_ADMIN')}">
 								<li><a
 									href="#{request.contextPath}/cadastros/associados/associado.jsf">Novo
 										Associado</a></li>
 							</f:subview>
 							<f:subview
-								rendered="#{p:ifAnyGranted('Cadastrar_Usuario,Visualizar_Usuario')}">
+								rendered="#{p:ifAnyGranted('Cadastrar_Usuario,Visualizar_Usuario,ROLE_ADMIN')}">
 								<li><a href="#{request.contextPath}/cadastros/usuario.jsf">Novo
 										Usuário</a></li>
 							</f:subview>
@@ -42,94 +42,131 @@
 				</ul>
 			</f:subview>
 			<f:subview
-				rendered="#{p:ifAnyGranted('Boleto_Avulso,Carne_Simples,Carne_Lote,Listar_Lote')}">
+				rendered="#{p:ifAnyGranted('Boleto_Avulso,Carne_Simples,Carne_Lote,Listar_Lote,ROLE_ADMIN')}">
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">GERAR CARNÊS <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Boleto
-									Avulso</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnê
-									Simples</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneLote.jsf">Carnê
-									em lotes</a></li>
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/listarLotes.jsf">Listar
-									lotes</a></li>
+							<f:subview rendered="#{p:ifAnyGranted('Boleto_Avulso,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Boleto
+										Avulso</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Carne_Simples,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnê
+										Simples</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Carne_Lote,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneLote.jsf">Carnê
+										em lotes</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Listar_Lote,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/listarLotes.jsf">Listar
+										lotes</a></li>
+							</f:subview>
 						</ul></li>
 				</ul>
 			</f:subview>
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">FINANCEIRO<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Boletos
-								liquidados</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Boletos
-								pendentes</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnês
-								liquidados</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnês
-								pendentes</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Liquidar
-								pagamentos</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Mensagem
-								via SMS</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Mensagem
-								via Email</a></li>
-					</ul></li>
-			</ul>
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">RELATÓRIOS<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Listar
-								associados</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Credenciais
-								entregues</a></li>
-						<li><a
-							href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Geoprocessamento</a></li>
-					</ul></li>
-			</ul>
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">CONFIGURAÇÕES<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<f:subview
-							rendered="#{p:ifAnyGranted('Cadastrar_Perfil,Visualizar_Perfil')}">
-							<li><a
-								href="#{request.contextPath}/configuracoes/perfil/perfil.jsf">Perfil
-									de usuários</a></li>
-						</f:subview>
-						<f:subview rendered="#{p:ifAnyGranted('Cadastrar_Cat_Valores')}">
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Categorias
-									e Valores</a></li>
-						</f:subview>
-						<f:subview rendered="#{p:ifAnyGranted('Layout_Carteiras')}">
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Layout
-									carteirinhas</a></li>
-						</f:subview>
-						<f:subview rendered="#{p:ifAnyGranted('Dados_Boleto')}">
-							<li><a
-								href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Dados
-									do boleto</a></li>
-						</f:subview>
-					</ul></li>
-			</ul>
+			<f:subview
+				rendered="#{p:ifAnyGranted('ROLE_ADMIN,Boleto_Liquidado, Boleto_Pendente, Carne_Liquidado, Carne_Pendente, Liquidar_Pagamento, Mensagem_SMS, Mensagem_Email')}">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">FINANCEIRO<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<f:subview rendered="#{p:ifAnyGranted('Boleto_Liquidado,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Boletos
+										liquidados</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Boleto_Pendente,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Boletos
+										pendentes</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Carne_Liquidado,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnês
+										liquidados</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Boleto_Pendente,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Carnês
+										pendentes</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Liquidadar_Pagamento,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Liquidar
+										pagamentos</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Mensagem_SMS,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Mensagem
+										via SMS</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Mensagem_Email,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Mensagem
+										via Email</a></li>
+							</f:subview>
+						</ul></li>
+				</ul>
+			</f:subview>
+			<f:subview
+				rendered="#{p:ifAnyGranted('Listar_Associados, Credenciais_Entregues, Geoprocessamento,ROLE_ADMIN')}">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">RELATÓRIOS<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<f:subview rendered="#{p:ifAnyGranted('Listr_Associados,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/boletoAvulso.jsf">Listar
+										associados</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Credenciais_Entregues,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Credenciais
+										entregues</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Geoprocessamento,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Geoprocessamento</a></li>
+							</f:subview>
+						</ul></li>
+				</ul>
+			</f:subview>
+			<f:subview
+				rendered="#{p:ifAnyGranted('Cadastrar_Perfil,Visualizar_Perfil,ROLE_ADMIN,Categorias_Valores, Layout_Carteira, Configurar_Boleto')}">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">CONFIGURAÇÕES<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<f:subview
+								rendered="#{p:ifAnyGranted('Cadastrar_Perfil,Visualizar_Perfil,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/configuracoes/perfil/perfil.jsf">Perfil
+										de usuários</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Categorias_Valores,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Categorias
+										e Valores</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Layout_Carteira,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Layout
+										carteirinhas</a></li>
+							</f:subview>
+							<f:subview rendered="#{p:ifAnyGranted('Configurar_Boleto,ROLE_ADMIN')}">
+								<li><a
+									href="#{request.contextPath}/gerarCarnes/carneSimples.jsf">Dados
+										do boleto</a></li>
+							</f:subview>
+						</ul></li>
+				</ul>
+			</f:subview>
 			<ul class="nav navbar-nav">
 				<li class="dropdown"><a
 					href="#{request.contextPath}/j_spring_security_logout">SAIR</a></li>

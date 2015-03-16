@@ -19,8 +19,8 @@
 
 		</f:facet>
 
-		
-		<h:outputScript name="bootstrap.min.js" library="js"/>
+
+		<h:outputScript name="bootstrap.min.js" library="js" />
 		<h:outputStylesheet name="bootstrap.min.css" library="css" />
 		<h:outputStylesheet name="screen.css" library="css" />
 		<h:outputStylesheet name="css/tema.css" />
@@ -35,8 +35,9 @@
 			</h1>
 			</center>
 			<div align="right" class="userLogged">
-				<span> <b>Usuario:</b> #{mBeanLogin.login} </span>
-				
+				<span> <b>Usuario:</b> #{mBeanLogin.login}
+				</span>
+
 			</div>
 
 			<br />
@@ -48,10 +49,8 @@
 			<h:form id="formI" prependId="false">
 				<p:focus />
 				<ui:insert name="content" />
-
-
 			</h:form>
-			<p:growl id="msgs" showDetail="true" showSummary="true" life="5000"
+			<p:growl id="msgs" showDetail="true" showSummary="false" life="5000"
 				autoUpdate="true" />
 		</div>
 

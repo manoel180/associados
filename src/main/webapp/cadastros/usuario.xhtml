@@ -9,30 +9,55 @@
 	template="/WEB-INF/templates/template.xhtml"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
-		
+
 		<!-- Nome -->
 		<comp:input label="Nome" value="#{mBeanUsuario.usuario.nome}" />
-		
+
 		<!-- Login -->
 		<comp:input label="Login" value="#{mBeanUsuario.usuario.login}" />
-		
+
 		<!-- Senha -->
-		<comp:password label="Senha" value="#{mBeanUsuario.usuario.senha}" />
-		
-		<!-- repetir senha -->
-		<comp:password label="Repetir senha" value="" />
+		<div style="position: relative; text-align: left;">
+			<p:outputLabel id="senhaNova_lbl" value="Senha" for="senhaNova" />
+			<br />
+			<p:password id="senhaNova" size="20" match="senhaConfirmacao"
+				redisplay="true"
+				disabled="#{!p:ifAnyGranted('CADASTRAR_USUARIO,ROLE_ADMIN')}"
+				maxlength="15" validatorMessage="#{msgUsuarios.lblMsgEqualTo}"
+				required="true" value="#{mBeanUsuario.usuario.senha}"
+				feedback="true" minLength="4"
+				promptLabel="#{msgUsuarios.msgUsuarioSenhaInvalida}"
+				goodLabel="#{msgUsuarios.lblSenhaOtima}"
+				strongLabel="#{msgUsuarios.lblSenhaForte}"
+				weakLabel="#{msgUsuarios.lblSenhaFraca}">
+			</p:password>
+		</div>
+		<div style="position: relative; text-align: left;">
+			<p:outputLabel id="senhaConfirmacao_lbl" value="Repetir Senha"
+				for="senhaConfirmacao" />
+			<br />
+			<p:password id="senhaConfirmacao" size="20" maxlength="15"
+				redisplay="true" required="true"
+				value="#{mBeanUsuario.usuario.senha}"
+				disabled="#{!p:ifAnyGranted('CADASTRAR_USUARIO,ROLE_ADMIN')}"
+				feedback="false" minLength="4" />
+		</div>
 
 		<!-- Status-->
-		<comp:comboBoxUtil label="Status" value="#{mBeanUsuario.usuario.ativo}" entity="false" noSelectLabel="true">
+		<comp:comboBoxUtil label="Status"
+			value="#{mBeanUsuario.usuario.ativo}" entity="false"
+			converter="javax.faces.Boolean" noSelectLabel="true">
 			<f:selectItem itemLabel="Ativo" itemValue="true" />
-			<f:selectItem itemLabel="Inativo" itemValue="false"/>
+			<f:selectItem itemLabel="Inativo" itemValue="false" />
 		</comp:comboBoxUtil>
-		
-		
+
 		<!-- Perfil-->
-		<p:pickList label="Perfis" value="#{mBeanUsuario.perfis}" var="perfil" itemValue="#{perfil}" itemLabel="#{perfil.name}" ></p:pickList>
+		<p:pickList label="Perfis" converter="pickListConverter"
+			value="#{mBeanUsuario.perfis}" var="perfil" itemValue="#{perfil}"
+			itemLabel="#{perfil.name}"></p:pickList>
 
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button label="#{msg.btnFinalizar}" />
+		<comp:button id="btnSalvar" actionListener="#{mBeanUsuario.salvar()}"
+			update=":msgs" />
 	</ui:define>
 </ui:composition>

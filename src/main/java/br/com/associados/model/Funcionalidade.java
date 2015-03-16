@@ -1,8 +1,10 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 /**
@@ -11,31 +13,16 @@ import java.util.List;
  */
 @Entity
 @Table(name="funcionalidades")
-public class Funcionalidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Funcionalidade extends AbstractBean implements Serializable {
+    private static final long serialVersionUID = 151261933548719046L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private int id;
 
 	@Column
 	private String nome;
+	
+//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "perfilFuncionalidades")
+//	private Set<Perfil> perfis;
 
-	//bi-directional many-to-many association to Perfil
-	@ManyToMany(mappedBy="funcionalidades")
-	private List<Perfil> perfis;
-
-	public Funcionalidade() {
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return this.nome;
@@ -45,12 +32,13 @@ public class Funcionalidade implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Perfil> getPerfis() {
-		return this.perfis;
-	}
+//	public Set<Perfil> getPerfis() {
+//	    return perfis;
+//	}
+//
+//	public void setPerfis(Set<Perfil> perfis) {
+//	    this.perfis = perfis;
+//	}
 
-	public void setPerfis(List<Perfil> perfis) {
-		this.perfis = perfis;
-	}
 
 }

@@ -1,8 +1,12 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -11,14 +15,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="planos")
-@NamedQuery(name="Plano.findAll", query="SELECT p FROM Plano p")
-public class Plano implements Serializable {
+public class Plano extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private int idplanos;
 
 	private byte ativo;
 
@@ -28,17 +26,6 @@ public class Plano implements Serializable {
 	//bi-directional many-to-one association to Boleto
 	@OneToMany(mappedBy="plano")
 	private List<Boleto> boletos;
-
-	public Plano() {
-	}
-
-	public int getIdplanos() {
-		return this.idplanos;
-	}
-
-	public void setIdplanos(int idplanos) {
-		this.idplanos = idplanos;
-	}
 
 	public byte getAtivo() {
 		return this.ativo;

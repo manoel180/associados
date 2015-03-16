@@ -1,7 +1,13 @@
 package br.com.associados.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 /**
@@ -10,14 +16,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="fotos")
-@NamedQuery(name="Foto.findAll", query="SELECT f FROM Foto f")
-public class Foto implements Serializable {
+public class Foto extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private int idfotos;
 
 	@Lob
 	private byte[] file;
@@ -31,14 +31,6 @@ public class Foto implements Serializable {
 	private Associado associado;
 
 	public Foto() {
-	}
-
-	public int getIdfotos() {
-		return this.idfotos;
-	}
-
-	public void setIdfotos(int idfotos) {
-		this.idfotos = idfotos;
 	}
 
 	public byte[] getFile() {

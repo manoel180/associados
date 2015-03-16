@@ -50,10 +50,10 @@
 			<p:inputText  size="#{cc.attrs.size}" id="#{cc.clientId}_txt"
 			 
 				styleClass="inputtext #{cc.attrs.integer==true?'integer':''} #{cc.attrs.decimal==true?'decimal':''} #{cc.attrs.numerico==true?'numeric':''} #{cc.attrs.styleClass}" 
-				value="#{cc.attrs.value}" 
+				value="#{cc.attrs.value}" label="#{cc.attrs.label}" 
 				maxlength="#{cc.attrs.maxlength}" required="#{cc.attrs.required}"
 				disabled="#{cc.attrs.disabled or (cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles))}" >
-					<p:tooltip value="" rendered="false" for="#{cc.clientId}_txt"/>
+					<p:tooltip rendered="false" for="#{cc.clientId}_txt"/>
 				</p:inputText>
 				
 	</div>

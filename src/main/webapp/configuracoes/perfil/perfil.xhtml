@@ -8,16 +8,22 @@
 	template="/WEB-INF/templates/template.xhtml"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
+	<p:outputPanel id="pnl">
 		<!-- Perfil -->
-		<comp:input label="Nome" value="#{mBeanPerfil.perfil.name}" />
-		
+		<comp:input label="Nome" value="#{mBeanPerfil.perfil.name}" required="true" />
+
 		<!-- Status-->
-		<comp:check label="Status" value="#{mBeanPerfil.perfil.ativo}"  />
-		
+		<comp:check label="Status" value="#{mBeanPerfil.perfil.ativo}" />
+
 		<!-- Funcionalidades -->
-		<p:pickList label="Funcionalidades" value="#{mBeanPerfil.funcionalidades}" var="func" itemValue="#{func}" itemLabel="#{msgFuncionalidades[func.nome]}" />
+		<p:pickList label="Funcionalidades" converter="pickListConverter" required="true"
+			value="#{mBeanPerfil.funcionalidades}" var="func" itemValue="#{func}"
+			itemLabel="#{msgFuncionalidades[func.nome]}" />
+			
 
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button label="#{msg.btnFinalizar}" update=":msgs"  actionListener="#{mBeanPerfil.salvar}" />
+		<comp:button id="btnSalvar" actionListener="#{mBeanPerfil.salvar()}"
+			update=":formI:pnl :msgs" />
+			</p:outputPanel>
 	</ui:define>
 </ui:composition>
