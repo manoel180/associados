@@ -18,6 +18,7 @@ import br.com.associados.model.Cidade;
 import br.com.associados.model.Endereco;
 import br.com.associados.model.Estado;
 import br.com.associados.model.FuncoesEclesiastica;
+import br.com.associados.web.util.FacesUtil;
 
 @Controller("mBeanAssociado")
 @Scope("request")
@@ -55,6 +56,7 @@ public class MBeanAssociado extends mBeanGerneric{
         public void salvar() {
             	try {
 		    cadastroController.salvarAssociado(associado);
+		    FacesUtil.mensInfo("Associados salvo com sucesso!");
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}

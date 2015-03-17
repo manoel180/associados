@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.model.DualListModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Perfil;
 import br.com.associados.model.Usuario;
+import br.com.associados.web.util.FacesUtil;
 
 @Controller("mBeanUsuario")
 @Scope("request")
@@ -49,6 +52,7 @@ public class MBeanUsuario extends mBeanGerneric {
 	try {
 	    usuario.setPerfis(perfis.getTarget());
 	    cadastroController.salvarUsuario(usuario);
+	    FacesUtil.mensInfo("Usuário salvo com sucesso!");
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

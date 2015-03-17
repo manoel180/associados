@@ -57,9 +57,6 @@
 				data-source-ref="dataSource"
 				users-by-username-query="select login, senha, ativo from usuarios where login = ?"
 				authorities-by-username-query="select login, role from getuser where login =?  " />
-				<security:user-service >
-		<security:user name="admin" password="admin" authorities="ROLE_ADMIN, Cadastrar_Perfil"  />
-	    </security:user-service>
 		</security:authentication-provider>
 		
 	</security:authentication-manager>
