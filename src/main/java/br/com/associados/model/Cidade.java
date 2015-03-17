@@ -16,25 +16,43 @@ public class Cidade extends AbstractBean implements Serializable{
         private static final long serialVersionUID = 3277599324366911194L;
 
         
-        private String descricao;
-      
+        private String nome;
+        
+        private String lat;
+        
+        private String lng;
+
         @ManyToOne
         private Estado estado;
 
-
-        /**
-         * @return the descricao
-         */
-        public String getDescricao() {
-                return descricao;
+        @Override
+        public Integer getId() {
+        return super.getId();
         }
+      
+        public String getNome() {
+	    return nome;
+	}
 
-        /**
-         * @param descricao the descricao to set
-         */
-        public void setDescricao(String descricao) {
-                this.descricao = descricao;
-        }
+	public void setNome(String nome) {
+	    this.nome = nome;
+	}
+
+	public String getLat() {
+	    return lat;
+	}
+
+	public void setLat(String lat) {
+	    this.lat = lat;
+	}
+
+	public String getLng() {
+	    return lng;
+	}
+
+	public void setLng(String lng) {
+	    this.lng = lng;
+	}
 
         public Estado getEstado() {
                 return estado;

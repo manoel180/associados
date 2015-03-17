@@ -9,12 +9,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.associados.controller.CadastroController;
 import br.com.associados.dao.AssociadoDao;
+import br.com.associados.dao.BoletoDao;
+import br.com.associados.dao.CidadeDao;
+import br.com.associados.dao.EstadoDao;
 import br.com.associados.dao.FuncaoEclesiasticaDao;
 import br.com.associados.dao.FuncionalidadeDao;
 import br.com.associados.dao.PerfilDao;
 import br.com.associados.dao.PlanoDao;
 import br.com.associados.dao.UsuarioDao;
 import br.com.associados.model.Associado;
+import br.com.associados.model.Boleto;
+import br.com.associados.model.Cidade;
+import br.com.associados.model.Estado;
 import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
 import br.com.associados.model.Perfil;
@@ -27,6 +33,12 @@ public class CadastroControllerImp implements CadastroController {
 
 	@Autowired
 	PlanoDao planoDao;
+	
+	@Autowired
+	EstadoDao estadoDao;
+	
+	@Autowired
+	CidadeDao cidadeDao;
 	
 	@Autowired
 	AssociadoDao associadoDao;
@@ -42,6 +54,9 @@ public class CadastroControllerImp implements CadastroController {
 	
 	@Autowired
 	FuncionalidadeDao funcionalidadeDao; 
+	
+	@Autowired
+	BoletoDao boletoDao; 
 	
 	/**
 	 * Associados
@@ -130,7 +145,6 @@ public class CadastroControllerImp implements CadastroController {
 	}
 	@Override
 	public List<?> listAllPerfis() {
-	    // TODO Auto-generated method stub
 	    return perfilDao.listAll();
 	}
 	
@@ -140,8 +154,33 @@ public class CadastroControllerImp implements CadastroController {
 	@Transactional(readOnly=true)
 	@Override
 	public List<Funcionalidade> listAllFuncionalidades() {
-	    // TODO Auto-generated method stub
 	    return funcionalidadeDao.listAll();
+	}
+	
+	/**
+	 * Configuracao Boleto
+	 * @return 
+	 */
+	@Override
+	public void salvarBoleto(Boleto boleto) {
+	     boletoDao.save(boleto);
+	}
+	
+	/**
+	 * Estados
+	 */
+	@Override
+	public List<Estado> listAllEstados() {
+	    return estadoDao.listAll();
+	}
+
+	/**
+	 * Cidades
+	 */
+	@Transactional(readOnly=true)
+	@Override
+	public List<Cidade> listAllCidadeByEstado(Integer id) {
+	    return cidadeDao.listCidadeByEstado(id);
 	}
 	
 	

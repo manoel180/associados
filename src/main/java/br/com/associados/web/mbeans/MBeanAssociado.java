@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,8 +27,8 @@ public class MBeanAssociado extends mBeanGerneric{
         private Estado estado;
         private List<FuncoesEclesiastica> funcaoEclesiasticas;
         private List<?> planos;
-        private List<?> estados;
-        private List<?> cidades;
+        private List<Estado> estados;
+        private List<Cidade> cidades;
 
         @Autowired
         private CadastroController cadastroController;
@@ -45,8 +44,13 @@ public class MBeanAssociado extends mBeanGerneric{
                 estado = new Estado();
                 poupalateCombos();
         }
+        
+        public void loadCity() {
+            cidades =  cadastroController.listAllCidadeByEstado(estado.getId());
+        }
 
         private void poupalateCombos() {
+            	estados = cadastroController.listAllEstados();
                 funcaoEclesiasticas = cadastroController
                                 .listAllFuncaoEclesiastica();
                 planos = cadastroController.listAllPlanos();
@@ -123,15 +127,15 @@ public class MBeanAssociado extends mBeanGerneric{
                 return estados;
         }
 
-        public void setEstados(List<?> estados) {
+        public void setEstados(List<Estado> estados) {
                 this.estados = estados;
         }
 
-        public List<?> getCidades() {
+        public List<Cidade> getCidades() {
                 return cidades;
         }
 
-        public void setCidades(List<?> cidades) {
+        public void setCidades(List<Cidade> cidades) {
                 this.cidades = cidades;
         }
 

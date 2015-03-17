@@ -12,6 +12,7 @@ public abstract class AbstractBean implements Serializable {
      * 
      */
     private static final long serialVersionUID = -5947800918594586593L;
+    
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private Integer id;

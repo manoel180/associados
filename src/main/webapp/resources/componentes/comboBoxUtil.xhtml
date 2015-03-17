@@ -31,6 +31,8 @@
 	<composite:attribute name="process" default="@this" />
 	<composite:attribute name="converter"
 		default="selectOneUsingObjectConverter" />
+	<composite:clientBehavior name="change" event="change" 
+        targets="#{cc.attrs.id}" />
 
 </composite:interface>
 
@@ -50,7 +52,7 @@
 			value="#{cc.attrs.value}" items="#{cc.attrs.selectItens}"
 			style="width:#{cc.attrs.size};" styleClass="selectItem"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
-			required="#{cc.attrs.required}">
+			required="#{cc.attrs.required}" converter="#{cc.attrs.converter}">
 
 			<c:if test="#{!cc.attrs.noSelectLabel}">
 				<f:selectItem itemLabel="#{msg.lblSelecione}" itemValue="" />

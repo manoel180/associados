@@ -63,15 +63,17 @@
 	<!-- Complemento -->
 	<comp:input label="Complemento"
 		value="#{mBeanAssociado.associado.endereco.complemento}" />
-	<!-- Cidade -->
-	<comp:comboBoxUtil id="cbEstado" label="Estado" value="#{mBeanAssociado.estado}" 
-	selectItens="#{mBeanAssociado.estados}"
-		itemValue="#{item}" itemLabel="#{item.descricao}" entity="true"/>
 	<!-- Estado -->
-	<comp:comboBoxUtil label="Cidade" value="#{mBeanAssociado.associado.endereco.cidade}" 
-	selectItens="#{mBeanAssociado.cidades}"
-		itemValue="#{item}" itemLabel="#{item.descricao}" entity="true"/>
+	<comp:comboBoxUtil id="cbEstado" label="Estado" value="#{mBeanAssociado.estado}"
+	selectItens="#{mBeanAssociado.estados}" 
+		itemValue="#{item}" itemLabel="#{item.descricao}" entity="true">
+		<p:ajax update=":formI:tabView:cbCidade"  event="change" process="@this" listener="#{mBeanAssociado.loadCity}"/>
+		</comp:comboBoxUtil>
+	<!-- Cidade -->
+	<comp:comboBoxUtil id="cbCidade" label="Cidade" value="#{mBeanAssociado.associado.endereco.cidade}" 
+	selectItens="#{mBeanAssociado.cidades}" 
+		itemValue="#{item}" itemLabel="#{item.nome}" entity="true"/>
 	<!-- País -->
-	<comp:input label="País" value="Brasil" />
+	<comp:input label="País" value="Brasil" disabled="true" />
 
 </ui:fragment>

@@ -11,14 +11,15 @@
 	<ui:define name="content">
 	
 
-		<p:tabView id="tabView" prependId="false">
+		<p:tabView id="tabView" prependId="false" dynamic="true"  cache="true" effect="fade"  >
+		 <p:ajax event="tabClose" immediate="true"  update=":formI:tabView" process="ddsPessoais"/>
 			<p:tab title="Dados Pessoais" id="ddsPessoais" >
 				<ui:include src="dadosPessoais.xhtml" />
 			</p:tab>
-			<p:tab title="Carteirinha" id="carteira"  >
-				<ui:include src="carteirinha.xhtml" />
+			<p:tab title="Carteirinha" id="carteira" rendered="false" >
+				<comp:input id="tst" label="Associado" value="#{mBeanAssociado.associado.name}" disabled="true"/>
+				<!-- <ui:include src="carteirinha.xhtml" /> -->
 			</p:tab>
-			<p:remoteCommand name="updateTabView" update="carteira"/> 
 		</p:tabView>
 		<!-- Botão Finalizar Cadastro -->
 		<comp:button actionListener="#{mBeanAssociado.salvar}"   update=":msgs" />

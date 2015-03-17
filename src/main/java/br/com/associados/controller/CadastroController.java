@@ -3,6 +3,9 @@ package br.com.associados.controller;
 import java.util.List;
 
 import br.com.associados.model.Associado;
+import br.com.associados.model.Boleto;
+import br.com.associados.model.Cidade;
+import br.com.associados.model.Estado;
 import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
 import br.com.associados.model.Perfil;
@@ -45,5 +48,12 @@ public interface CadastroController {
 	List<Funcionalidade> listAllFuncionalidades();
 
 	void salvarPerfil(Perfil perfil);
+
+	void salvarBoleto(Boleto boleto);
+
+	List<Estado> listAllEstados();
+
+
+	List<Cidade> listAllCidadeByEstado(Integer id);
 
 }
