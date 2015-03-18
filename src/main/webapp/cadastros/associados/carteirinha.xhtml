@@ -8,12 +8,44 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes" >
 
-	<p:panel id="ddsCarteira" >
-	<!-- Tipo Pessoa -->
+	<comp:input id="name2" label="Associado" value="#{mBeanAssociado.associado.name}" disabled="true"/>
+		<comp:comboBoxUtil id="plano" label="Escolha o plano" />
+		<comp:input id="city" label="Cidade"  disabled="true"  />
+		<comp:input id="estado" label="Estado" value="#{mBeanAssociado.estado.descricao}" disabled="true"/>
+		<comp:input label="País" value="Brasil" disabled="true"/>
+		<comp:input label="CPF" value="#{mBeanAssociado.associado.cpf}" disabled="true"/>
+		<comp:input label="Validade" disabled="true"/>
+		<comp:input label="Cartão"  disabled="true"/>
+		
+		<h:panelGrid columns="3" cellpadding="5">
+				<p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}"
+					update="photo" />
+				<p:commandButton type="button" value="Capture"
+					onclick="PF('pc').capture()" />
+				<p:outputPanel id="photo">
+					<p:graphicImage
+						name="photos/#{photoCamView.filename}.jpeg"
+						rendered="#{not empty photoCamView.filename}" />
+				</p:outputPanel>
+			</h:panelGrid>
+		<!-- <h:form id="formPhoto" prependId="false">
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}"
+					update="photo" />
+				<p:commandButton type="button" value="Capture"
+					onclick="PF('pc').capture()" />
+				<p:outputPanel id="photo">
+					<p:graphicImage
+						name="photos/#{photoCamView.filename}.jpeg"
+						rendered="#{not empty photoCamView.filename}" />
+				</p:outputPanel>
+			</h:panelGrid>
+		</h:form> -->
+<!-- 	<p:panel id="ddsCarteira" >
+	Tipo Pessoa
 	<comp:comboBoxUtil id="plano" label="Escolha o plano" />
 
 	
-		<comp:input label="Associado" value="#{mBeanAssociado.associado.name}" disabled="true"/>
 		<comp:input label="Cidade"  disabled="true"/>
 		<comp:input label="Estado" disabled="true"/>
 		<comp:input label="País" value="Brasil" disabled="true"/>
@@ -33,7 +65,7 @@
 				</p:outputPanel>
 			</h:panelGrid>
 		</h:form>
-	</p:panel>
+	</p:panel> -->
 
 
 </ui:fragment>

@@ -15,10 +15,17 @@ import br.com.associados.model.AbstractBean;
 public class SelectOneUsingObjectConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
-        if (value != null && !value.isEmpty()) {
-            return (AbstractBean) uiComponent.getAttributes().get(value);
-        }
-        return null;
+	try {
+	    if (value != null && !value.isEmpty()) {
+	            return (AbstractBean) uiComponent.getAttributes().get(value);
+	        }    
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    return value;
+	}
+	return null;
+       
+       
     }
 
     @Override

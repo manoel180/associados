@@ -7,13 +7,20 @@
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 
 	<!-- Tipo Pessoa -->
-
+	<p:inputText id="counter" value="#{mBeanAssociado.associado.name}">
+		<p:ajax event="keyup"
+			update=":formI:tabView:out :formI:tabView:name :formI:tabView:name2" />
+	</p:inputText>
+	<h:outputText id="out" value="#{mBeanAssociado.associado.name}" />
 
 	<!-- Nome -->
-	<comp:input label="Nome" value="#{mBeanAssociado.associado.name}"
-		required="true" />
-		
-		
+	<comp:input id="name" label="Nome"
+		value="#{mBeanAssociado.associado.name}" required="true">
+
+	</comp:input>
+
+
+
 	<!-- Sexo -->
 	<comp:comboBoxUtil label="Sexo" id="sexo"
 		value="#{mBeanAssociado.associado.sexo}">
@@ -23,8 +30,8 @@
 
 	<!-- CPF -->
 	<comp:inputMask id="cpf" label="CPF"
-		value="#{mBeanAssociado.associado.cpf}" 
-		mask="999.999.999-99" placeholder="___.___.___-__" />
+		value="#{mBeanAssociado.associado.cpf}" mask="999.999.999-99"
+		placeholder="___.___.___-__" />
 
 	<!-- Passaporte -->
 	<comp:input label="Passaporte"
@@ -48,31 +55,39 @@
 		value="#{mBeanAssociado.associado.dtNascimento}" />
 	<!-- Email -->
 	<comp:email id="email1" label="Email"
-		value="#{mBeanAssociado.associado.email}" validatorMessage="#{msg.msgEMailInvalido}"/>
+		value="#{mBeanAssociado.associado.email}"
+		validatorMessage="#{msg.msgEMailInvalido}" />
 	<!-- Email -->
 	<comp:email id="email2" label="Email Secundário"
 		value="#{mBeanAssociado.associado.email2}"
 		validatorMessage="#{msg.msgEMailInvalido}" />
 	<!-- Cep -->
-	<comp:input label="CEP" value="#{mBeanAssociado.associado.endereco.cep}" />
+	<comp:input label="CEP"
+		value="#{mBeanAssociado.associado.endereco.cep}" />
 	<!-- Logradouro -->
 	<comp:input label="Logradouro"
 		value="#{mBeanAssociado.associado.endereco.logradouro}" />
 	<!-- Numero -->
-	<comp:input label="Número" value="#{mBeanAssociado.associado.endereco.numero}" />
+	<comp:input label="Número"
+		value="#{mBeanAssociado.associado.endereco.numero}" />
 	<!-- Complemento -->
 	<comp:input label="Complemento"
 		value="#{mBeanAssociado.associado.endereco.complemento}" />
 	<!-- Estado -->
-	<comp:comboBoxUtil id="cbEstado" label="Estado" value="#{mBeanAssociado.estado}"
-	selectItens="#{mBeanAssociado.estados}" 
-		itemValue="#{item}" itemLabel="#{item.descricao}" entity="true">
-		<p:ajax update=":formI:tabView:cbCidade"  event="change" process="@this" listener="#{mBeanAssociado.loadCity}"/>
-		</comp:comboBoxUtil>
+	<comp:comboBoxUtil id="cbEstado" label="Estado"
+		value="#{mBeanAssociado.estado}"
+		selectItens="#{mBeanAssociado.estados}" itemValue="#{item}"
+		itemLabel="#{item.descricao}" entity="true">
+		<p:ajax update=":formI:tabView:cbCidade" event="change"
+			process="@this" listener="#{mBeanAssociado.loadCity}" />
+	</comp:comboBoxUtil>
 	<!-- Cidade -->
-	<comp:comboBoxUtil id="cbCidade" label="Cidade" value="#{mBeanAssociado.associado.endereco.cidade}" 
-	selectItens="#{mBeanAssociado.cidades}" 
-		itemValue="#{item}" itemLabel="#{item.nome}" entity="true"/>
+	<comp:comboBoxUtil id="cbCidade" label="Cidade"
+		
+		selectItens="#{mBeanAssociado.cidades}" itemValue="#{item}"
+		itemLabel="#{item.nome}" entity="true" />
+	
+
 	<!-- País -->
 	<comp:input label="País" value="Brasil" disabled="true" />
 

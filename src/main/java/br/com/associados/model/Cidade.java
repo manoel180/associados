@@ -7,60 +7,54 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cidades")
-public class Cidade extends AbstractBean implements Serializable{
+@Table(name = "cidades")
+public class Cidade extends AbstractBean implements Serializable {
 
-        /**
-         * 
-         */
-        private static final long serialVersionUID = 3277599324366911194L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-        
-        private String nome;
-        
-        private String lat;
-        
-        private String lng;
+    private String nome;
 
-        @ManyToOne
-        private Estado estado;
+    private String lat;
 
-        @Override
-        public Integer getId() {
-        return super.getId();
-        }
-      
-        public String getNome() {
-	    return nome;
-	}
+    private String lng;
 
-	public void setNome(String nome) {
-	    this.nome = nome;
-	}
+    @ManyToOne
+    private Estado estado;
 
-	public String getLat() {
-	    return lat;
-	}
+    public String getNome() {
+	return nome;
+    }
 
-	public void setLat(String lat) {
-	    this.lat = lat;
-	}
+    public void setNome(String nome) {
+	this.nome = nome;
+    }
 
-	public String getLng() {
-	    return lng;
-	}
+    public String getLat() {
+	return lat;
+    }
 
-	public void setLng(String lng) {
-	    this.lng = lng;
-	}
+    public void setLat(String lat) {
+	this.lat = lat;
+    }
 
-        public Estado getEstado() {
-                return estado;
-        }
+    public String getLng() {
+	return lng;
+    }
 
-        public void setEstado(Estado estado) {
-                this.estado = estado;
-        }
-        
-               
+    public void setLng(String lng) {
+	this.lng = lng;
+    }
+
+    public Estado getEstado() {
+	return estado;
+    }
+
+    public void setEstado(Estado estado) {
+	this.estado = estado;
+    }
+    
+  
 }

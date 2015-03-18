@@ -52,14 +52,14 @@
 			value="#{cc.attrs.value}" items="#{cc.attrs.selectItens}"
 			style="width:#{cc.attrs.size};" styleClass="selectItem"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
-			required="#{cc.attrs.required}" converter="#{cc.attrs.converter}">
+			required="#{cc.attrs.required}" converter="#{cc.attrs.converter}" >
 
 			<c:if test="#{!cc.attrs.noSelectLabel}">
-				<f:selectItem itemLabel="#{msg.lblSelecione}" itemValue="" />
+				<f:selectItem itemLabel="#{msg.lblSelecione}" itemValue="" noSelectionOption="true" />
 			</c:if>
 			<f:selectItems value="#{cc.attrs.selectItens}"
 				itemLabel="#{cc.attrs.itemLabel}" var="item"
-				itemValue="#{cc.attrs.itemValue}">
+				itemValue="#{cc.attrs.itemValue}" >
 			</f:selectItems>
 
 			<f:converter converterId="#{cc.attrs.converter}" />

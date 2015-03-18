@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -25,6 +23,7 @@ public class MBeanAssociado extends mBeanGerneric{
 
         private Associado associado;
         private Estado estado;
+        private Cidade city;
         private List<FuncoesEclesiastica> funcaoEclesiasticas;
         private List<?> planos;
         private List<Estado> estados;
@@ -42,6 +41,7 @@ public class MBeanAssociado extends mBeanGerneric{
                 associado.getEndereco().setCidade(new Cidade());
                 associado.getEndereco().getCidade().setEstado(new Estado());
                 estado = new Estado();
+                city = new Cidade();
                 poupalateCombos();
         }
         
@@ -139,4 +139,19 @@ public class MBeanAssociado extends mBeanGerneric{
                 this.cidades = cidades;
         }
 
+	/**
+	 * @return the city
+	 */
+	public Cidade getCity() {
+	    return city;
+	}
+
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(Cidade city) {
+	    this.city = city;
+	}
+
+	
 }

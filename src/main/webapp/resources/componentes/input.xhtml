@@ -7,29 +7,32 @@
 
 <composite:interface>
 	<!-- PROMPTS -->
-	<composite:attribute name="label"/>
+	<composite:attribute name="label" />
 
 	<composite:attribute name="value" />
 	<composite:attribute name="maxlength" default="50" />
 	<composite:attribute name="columns" default="2" />
-	
+
 
 	<composite:attribute name="right" />
 	<composite:attribute name="size" default="30" />
 	<composite:attribute name="align" default="left" />
 
 	<composite:attribute name="roles" />
-	<composite:attribute name="disabled" default="false"/>
-	<composite:attribute name="required" default="false"/>
-	<composite:attribute name="validatorMessage"  />
+	<composite:attribute name="disabled" default="false" />
+	<composite:attribute name="required" default="false" />
+	<composite:attribute name="validatorMessage" />
 	<composite:attribute name="decimal" default="false" />
 	<composite:attribute name="numerico" default="false" />
-	<composite:attribute name="styleClass"  />
-	<composite:attribute name="integer" default="false"/>
-	<composite:clientBehavior name="change" event="change"	targets="#{cc.clientId}_txt" />
-	<composite:editableValueHolder name="value"	targets="#{cc.clientId}_txt" />
-	<composite:clientBehavior name="focus" event="focus"	targets="#{cc.clientId}_txt" />
-	
+	<composite:attribute name="styleClass" />
+	<composite:attribute name="integer" default="false" />
+	<composite:clientBehavior name="change" event="change"
+		targets="#{cc.clientId}_txt" />
+	<composite:editableValueHolder name="value"
+		targets="#{cc.clientId}_txt" />
+	<composite:clientBehavior name="focus" event="focus"
+		targets="#{cc.clientId}_txt" />
+
 </composite:interface>
 
 <composite:implementation>
@@ -38,24 +41,26 @@
 		style="position: relative; text-align: #{cc.attrs.align};">
 
 		<c:if test="#{cc.attrs.required}">
-		<h:panelGroup  layout="block">
-			<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" for="#{cc.clientId}_txt"/><h:message styleClass="ui-outputlabel ui-state-error" for="#{cc.clientId}_txt"/>
-		</h:panelGroup>
+			<h:panelGroup layout="block">
+				<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}"
+					for="#{cc.clientId}_txt" />
+				<h:message styleClass="ui-outputlabel ui-state-error"
+					for="#{cc.clientId}_txt" />
+			</h:panelGroup>
 		</c:if>
 		<c:if test="#{!cc.attrs.required}">
-			<h:outputLabel value="#{cc.attrs.label}" for="#{cc.clientId}_txt"/>
+			<h:outputLabel value="#{cc.attrs.label}" for="#{cc.clientId}_txt" />
 		</c:if>
-		
+
 		<br />
-			<p:inputText  size="#{cc.attrs.size}" id="#{cc.clientId}_txt"
-			 
-				styleClass="inputtext #{cc.attrs.integer==true?'integer':''} #{cc.attrs.decimal==true?'decimal':''} #{cc.attrs.numerico==true?'numeric':''} #{cc.attrs.styleClass}" 
-				value="#{cc.attrs.value}" label="#{cc.attrs.label}" 
-				maxlength="#{cc.attrs.maxlength}" required="#{cc.attrs.required}"
-				disabled="#{cc.attrs.disabled or (cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles))}" >
-					<p:tooltip rendered="false" for="#{cc.clientId}_txt"/>
-				</p:inputText>
-				
+		<p:inputText size="#{cc.attrs.size}" id="#{cc.clientId}_txt"
+			styleClass="inputtext #{cc.attrs.integer==true?'integer':''} #{cc.attrs.decimal==true?'decimal':''} #{cc.attrs.numerico==true?'numeric':''} #{cc.attrs.styleClass}"
+			value="#{cc.attrs.value}" label="#{cc.attrs.label}"
+			maxlength="#{cc.attrs.maxlength}" required="#{cc.attrs.required}"
+			disabled="#{cc.attrs.disabled or (cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles))}">
+			<p:tooltip rendered="false" for="#{cc.clientId}_txt" />
+		</p:inputText>
+
 	</div>
 </composite:implementation>
-</html> 
+</html>
