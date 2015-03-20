@@ -15,7 +15,7 @@ public class CidadeDaoImp extends GenericDaoImp<Cidade> implements CidadeDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Cidade> listCidadeByEstado(Integer id) {
-	Query query = this.em.createQuery("Select c FROM Cidade c inner join fetch c.estado est "
+	Query query = this.em.createQuery("Select c FROM Cidade c inner join c.estado est "
 		+ " where est.id="+id);
 	List<Cidade> result = query.getResultList();
 	return result;

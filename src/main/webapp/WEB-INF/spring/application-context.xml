@@ -14,16 +14,16 @@
 	<context:component-scan base-package="br.com.associados" />
 
 
-	<tx:annotation-driven transaction-manager="txManager"/>
-	
+	<tx:annotation-driven transaction-manager="txManager" />
+
 	<!-- Gerenciador de transacoes baseado em JPA -->
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
- 	<bean id="entityManagerFactory"
+	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"/> 
+		<property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />
@@ -31,12 +31,16 @@
 			</bean>
 		</property>
 	</bean>
-	<jee:jndi-lookup id="dataSource"
-		jndi-name="java:jboss/datasources/MySQLDS" />
-
-
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
-	
+	<bean id="persistentContextFactory"
+		class="org.apache.myfaces.orchestra.conversation.spring.JpaPersistenceContextFactory">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/MySQLDS" />
+
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+
+	</bean>
+	<import resource="classpath:/META-INF/myview-spring-init.xml" />
 </beans>

@@ -49,7 +49,7 @@
 
 
 		<h:selectOneMenu id="#{cc.attrs.id}" label="#{cc.attrs.label}"
-			value="#{cc.attrs.value}" items="#{cc.attrs.selectItens}"
+			value="#{cc.attrs.value}" 
 			style="width:#{cc.attrs.size};" styleClass="selectItem"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
 			required="#{cc.attrs.required}" converter="#{cc.attrs.converter}" >

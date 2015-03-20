@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.lindbergframework.spring.scope.AccessScoped;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.associados.controller.CadastroController;
@@ -18,7 +18,7 @@ import br.com.associados.model.FuncoesEclesiastica;
 import br.com.associados.web.util.FacesUtil;
 
 @Controller("mBeanAssociado")
-@Scope("request")
+@AccessScoped
 public class MBeanAssociado extends mBeanGerneric{
 
         private Associado associado;

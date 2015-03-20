@@ -25,6 +25,11 @@
 			<id>jrimum.org</id>
 			<url>http://jrimum.org/maven/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>sonatype-releases</id>
+			<name>Sonatype Releases Repository</name>
+			<url>http://oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
 	</repositories>
 
 	<properties>
@@ -32,7 +37,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<spring.version>4.0.1.RELEASE</spring.version>
+		<spring.version>4.1.5.RELEASE</spring.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<java.version>1.8</java.version>
 		<junit.version>4.11</junit.version>
@@ -50,7 +55,11 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.lindbergframework.web</groupId>
+			<artifactId>lindbergframework-myview</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- JPA Persistence Dependencies -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -85,7 +94,7 @@
 		</dependency>
 
 		<!-- Spring Dependencies -->
-			<dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
@@ -170,7 +179,7 @@
 
 
 
-		
+
 		<!-- Log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
