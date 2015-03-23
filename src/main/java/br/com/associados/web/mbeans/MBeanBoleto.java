@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import br.com.associados.boleto.BoletoFactory;
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Boleto;
 import br.com.associados.web.util.FacesUtil;
@@ -15,6 +16,7 @@ import br.com.associados.web.util.FacesUtil;
 public class MBeanBoleto extends mBeanGerneric{
 
         private Boleto boleto;
+        private BoletoFactory boletoFactory;
 
         @Autowired
         private CadastroController cadastroController;
@@ -31,7 +33,9 @@ public class MBeanBoleto extends mBeanGerneric{
         @Override
         public void salvar() {
             	try {
-		    cadastroController.salvarBoleto(boleto);
+		   // cadastroController.salvarBoleto(boleto);
+		    boletoFactory = new BoletoFactory();
+		    boletoFactory.generateBoleto();
 		    FacesUtil.mensInfo("Informações do Boleto salvo com sucesso!");
 		} catch (Exception e) {
 		    e.printStackTrace();
