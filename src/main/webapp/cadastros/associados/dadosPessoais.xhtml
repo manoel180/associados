@@ -7,20 +7,10 @@
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 
 	<!-- Tipo Pessoa -->
-	<p:inputText id="counter" value="#{mBeanAssociado.associado.name}">
-		<p:ajax event="keyup"
-			update=":formI:tabView:out :formI:tabView:name :formI:tabView:name2" />
-	</p:inputText>
-	<h:outputText id="out" value="#{mBeanAssociado.associado.name}" />
-
+	
 	<!-- Nome -->
 	<comp:input id="name" label="Nome"
-		value="#{mBeanAssociado.associado.name}" required="true">
-
-	</comp:input>
-
-
-
+		value="#{mBeanAssociado.associado.name}" required="true"/>
 	<!-- Sexo -->
 	<comp:comboBoxUtil label="Sexo" id="sexo"
 		value="#{mBeanAssociado.associado.sexo}">
@@ -51,7 +41,7 @@
 		placeholder="(__) ____-____"
 		value="#{mBeanAssociado.associado.telCelular}" />
 	<!-- Dt nascimento -->
-	<comp:input label="Data nascimento"
+	<comp:calendar label="Data nascimento"
 		value="#{mBeanAssociado.associado.dtNascimento}" />
 	<!-- Email -->
 	<comp:email id="email1" label="Email"
@@ -73,6 +63,9 @@
 	<!-- Complemento -->
 	<comp:input label="Complemento"
 		value="#{mBeanAssociado.associado.endereco.complemento}" />
+		<!-- Bairro -->
+	<comp:input label="Bairro"
+		value="#{mBeanAssociado.associado.endereco.bairro}" />
 	<!-- Estado -->
 	<comp:comboBoxUtil id="cbEstado" label="Estado"
 		value="#{mBeanAssociado.estado}"

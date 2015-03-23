@@ -3,12 +3,12 @@ package br.com.associados.web.mbeans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Usuario;
 
-@Controller("mBeanLogin")
+@Component("mBeanLogin")
 @Scope("session")
 public class MBeanLogin {
 

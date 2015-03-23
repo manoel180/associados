@@ -20,6 +20,6 @@
 			</p:tab>
 		</p:tabView>
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button actionListener="#{mBeanAssociado.salvar}"  update=":msgs" />
+		<comp:button actionListener="#{mBeanAssociado.salvar()}" ajax="false"  update=":msgs" />
 	</ui:define>
 </ui:composition>

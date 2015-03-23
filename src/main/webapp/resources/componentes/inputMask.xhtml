@@ -35,10 +35,10 @@
 	<div id="#{cc.attrs.id}_div">
 		<p:outputLabel id="#{cc.clientId}_lbl" value="#{cc.attrs.label}" />
 		<p:inputMask id="#{cc.clientId}_txt" size="#{cc.attrs.size}"
-			mask="#{cc.attrs.mask}" styleClass="inputtext"
+			 styleClass="inputtext"
 			value="#{cc.attrs.value}" maxlength="#{cc.attrs.maxlength}"
 			required="#{cc.attrs.required}"
-			placeholder="#{cc.attrs.placeholder}"
+			mask="#{cc.attrs.mask}"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}" />
 	</div>
 </composite:implementation>

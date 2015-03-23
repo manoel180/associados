@@ -3,6 +3,7 @@ package br.com.associados.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,9 +28,10 @@ public class Endereco extends AbstractBean implements Serializable {
         
         private String numero;
         
-        private String Bairro;
+        private String bairro;
 
         @ManyToOne
+        @JoinColumn(name="cidade_id")
         private Cidade cidade;
 
 
@@ -87,14 +89,14 @@ public class Endereco extends AbstractBean implements Serializable {
          * @return the bairro
          */
         public String getBairro() {
-                return Bairro;
+                return bairro;
         }
 
         /**
          * @param bairro the bairro to set
          */
         public void setBairro(String bairro) {
-                Bairro = bairro;
+                this.bairro = bairro;
         }
 
         public String getComplemento() {

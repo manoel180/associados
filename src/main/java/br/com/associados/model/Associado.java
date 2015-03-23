@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,13 +23,12 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="associados")
-@NamedQuery(name="Associado.findAll", query="SELECT a FROM Associado a")
 public class Associado extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Boolean ativo;
 
-	@Column(length=13)
+	@Column(length=15)
 	private String cpf;
 
 	@Temporal(TemporalType.DATE)
@@ -51,13 +50,13 @@ public class Associado extends AbstractBean implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private Sexo sexo;
 
-	@Column(name="tel_celular", length=11)
+	@Column(name="tel_celular", length=15)
 	private String telCelular;
 
-	@Column(name="tel_residencial", length=11)
+	@Column(name="tel_residencial", length=15)
 	private String telResidencial;
 	
-	@ManyToOne
+	@ManyToOne(cascade= CascadeType.ALL)
 	private Endereco endereco;
 
 	//bi-directional many-to-one association to FuncoesEclesiastica

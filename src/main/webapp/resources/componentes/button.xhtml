@@ -19,14 +19,14 @@
 		<composite:attribute name="roles" />
 		<composite:attribute name="update" />
 		<composite:attribute name="onclick" />
-
+		<composite:attribute name="ajax" default="true"/>
 		<composite:attribute name="onsuccess" />
 	</composite:interface>
 
 	<!-- IMPLEMENTATION -->
 	<composite:implementation>
 		<p:commandButton id="#{cc.attrs.id}_btn" value="#{cc.attrs.value}"
-			update="#{cc.attrs.update}"
+			update="#{cc.attrs.update}" ajax="#{cc.attrs.ajax}"
 			validateClient="true" 
 			onclick="#{cc.attrs.onclick}" />
 

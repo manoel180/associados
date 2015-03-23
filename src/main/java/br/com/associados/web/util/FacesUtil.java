@@ -133,7 +133,7 @@ public class FacesUtil {
 		return FacesContext.getCurrentInstance().getExternalContext();
 	}
 
-	public static Map getSessionMap() {
+	public static Map<?, ?> getSessionMap() {
 		return FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap();
 	}

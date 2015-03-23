@@ -18,8 +18,8 @@ public class PickListConverter  implements Converter {
 	Object ret = null;
 	if (arg1 instanceof PickList) {
 	    Object dualList = ((PickList) arg1).getValue();
-	    DualListModel dl = (DualListModel) dualList;
-	    for (Iterator iterator = dl.getSource().iterator(); iterator
+	    DualListModel<?> dl = (DualListModel<?>) dualList;
+	    for (Iterator<?> iterator = dl.getSource().iterator(); iterator
 		    .hasNext();) {
 		Object o = iterator.next();
 		String id = (new StringBuilder()).append(
@@ -30,7 +30,7 @@ public class PickListConverter  implements Converter {
 		}
 	    }
 	    if (ret == null) {
-		for (Iterator iterator1 = dl.getTarget().iterator(); iterator1
+		for (Iterator<?> iterator1 = dl.getTarget().iterator(); iterator1
 			.hasNext();) {
 		    Object o = iterator1.next();
 		    String id = (new StringBuilder()).append(

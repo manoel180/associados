@@ -37,6 +37,7 @@ public class MBeanAssociado extends mBeanGerneric{
                 funcaoEclesiasticas = new ArrayList<FuncoesEclesiastica>();
                 estados = new ArrayList<Estado>();
                 associado = new Associado();
+                associado.setFuncoesEclesiastica(new FuncoesEclesiastica());
                 associado.setEndereco(new Endereco());
                 associado.getEndereco().setCidade(new Cidade());
                 associado.getEndereco().getCidade().setEstado(new Estado());
@@ -59,6 +60,7 @@ public class MBeanAssociado extends mBeanGerneric{
         @Override
         public void salvar() {
             	try {
+            	    associado.getEndereco().setCidade(city);
 		    cadastroController.salvarAssociado(associado);
 		    FacesUtil.mensInfo("Associados salvo com sucesso!");
 		} catch (Exception e) {
