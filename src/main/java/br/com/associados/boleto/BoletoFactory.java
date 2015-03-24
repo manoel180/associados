@@ -13,10 +13,15 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.OutputStream;
+
+
+import org.jrimum.bopepo.view.BoletoViewer;
+
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
+import org.jrimum.bopepo.exemplo.Exemplos;
 import org.jrimum.bopepo.pdf.Files;
-import org.jrimum.bopepo.view.BoletoViewer;
 import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
 import org.jrimum.domkee.financeiro.banco.febraban.Cedente;
 import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
@@ -184,6 +189,41 @@ public class BoletoFactory {
 	return bFile;
 
     }
+    public String download2(){
+        
+	Titulo titulo = Exemplos.crieTitulo();
+        titulo.getContaBancaria().setBanco(BancosSuportados.BANCO_DO_BRASIL.create());
+        titulo.setNossoNumero("1234567890");
+        
+        Boleto boleto = Exemplos.crieBoleto(titulo);
+        
+        //Informando o template personalizado:
+        //File templatePersonalizado = new File(ClassLoaders.getResource("/templates/BoletoTemplatePersonalizacaoSimples.pdf").getFile());
+        BoletoViewer boletoViewer = new BoletoViewer(boleto);//, templatePersonalizado);
+
+        //File arquivoPdf = boletoViewer.getPdfAsFile("MeuBoletoPersonalizado.pdf");
+
+        byte[] pdfAsBytes = boletoViewer.getPdfAsByteArray();
+
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+
+        try {
+                                
+             response.setContentType("application/pdf");
+             response.setHeader("Content-Disposition", "attachment; filename=boleto.pdf");
+
+             OutputStream output = response.getOutputStream();
+             output.write(pdfAsBytes);
+             response.flushBuffer();
+
+             FacesContext.getCurrentInstance().responseComplete();
+
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+        
+        return null;
+}
 
     public void download(File boletosPorPagina) {
 

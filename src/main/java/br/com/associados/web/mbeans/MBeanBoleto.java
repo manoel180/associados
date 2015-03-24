@@ -30,6 +30,10 @@ public class MBeanBoleto extends mBeanGerneric{
             
         }
 
+        public void gerarBoleto(){
+            boletoFactory = new BoletoFactory();
+            boletoFactory.download2();
+        }
         @Override
         public void salvar() {
             	try {
