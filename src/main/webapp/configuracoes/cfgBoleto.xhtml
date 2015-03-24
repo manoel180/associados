@@ -8,11 +8,9 @@
 	template="/WEB-INF/templates/template.xhtml"
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
-	
 
 
-		<!-- Botão Finalizar Cadastro -->
-		<comp:button id="btnSalvar" ajax="false" actionListener="#{mBeanBoleto.salvar()}"
-			update=":msgs" />
+		<h:commandLink target="_blank" action="#{mBeanBoleto.salvar}"
+			value="Gerar Boleto." />
 	</ui:define>
 </ui:composition>
