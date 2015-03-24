@@ -4,13 +4,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jrimum.bopepo.BancosSuportados;
@@ -60,9 +60,10 @@ public class BoletoFactory {
 	boleto.addTextosExtras("txtRsDataVencimento", "CONTRA APRESENTAÇÃO");
 
 	// Informando o template personalizado:
-	File templatePersonalizado = new File(ClassLoaders.getResource("BoletoCarne3PorPagina.pdf").getFile());
-//	BoletoViewer boletoViewer = new BoletoViewer(boleto,
-//		templatePersonalizado);// ,templatePersonalizado);
+	File templatePersonalizado = new File(ClassLoaders.getResource(
+		"BoletoCarne3PorPagina.pdf").getFile());
+	// BoletoViewer boletoViewer = new BoletoViewer(boleto,
+	// templatePersonalizado);// ,templatePersonalizado);
 	boletos.add(boleto);
 	boletos.add(boleto);
 	boletos.add(boleto);
@@ -70,9 +71,10 @@ public class BoletoFactory {
 	boletos.add(boleto);
 	boletos.add(boleto);
 	// Agrupando os boletos em apenas uma página
-	File boletosPorPagina = groupInPages(boletos, "Carne3PorPagina.pdf", templatePersonalizado);
+	File boletosPorPagina = groupInPages(boletos, "Carne3PorPagina.pdf",
+		templatePersonalizado);
 
-	//Exemplos.mostreBoletoNaTela(boletosPorPagina);
+	// Exemplos.mostreBoletoNaTela(boletosPorPagina);
 	download(boletosPorPagina);
     }
 
@@ -161,50 +163,72 @@ public class BoletoFactory {
     }
 
     private byte[] fileToByte(File file) {
-	FileInputStream fileInputStream=null;
- 
-        byte[] bFile = new byte[(int) file.length()];
- 
-        try {
-            //convert file into array of bytes
+	FileInputStream fileInputStream = null;
+
+	byte[] bFile = new byte[(int) file.length()];
+
+	try {
+	    // convert file into array of bytes
 	    fileInputStream = new FileInputStream(file);
 	    fileInputStream.read(bFile);
 	    fileInputStream.close();
- 
+
 	    for (int i = 0; i < bFile.length; i++) {
-	       	System.out.print((char)bFile[i]);
-            }
- 
+		System.out.print((char) bFile[i]);
+	    }
+
 	    System.out.println("Done");
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
 	return bFile;
 
     }
-    public String download(File boletosPorPagina) {
 
-	byte[] pdfAsBytes = fileToByte(boletosPorPagina);//getPdfAsByteArray();
+    public void download(File boletosPorPagina) {
 
-	HttpServletResponse response = (HttpServletResponse) FacesContext
-		.getCurrentInstance().getExternalContext().getResponse();
+	byte[] pdfAsBytes = fileToByte(boletosPorPagina);// getPdfAsByteArray();
 
 	try {
+	    if (pdfAsBytes == null)
+		throw new Exception("Array de bytes nulo.");
 
-	    response.setContentType("application/pdf");
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+	    HttpServletResponse response = (HttpServletResponse) facesContext
+		    .getExternalContext().getResponse();
 	    response.setHeader("Content-Disposition",
-		    "attachment; filename=boleto.pdf");
-
-	    OutputStream output = response.getOutputStream();
-	    output.write(pdfAsBytes);
-	    response.flushBuffer();
-
-	    FacesContext.getCurrentInstance().responseComplete();
-
+		    "attachment; filename=boleto.pdf;");
+	    response.setContentLength(pdfAsBytes.length);
+	    ServletOutputStream ouputStream = response.getOutputStream();
+	    ouputStream.write(pdfAsBytes, 0, pdfAsBytes.length);
+	    facesContext.responseComplete();
 	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
-
-	return null;
     }
+    // HttpServletResponse response = (HttpServletResponse) FacesContext
+    // .getCurrentInstance().getExternalContext().getResponse();
+    //
+    // try {
+    //
+    // response.setContentType("application/pdf");
+    // response.setHeader("Content-Disposition",
+    // "attachment; filename=boleto.pdf");
+    //
+    // OutputStream output = response.getOutputStream();
+    // output.write(pdfAsBytes);
+    // response.flushBuffer();
+    //
+    // FacesContext.getCurrentInstance().responseComplete();
+    //
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    //
+    // return null;
+    // }
 }
