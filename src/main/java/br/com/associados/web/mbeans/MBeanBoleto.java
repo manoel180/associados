@@ -2,17 +2,17 @@ package br.com.associados.web.mbeans;
 
 import javax.annotation.PostConstruct;
 
+import org.lindbergframework.spring.scope.AccessScoped;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import br.com.associados.boleto.BoletoFactory;
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Boleto;
 import br.com.associados.web.util.FacesUtil;
 
-@Controller("mBeanBoleto")
-@Scope("request")
+@Component("mBeanBoleto")
+@AccessScoped
 public class MBeanBoleto extends mBeanGerneric{
 
         private Boleto boleto;
