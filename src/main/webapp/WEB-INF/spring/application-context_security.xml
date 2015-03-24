@@ -42,11 +42,11 @@
 		<security:logout logout-success-url="/login.jsf"
 			delete-cookies="true" invalidate-session="true" />
 
-		<security:session-management
+		<!--<security:session-management
 			invalid-session-url="/login.jsf">
-			<security:concurrency-control
+		 	<security:concurrency-control
 				max-sessions="1" error-if-maximum-exceeded="true" expired-url="/login.jsf" />
-		</security:session-management>
+		</security:session-management> -->
 	</security:http>
 
 	<!-- Select users and user_roles from database -->
