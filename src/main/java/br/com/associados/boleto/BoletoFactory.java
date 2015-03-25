@@ -20,13 +20,15 @@ import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.exemplo.Exemplos;
 import org.jrimum.bopepo.pdf.Files;
 import org.jrimum.bopepo.view.BoletoViewer;
+import org.jrimum.domkee.financeiro.banco.febraban.Agencia;
 import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
 import org.jrimum.domkee.financeiro.banco.febraban.Cedente;
 import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
+import org.jrimum.domkee.financeiro.banco.febraban.Modalidade;
 import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
 import org.jrimum.domkee.financeiro.banco.febraban.Sacado;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
-import org.jrimum.utilix.ClassLoaders;
+import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -42,15 +44,20 @@ public class BoletoFactory {
 
 	ContaBancaria contaBancaria = new ContaBancaria();
 	contaBancaria.setBanco(BancosSuportados.BANCO_DO_BRASIL.create());
-	contaBancaria.setNumeroDaConta(new NumeroDaConta(1234567)); // Numero da
+	contaBancaria.setAgencia(new Agencia(2905,"X"));
+	contaBancaria.setNumeroDaConta(new NumeroDaConta(71905,"6")); // Numero da
 								    // Conta
-	contaBancaria.setCarteira(new Carteira(1)); // Carteira
+	contaBancaria.setCarteira(new Carteira(18)); // Carteira
+	contaBancaria.setModalidade(new Modalidade("-019"));
+	
 
-	Sacado sacado = new Sacado("Fulano");
+	Sacado sacado = new Sacado("Oferta Voluntária");
 
-	Cedente cedente = new Cedente("Empresa");
+	Cedente cedente = new Cedente("ASSOCIACAO AMIGOS DE JERUSALEM - ICEJBRASIL");
+	
 
 	Titulo titulo = new Titulo(contaBancaria, sacado, cedente);
+	
 	titulo.setContaBancaria(contaBancaria);
 	titulo.setNossoNumero("1234567890"); // Nosso Numero
 	// titulo.setDataDoDocumento(new Date());
@@ -59,8 +66,10 @@ public class BoletoFactory {
 	titulo.setValor(new BigDecimal(100));
 	Boleto boleto = new Boleto(titulo);// Exemplos.crieBoleto(titulo);
 	boleto.setDataDeProcessamento(new Date());
+	
 	boleto.addTextosExtras("txtFcDataVencimento", "CONTRA APRESENTAÇÃO");
 	boleto.addTextosExtras("txtRsDataVencimento", "CONTRA APRESENTAÇÃO");
+	
 
 	// Informando o template personalizado:
 	FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -71,12 +80,9 @@ public class BoletoFactory {
 		.getRealPath("/resources/BoletoCarne3PorPagina.pdf"));
 	// BoletoViewer boletoViewer = new BoletoViewer(boleto,
 	// templatePersonalizado);// ,templatePersonalizado);
-	boletos.add(boleto);
-	boletos.add(boleto);
-	boletos.add(boleto);
-	boletos.add(boleto);
-	boletos.add(boleto);
-	boletos.add(boleto);
+	for (int i = 0 ; i<= 100; i++) {
+	    boletos.add(boleto);
+	}
 	// Agrupando os boletos em apenas uma página
 	File boletosPorPagina = groupInPages(boletos, "Carne3PorPagina.pdf",
 		templatePersonalizado);
