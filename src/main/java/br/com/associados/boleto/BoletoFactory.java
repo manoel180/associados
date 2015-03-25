@@ -68,7 +68,7 @@ public class BoletoFactory {
 			.getExternalContext().getContext();
 	
 	File templatePersonalizado = new File(servletContext
-		.getRealPath("BoletoCarne3PorPagina.pdf"));
+		.getRealPath("/resources/BoletoCarne3PorPagina.pdf"));
 	// BoletoViewer boletoViewer = new BoletoViewer(boleto,
 	// templatePersonalizado);// ,templatePersonalizado);
 	boletos.add(boleto);
