@@ -4,24 +4,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-
-import java.io.OutputStream;
-
-
-import org.jrimum.bopepo.view.BoletoViewer;
 
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.exemplo.Exemplos;
 import org.jrimum.bopepo.pdf.Files;
+import org.jrimum.bopepo.view.BoletoViewer;
 import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
 import org.jrimum.domkee.financeiro.banco.febraban.Cedente;
 import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
@@ -65,8 +63,12 @@ public class BoletoFactory {
 	boleto.addTextosExtras("txtRsDataVencimento", "CONTRA APRESENTAÇÃO");
 
 	// Informando o template personalizado:
-	File templatePersonalizado = new File(ClassLoaders.getResource(
-		"BoletoCarne3PorPagina.pdf").getFile());
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+	ServletContext servletContext = (ServletContext) facesContext
+			.getExternalContext().getContext();
+	
+	File templatePersonalizado = new File(servletContext
+		.getRealPath("BoletoCarne3PorPagina.pdf"));
 	// BoletoViewer boletoViewer = new BoletoViewer(boleto,
 	// templatePersonalizado);// ,templatePersonalizado);
 	boletos.add(boleto);
