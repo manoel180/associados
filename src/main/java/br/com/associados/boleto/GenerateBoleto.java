@@ -6,12 +6,9 @@ import java.io.OutputStream;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jrimum.bopepo.view.BoletoViewer;
-
 public class GenerateBoleto {
-    public String download(BoletoViewer boletoViewer) {
+    public String download(byte[] pdfAsBytes) {
 
-	byte[] pdfAsBytes = boletoViewer.getPdfAsByteArray();
 
 	HttpServletResponse response = (HttpServletResponse) FacesContext
 		.getCurrentInstance().getExternalContext().getResponse();

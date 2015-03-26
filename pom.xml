@@ -21,15 +21,8 @@
 			<id>repositorio-primefaces</id>
 			<url>http://repository.primefaces.org</url>
 		</repository>
-		<repository>
-			<id>jrimum.org</id>
-			<url>http://jrimum.org/maven/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>sonatype-releases</id>
-			<name>Sonatype Releases Repository</name>
-			<url>http://oss.sonatype.org/content/repositories/releases/</url>
-		</repository>
+
+
 	</repositories>
 
 	<properties>
@@ -178,7 +171,17 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>br.com.caelum.stella</groupId>
+			<artifactId>caelum-stella-core</artifactId>
+			<version>2.1.2</version>
+		</dependency>
 
+		<dependency>
+			<groupId>br.com.caelum.stella</groupId>
+			<artifactId>caelum-stella-boleto</artifactId>
+			<version>2.1.2</version>
+		</dependency>
 
 		<!-- Log -->
 		<dependency>
@@ -188,9 +191,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jrimum</groupId>
-			<artifactId>jrimum-bopepo</artifactId>
-			<version>0.2.3-SNAPSHOT</version>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>4.2.1</version>
 		</dependency>
 	</dependencies>
 
