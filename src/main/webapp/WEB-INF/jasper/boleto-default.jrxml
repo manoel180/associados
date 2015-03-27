@@ -167,7 +167,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement>
-					<font fontName="Courier" size="8" isBold="true" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Arial" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[BENEFICIÁRIO : ]]></text>
 			</staticText>
