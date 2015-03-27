@@ -63,7 +63,8 @@ public class BoletoFactory2 {
 	//GeradorDeBoletoHtml new GeradorDeBoletoHTML(templateBoleto,parametros,boleto);
 	GeradorDeBoleto gerador;
 	List<Boleto> boletos = new ArrayList<Boleto>();
-	for(int i=0; i<10; i++){	    
+	for(int i=1; i<=12; i++){
+	    boleto.comDatas(Datas.novasDatas().comVencimento(26, i, 2015));
 	     boletos.add(boleto);
 	}
 	gerador = new GeradorDeBoleto(templateBoleto, parametros, boletos);
@@ -77,10 +78,11 @@ public class BoletoFactory2 {
 	byte[] bPDF = gerador.geraPDF();
 
 	// Para gerar um array de bytes a partir de um PNG
-	//byte[] bPNG = gerador.geraPNG();
+	byte[] bPNG = gerador.geraPNG();
 	
 	GenerateBoleto generateBoleto = new GenerateBoleto();
 	generateBoleto.download(bPDF);
+	generateBoleto.download(bPNG);
     }
 
     public void generateLote(Integer quantidade, Calendar dtVencimento) {

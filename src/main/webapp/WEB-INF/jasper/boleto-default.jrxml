@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="boleto-default" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="15" bottomMargin="15" uuid="ff653490-88f9-4546-aaa6-53f137c26ccc">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="207"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Celula" forecolor="#646464" fontName="Arial" fontSize="5" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
@@ -167,7 +167,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true" pdfFontName="Arial" isPdfEmbedded="true"/>
+					<font fontName="Arial Narrow" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[BENEFICIÁRIO : ]]></text>
 			</staticText>
@@ -309,13 +309,13 @@
 				</box>
 				<text><![CDATA[Nº do Documento]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement style="Txt_Negrito" x="159" y="111" width="396" height="23" uuid="3ba3f307-b123-414a-a01e-36bfb72ab861"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Txt_Peq" x="254" y="111" width="301" height="23" uuid="3ba3f307-b123-414a-a01e-36bfb72ab861"/>
 				<box topPadding="2" leftPadding="5" bottomPadding="2" rightPadding="2">
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement textAlignment="Right" markup="none">
-					<font size="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom" markup="none">
+					<font size="8" isBold="false" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{linhaDigitavel}]]></textFieldExpression>
 			</textField>
@@ -347,7 +347,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif"/>
+					<font fontName="SansSerif" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vencimento}.getTime()]]></textFieldExpression>
 			</textField>
@@ -360,6 +360,9 @@
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<bottomPen lineWidth="0.0"/>
 				</box>
+				<textElement>
+					<font isPdfEmbedded="true"/>
+				</textElement>
 				<text><![CDATA[Vencimento]]></text>
 			</staticText>
 			<staticText>
@@ -374,7 +377,7 @@
 				<text><![CDATA[Espécie Doc.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Celula" x="391" y="313" width="160" height="20" uuid="872f01c9-9afa-4bac-871d-c71ee104b667"/>
+				<reportElement style="Celula" x="395" y="274" width="160" height="20" uuid="872f01c9-9afa-4bac-871d-c71ee104b667"/>
 				<box topPadding="5" leftPadding="2" bottomPadding="2" rightPadding="3">
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -446,10 +449,13 @@
 				<textFieldExpression><![CDATA[$F{valorMoeda}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement style="Txt_Negrito" x="113" y="111" width="46" height="23" uuid="9e86528e-67c1-44fc-9395-bb9eecf9905c"/>
+				<reportElement style="Txt_Negrito" x="229" y="111" width="25" height="23" uuid="9e86528e-67c1-44fc-9395-bb9eecf9905c"/>
 				<box topPadding="2" leftPadding="4" bottomPadding="2" rightPadding="2">
-					<rightPen lineWidth="2.0"/>
+					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement>
+					<font size="6" isPdfEmbedded="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroFormatadoComDigito}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -495,13 +501,13 @@
 				<text><![CDATA[Quantidade Moeda]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="92" y="333" width="292" height="37" uuid="0af69d88-8b52-4ecc-aaae-c2e7cf75cb7a"/>
+				<reportElement x="131" y="294" width="292" height="37" uuid="0af69d88-8b52-4ecc-aaae-c2e7cf75cb7a"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Int2of5" drawText="false" checksumRequired="false" barWidth="0" barHeight="0">
 					<jr:codeExpression><![CDATA[$F{codigoDeBarras}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<image vAlign="Bottom">
-				<reportElement x="2" y="111" width="111" height="23" uuid="4b8f5794-bf28-4d0e-864c-f3d92c06a3a7"/>
+				<reportElement x="145" y="111" width="84" height="23" uuid="4b8f5794-bf28-4d0e-864c-f3d92c06a3a7"/>
 				<box topPadding="2" bottomPadding="2" rightPadding="0">
 					<rightPen lineWidth="2.0"/>
 				</box>
@@ -543,20 +549,10 @@
 				<text><![CDATA[Instruções]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="4" y="240" width="549" height="72" uuid="d5e511f4-da23-4664-826a-1ef87dc73b53"/>
+				<reportElement x="131" y="240" width="422" height="22" uuid="d5e511f4-da23-4664-826a-1ef87dc73b53"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{instrucoes})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUB_INSTRUCOES}]]></subreportExpression>
 			</subreport>
-			<staticText>
-				<reportElement style="Celula" x="2" y="240" width="2" height="73" uuid="0bdfe72e-2068-4896-8f06-3dac14943fea"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<staticText>
 				<reportElement style="Celula" x="291" y="158" width="100" height="10" uuid="32961fa0-ff37-4850-a1a8-7b5aaf7c14b8"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
