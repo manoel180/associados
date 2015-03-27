@@ -1,25 +1,27 @@
 package br.com.associados.boleto;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import br.com.associados.web.util.FacesUtil;
 import br.com.caelum.stella.boleto.Banco;
 import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.Datas;
-import br.com.caelum.stella.boleto.Endereco;
 import br.com.caelum.stella.boleto.Pagador;
 import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
-import br.com.caelum.stella.boleto.transformer.GeradorDeBoletoHTML;
 
 public class BoletoFactory2 {
     public void showBoleto() throws IOException {
-	Datas datas = Datas.novasDatas().comDocumento(1, 5, 2015)
-		.comProcessamento(1, 5, 2015).comVencimento(2, 5, 2015);
+	Datas datas = Datas.novasDatas().comDocumento(26, 3, 2015)
+		.comProcessamento(26, 3, 2015).comVencimento(26, 3, 2015);
 
 
 	// Quem emite o boleto
@@ -46,21 +48,43 @@ public class BoletoFactory2 {
 		.comNumeroDoDocumento("1")
 		.comInstrucoes("instrucao 1")
 		.comLocaisDePagamento("local 1");
+	
+	//Mapa para parâmetros
+	Map<String, Object> parametros = new HashMap<String, Object>();
 
-	GeradorDeBoleto gerador = new GeradorDeBoleto(boleto);
+	//carrega o caminho físico do arquivo
+	String reportPath = FacesUtil.getServletContext().getRealPath("/WEB-INF/jasper/boleto-default.jasper");
+
+	//carrega o conteúdo do arquivo em um InputStream
+	InputStream templateBoleto = new FileInputStream(reportPath);
+
+	// passa para o gerador de boleto os dados do template no construtor, 
+	// junto com o mapa com os parâmetros, além dos dados dos boletos
+	//GeradorDeBoletoHtml new GeradorDeBoletoHTML(templateBoleto,parametros,boleto);
+	GeradorDeBoleto gerador;
+	List<Boleto> boletos = new ArrayList<Boleto>();
+	for(int i=0; i<10; i++){	    
+	     boletos.add(boleto);
+	}
+	gerador = new GeradorDeBoleto(templateBoleto, parametros, boletos);
 	// Para gerar um boleto em PDF
-	gerador.geraPDF("BancoDoBrasil.pdf");
+	//gerador.geraPDF("BancoDoBrasil.pdf");
 
 	// Para gerar um boleto em PNG
-	gerador.geraPNG("BancoDoBrasil.png");
+	//gerador.geraPNG("BancoDoBrasil.png");
 
 	// Para gerar um array de bytes a partir de um PDF
 	byte[] bPDF = gerador.geraPDF();
 
 	// Para gerar um array de bytes a partir de um PNG
-	byte[] bPNG = gerador.geraPNG();
+	//byte[] bPNG = gerador.geraPNG();
 	
 	GenerateBoleto generateBoleto = new GenerateBoleto();
 	generateBoleto.download(bPDF);
+    }
+
+    public void generateLote(Integer quantidade, Calendar dtVencimento) {
+	// TODO Auto-generated method stub
+	
     }
 }

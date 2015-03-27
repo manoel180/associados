@@ -1,6 +1,7 @@
 package br.com.associados.web.mbeans;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
 
@@ -21,6 +22,10 @@ public class MBeanBoleto extends mBeanGerneric{
         @Autowired
         private CadastroController cadastroController;
 
+	private Integer quantidade;
+
+	private Calendar dtVencimento;
+
         @PostConstruct
         public void init() {
             poupalateCombos();
@@ -39,9 +44,15 @@ public class MBeanBoleto extends mBeanGerneric{
 		e.printStackTrace();
 	    }
         }
+        
+        public void gerarLote(){
+            boletoFactory = new BoletoFactory2();
+            boletoFactory.generateLote(quantidade, dtVencimento);
+        }
         @Override
         public void salvar() {
             	try {
+            	    
 		   // cadastroController.salvarBoleto(boleto);
 //		    boletoFactory = new BoletoFactory();
 //		    boletoFactory.generateBoleto();
