@@ -1,7 +1,7 @@
 package br.com.associados.web.mbeans;
 
 import java.io.IOException;
-import java.util.Calendar;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -28,6 +28,8 @@ public class MBeanBoleto extends mBeanGerneric {
     private Integer qtdLote;
 
     private Date dtVencimento;
+    
+    private BigDecimal valor;
 
     @PostConstruct
     public void init() {
@@ -51,7 +53,7 @@ public class MBeanBoleto extends mBeanGerneric {
     public void gerarLote() {
 	boletoFactory = new BoletoFactory();
 	try {
-	    boletoFactory.generateLote(qtdParcela, qtdLote, dtVencimento);
+	    boletoFactory.generateLote(qtdParcela, qtdLote, dtVencimento, getValor(), cadastroController);
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -119,6 +121,14 @@ public class MBeanBoleto extends mBeanGerneric {
      */
     public void setDtVencimento(Date dtVencimento) {
 	this.dtVencimento = dtVencimento;
+    }
+
+    public BigDecimal getValor() {
+	return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+	this.valor = valor;
     }
 
 }

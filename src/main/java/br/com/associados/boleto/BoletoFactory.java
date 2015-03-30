@@ -3,16 +3,13 @@ package br.com.associados.boleto;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.hibernate.mapping.Array;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Lote;
@@ -24,10 +21,11 @@ import br.com.caelum.stella.boleto.Datas;
 import br.com.caelum.stella.boleto.Pagador;
 import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
-@Component
+import br.com.caelum.stella.boleto.utils.StellaStringUtils;
+import br.com.caelum.stella.format.LeftSideZerosFormatter;
+
 public class BoletoFactory {
 
-    @Autowired
     private CadastroController cadastroController;
 
     private br.com.associados.model.Boleto boletoModel;
@@ -59,15 +57,15 @@ public class BoletoFactory {
 			    "ASSOCIACAO AMIGOS DE JERUSALEM - ICEJBRASIL")
 		    .comAgencia("2905").comCodigoBeneficiario("71905")
 		    .comNumeroConvenio("2545630").comCarteira("18")
-		    .comNossoNumero("2545630" + b.getId());
+		    .comNossoNumero("2545630"+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 10));
 
 	    boleto = Boleto
 		    .novoBoleto()
 		    .comBanco(banco)
 		    .comBeneficiario(beneficiario)
 		    .comPagador(pagador)
-		    .comValorBoleto(boletoModel.getValor())
-		    .comNumeroDoDocumento(String.valueOf(b.getId()))
+		    .comValorBoleto(b.getValor().toString())
+		    .comNumeroDoDocumento(b.getId().toString())
 		    .comInstrucoes(pagador.getNome())
 		    .comLocaisDePagamento(
 			    "Pagável em qualquer Banco até o vencimento")
@@ -83,13 +81,14 @@ public class BoletoFactory {
     }
 
     public void generateLote(Integer qtdParcela, Integer qtdLote,
-	    Date dtVencimento) throws IOException {
+	    Date dtVencimento, BigDecimal valor,CadastroController cadastroController) throws IOException {
+	this.cadastroController = cadastroController;
 	List<Boleto> boletosLote = new ArrayList<Boleto>();
 	lotes = new ArrayList<Lote>();
 //	for (int i = 1; i <= qtdLote; i++) {
 //	    boletosLote.addAll(showBoleto(dtVencimento, qtdParcela));
 //	}
-	gerarLoteBD(qtdParcela, qtdLote, dtVencimento);
+	gerarLoteBD(qtdParcela, qtdLote, dtVencimento, valor);
 	for(Lote l : lotes){
 	    boletosLote.addAll(showBoleto(l));
 	}
@@ -109,8 +108,8 @@ public class BoletoFactory {
 
     }
 
-    private void gerarLoteBD(Integer qtdParcela, Integer qtdLote,
-	    Date dtVencimento) {
+    private void gerarLoteBD(Integer qtdParcela, Integer qtdLote, 
+	    Date dtVencimento, BigDecimal valor) {
 	Calendar dt = Calendar.getInstance();
 	dt.setTime(dtVencimento);
 	lote = new Lote();
@@ -118,6 +117,7 @@ public class BoletoFactory {
 	boletoModel = new br.com.associados.model.Boleto();
 	for (int i = 1; i <= qtdLote; i++) {
 	    for (int j = 1; j <= qtdParcela; j++) {
+		boletoModel.setValor(valor);
 		boletoModel.setDtVencimento(dt.getTime());
 		lote.getBoletos().add(boletoModel);
 		dt.add(Calendar.MONTH, i);
