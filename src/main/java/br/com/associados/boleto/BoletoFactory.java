@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.associados.controller.CadastroController;
 import br.com.associados.model.Lote;
@@ -22,7 +24,7 @@ import br.com.caelum.stella.boleto.Datas;
 import br.com.caelum.stella.boleto.Pagador;
 import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
-
+@Component
 public class BoletoFactory {
 
     @Autowired
@@ -34,7 +36,7 @@ public class BoletoFactory {
 
     List<Lote> lotes = new ArrayList<Lote>();
 
-    public List<Boleto> showBoleto(Date dataVencimento, int qtdParcela)
+    public List<Boleto> showBoleto(Lote l)
 	    throws IOException {
 
 	// Quem paga o boleto
@@ -45,10 +47,10 @@ public class BoletoFactory {
 
 	Boleto boleto;
 
-	for (int i = 1; i <= qtdParcela; i++) {
+	for (br.com.associados.model.Boleto b : l.getBoletos()) {
 	    Calendar c = Calendar.getInstance();
 
-	    c.setTime(dataVencimento);
+	    c.setTime(b.getDtVencimento());
 
 	    // Quem emite o boleto
 	    Beneficiario beneficiario = Beneficiario
@@ -57,7 +59,7 @@ public class BoletoFactory {
 			    "ASSOCIACAO AMIGOS DE JERUSALEM - ICEJBRASIL")
 		    .comAgencia("2905").comCodigoBeneficiario("71905")
 		    .comNumeroConvenio("2545630").comCarteira("18")
-		    .comNossoNumero("2545630" + i);
+		    .comNossoNumero("2545630" + b.getId());
 
 	    boleto = Boleto
 		    .novoBoleto()
@@ -65,17 +67,17 @@ public class BoletoFactory {
 		    .comBeneficiario(beneficiario)
 		    .comPagador(pagador)
 		    .comValorBoleto(boletoModel.getValor())
-		    .comNumeroDoDocumento(String.valueOf(i))
+		    .comNumeroDoDocumento(String.valueOf(b.getId()))
 		    .comInstrucoes(pagador.getNome())
 		    .comLocaisDePagamento(
-			    "Pagável em qualquer Banco até o vencimento" + i)
+			    "Pagável em qualquer Banco até o vencimento")
 		    .comDatas(
 			    Datas.novasDatas()
 				    .comDocumento(Calendar.getInstance())
 				    .comVencimento(c)
 				    .comProcessamento(Calendar.getInstance()));
 	    boletos.add(boleto);
-	    c.add(Calendar.MONTH, i);
+	 
 	}
 	return boletos;
     }
@@ -83,8 +85,13 @@ public class BoletoFactory {
     public void generateLote(Integer qtdParcela, Integer qtdLote,
 	    Date dtVencimento) throws IOException {
 	List<Boleto> boletosLote = new ArrayList<Boleto>();
-	for (int i = 1; i <= qtdLote; i++) {
-	    boletosLote.addAll(showBoleto(dtVencimento, qtdParcela));
+	lotes = new ArrayList<Lote>();
+//	for (int i = 1; i <= qtdLote; i++) {
+//	    boletosLote.addAll(showBoleto(dtVencimento, qtdParcela));
+//	}
+	gerarLoteBD(qtdParcela, qtdLote, dtVencimento);
+	for(Lote l : lotes){
+	    boletosLote.addAll(showBoleto(l));
 	}
 	// Mapa para parâmetros
 	Map<String, Object> parametros = new HashMap<String, Object>();
@@ -104,12 +111,23 @@ public class BoletoFactory {
 
     private void gerarLoteBD(Integer qtdParcela, Integer qtdLote,
 	    Date dtVencimento) {
+	Calendar dt = Calendar.getInstance();
+	dt.setTime(dtVencimento);
+	lote = new Lote();
+	lote.setBoletos(new ArrayList<>());
+	boletoModel = new br.com.associados.model.Boleto();
 	for (int i = 1; i <= qtdLote; i++) {
 	    for (int j = 1; j <= qtdParcela; j++) {
-		boletoModel.setDtVencimento(dtVencimento);
+		boletoModel.setDtVencimento(dt.getTime());
 		lote.getBoletos().add(boletoModel);
+		dt.add(Calendar.MONTH, i);
+		boletoModel = new br.com.associados.model.Boleto();
 	    }
+	    lotes.add(lote);
+	    lote=new Lote();
+	    lote.setBoletos(new ArrayList<>());
 	}
+	saveLote();
     }
 
     private void saveLote() {
