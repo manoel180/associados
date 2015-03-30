@@ -38,7 +38,10 @@ public class MBeanBoleto extends mBeanGerneric{
         public void gerarBoleto(){
             boletoFactory = new BoletoFactory2();
             try {
-		boletoFactory.showBoleto();
+
+        	
+        	    boletoFactory.generateLote(1, dtVencimento);
+        	
 	    } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -47,15 +50,11 @@ public class MBeanBoleto extends mBeanGerneric{
         
         public void gerarLote(){
             boletoFactory = new BoletoFactory2();
-            boletoFactory.generateLote(quantidade, dtVencimento);
+          //  boletoFactory.generateLote(quantidade, dtVencimento);
         }
         @Override
         public void salvar() {
             	try {
-            	    
-		   // cadastroController.salvarBoleto(boleto);
-//		    boletoFactory = new BoletoFactory();
-//		    boletoFactory.generateBoleto();
 		    FacesUtil.mensInfo("Informações do Boleto salvo com sucesso!");
 		} catch (Exception e) {
 		    e.printStackTrace();
