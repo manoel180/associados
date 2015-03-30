@@ -8,6 +8,7 @@ import br.com.associados.model.Cidade;
 import br.com.associados.model.Estado;
 import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
+import br.com.associados.model.Lote;
 import br.com.associados.model.Perfil;
 import br.com.associados.model.Plano;
 import br.com.associados.model.Usuario;
@@ -55,5 +56,8 @@ public interface CadastroController {
 
 
 	List<Cidade> listAllCidadeByEstado(Integer id);
+	
+	void salvarLote(Lote lote);
+
 
 }

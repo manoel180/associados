@@ -208,7 +208,7 @@
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<bottomPen lineWidth="0.0"/>
 				</box>
-				<text><![CDATA[Beneficiário]]></text>
+				<text><![CDATA[Cedente]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement style="Txt_Normal" x="235" y="91" width="72" height="14" uuid="1a991ed5-70b4-46f8-9549-e5de61e7caf6"/>
@@ -293,7 +293,7 @@
 					<rightPen lineWidth="1.25"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font isPdfEmbedded="true"/>
+					<font size="8" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroFormatadoComDigito}]]></textFieldExpression>
 			</textField>

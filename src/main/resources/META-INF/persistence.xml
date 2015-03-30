@@ -10,7 +10,7 @@
 		<jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
 		<class>br.com.associados.model.Associado</class>
 		<class>br.com.associados.model.Boleto</class>
-		<class>br.com.associados.model.BoletoPK</class>
+		<class>br.com.associados.model.Lote</class>
 		<class>br.com.associados.model.Cidade</class>
 
 		<class>br.com.associados.model.Endereco</class>

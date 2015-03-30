@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,11 +19,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="boletos")
-public class Boleto implements Serializable {
+public class Boleto extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@EmbeddedId
-	private BoletoPK id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="dt_vencimento")
@@ -38,31 +34,27 @@ public class Boleto implements Serializable {
 
 	@Column(precision=10, scale=2)
 	private BigDecimal valor;
-
+	
+	@ManyToOne
+	@JoinColumn(name="idLote", nullable=true, insertable=false, updatable=false)
+	private Lote lote;
+	
 	//bi-directional many-to-one association to Associado
 	@ManyToOne
-	@JoinColumn(name="idassociados", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="idassociados", nullable=true, insertable=false, updatable=false)
 	private Associado associado;
 
 	//bi-directional many-to-one association to Plano
 	@ManyToOne
-	@JoinColumn(name="idplanos", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="idplanos", nullable=true, insertable=false, updatable=false)
 	private Plano plano;
 
 	//bi-directional many-to-one association to TiposLancamento
 	@ManyToOne
-	@JoinColumn(name="idtiposLancamentos", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="idtiposLancamentos", nullable=true, insertable=false, updatable=false)
 	private TiposLancamento tiposLancamento;
 
 	public Boleto() {
-	}
-
-	public BoletoPK getId() {
-		return this.id;
-	}
-
-	public void setId(BoletoPK id) {
-		this.id = id;
 	}
 
 	public Date getDtVencimento() {

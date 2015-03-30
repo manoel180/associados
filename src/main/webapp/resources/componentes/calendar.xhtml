@@ -12,6 +12,7 @@
 	<composite:attribute name="value" required="true" />
 	<composite:attribute name="maxlength" default="50" />
 	<composite:attribute name="minDate" />
+	<composite:attribute name="maxDate" />
 	<composite:attribute name="columns" default="2" />
 	<composite:attribute name="classeCss" />
 	<composite:attribute name="pattern" default="dd/MM/yyyy" />
@@ -39,6 +40,7 @@
 			showButtonPanel="true" readonlyInput="true"
 			disabled="#{(cc.attrs.roles == null ? false : !p:ifAnyGranted(cc.attrs.roles)) or cc.attrs.disabled}"
 			readonly="#{cc.attrs.disabled}" mindate="#{cc.attrs.minDate}"
+			maxdate="#{cc.attrs.maxDate}"
 			required="#{cc.attrs.required}"
 			locale="#{localeController.currentLocale}" navigator="true"
 			effect="fold" value="#{cc.attrs.value}" pattern="#{cc.attrs.pattern}" />

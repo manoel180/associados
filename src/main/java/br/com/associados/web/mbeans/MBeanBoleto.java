@@ -2,6 +2,7 @@ package br.com.associados.web.mbeans;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
@@ -15,61 +16,109 @@ import br.com.associados.web.util.FacesUtil;
 
 @Component("mBeanBoleto")
 @AccessScoped
-public class MBeanBoleto extends mBeanGerneric{
+public class MBeanBoleto extends mBeanGerneric {
 
-        private BoletoFactory boletoFactory;
+    private BoletoFactory boletoFactory;
 
-        @Autowired
-        private CadastroController cadastroController;
+    @Autowired
+    private CadastroController cadastroController;
 
-	private Integer quantidade;
+    private Integer qtdParcela;
 
-	private Calendar dtVencimento;
+    private Integer qtdLote;
 
-        @PostConstruct
-        public void init() {
-            poupalateCombos();
-        }
+    private Date dtVencimento;
 
-        private void poupalateCombos() {
-            
-        }
+    @PostConstruct
+    public void init() {
+	poupalateCombos();
+    }
 
-        public void gerarBoleto(){
-            boletoFactory = new BoletoFactory();
-            try {
+    private void poupalateCombos() {
 
-        	
-        	    boletoFactory.generateLote(1, dtVencimento);
-        	
-	    } catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
-        }
-        
-        public void gerarLote(){
-            boletoFactory = new BoletoFactory();
-          //  boletoFactory.generateLote(quantidade, dtVencimento);
-        }
-        @Override
-        public void salvar() {
-            	try {
-		    FacesUtil.mensInfo("Informações do Boleto salvo com sucesso!");
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
-        }
+    }
 
-        @Override
-        public void listar() {
+    public void gerarBoleto() {
+	boletoFactory = new BoletoFactory();
+	// try {
+	// boletoFactory.generateLote(1, dtVencimento);
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+    }
 
-        }
+    public void gerarLote() {
+	boletoFactory = new BoletoFactory();
+	try {
+	    boletoFactory.generateLote(qtdParcela, qtdLote, dtVencimento);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
+    }
 
-        @Override
-        public void excluir() {
+    @Override
+    public void salvar() {
+	try {
+	    FacesUtil.mensInfo("Informações do Boleto salvo com sucesso!");
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+    }
 
-        }
+    @Override
+    public void listar() {
 
-   
+    }
+
+    @Override
+    public void excluir() {
+
+    }
+
+    /**
+     * @return the qtdParcela
+     */
+    public Integer getQtdParcela() {
+	return qtdParcela;
+    }
+
+    /**
+     * @param qtdParcela
+     *            the qtdParcela to set
+     */
+    public void setQtdParcela(Integer qtdParcela) {
+	this.qtdParcela = qtdParcela;
+    }
+
+    /**
+     * @return the qtdLote
+     */
+    public Integer getQtdLote() {
+	return qtdLote;
+    }
+
+    /**
+     * @param qtdLote
+     *            the qtdLote to set
+     */
+    public void setQtdLote(Integer qtdLote) {
+	this.qtdLote = qtdLote;
+    }
+
+    /**
+     * @return the dtVencimento
+     */
+    public Date getDtVencimento() {
+	return dtVencimento;
+    }
+
+    /**
+     * @param dtVencimento
+     *            the dtVencimento to set
+     */
+    public void setDtVencimento(Date dtVencimento) {
+	this.dtVencimento = dtVencimento;
+    }
+
 }

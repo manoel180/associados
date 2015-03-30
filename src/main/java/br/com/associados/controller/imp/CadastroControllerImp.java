@@ -14,6 +14,7 @@ import br.com.associados.dao.CidadeDao;
 import br.com.associados.dao.EstadoDao;
 import br.com.associados.dao.FuncaoEclesiasticaDao;
 import br.com.associados.dao.FuncionalidadeDao;
+import br.com.associados.dao.LoteDao;
 import br.com.associados.dao.PerfilDao;
 import br.com.associados.dao.PlanoDao;
 import br.com.associados.dao.UsuarioDao;
@@ -23,6 +24,7 @@ import br.com.associados.model.Cidade;
 import br.com.associados.model.Estado;
 import br.com.associados.model.Funcionalidade;
 import br.com.associados.model.FuncoesEclesiastica;
+import br.com.associados.model.Lote;
 import br.com.associados.model.Perfil;
 import br.com.associados.model.Plano;
 import br.com.associados.model.Usuario;
@@ -58,6 +60,8 @@ public class CadastroControllerImp implements CadastroController {
 	@Autowired
 	BoletoDao boletoDao; 
 	
+	@Autowired
+	LoteDao loteDao; 
 	/**
 	 * Associados
 	 */
@@ -183,5 +187,9 @@ public class CadastroControllerImp implements CadastroController {
 	    return cidadeDao.listCidadeByEstado(id);
 	}
 	
+	@Override
+	public void salvarLote(Lote lote) {
+	    loteDao.save(lote);
+	}
 	
 }

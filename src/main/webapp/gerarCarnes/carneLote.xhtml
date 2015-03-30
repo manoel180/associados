@@ -10,25 +10,25 @@
 	xmlns:comp="http://java.sun.com/jsf/composite/componentes">
 	<ui:define name="content">
 		<!-- Tipo Sacado -->
-		<comp:input label="Tipo de sacado" value="" />
+		<comp:input label="Tipo de sacado" value="" rendered="false"/>
 		<!-- Plano -->
-		<comp:input label="Plano" value="" />
+		<comp:input label="Plano" value="" rendered="false"/>
 		<!-- Vencimento -->
-		<comp:input label="Data vencimento" value="" />
+		<comp:calendar label="Data vencimento" value="#{mBeanBoleto.dtVencimento}" minDate="07/10/1997" maxDate="01/01/2024"/>
 
 		<!-- Qtd de Lotes-->
-		<comp:input label="Quantidade de lotes" value="" />
+		<comp:input label="Quantidade de lotes" value="#{mBeanBoleto.qtdLote}" />
 
 		<!-- Qtd de Parcelas-->
-		<comp:input label="Quantidade de parcelas" value="" />
+		<comp:input label="Quantidade de parcelas" value="#{mBeanBoleto.qtdParcela}" />
 
 		<!-- Taxa bancaria -->
-		<comp:input label="Taxa bancaria" value="" />
+		<comp:input label="Taxa bancaria" value="" rendered="false"/>
 
 		<!-- Folha de rosto -->
-		<comp:input label="Folha de rosto" value="" />
+		<comp:input label="Folha de rosto" value="" rendered="false"/>
 
 		<!-- Botão Finalizar Cadastro -->
-		<comp:button label="#{msg.btnGerarLotes}" />
+		<comp:button ajax="false" label="#{msg.btnGerarLotes}" actionListener="#{mBeanBoleto.gerarLote()}" />
 	</ui:define>
 </ui:composition>
