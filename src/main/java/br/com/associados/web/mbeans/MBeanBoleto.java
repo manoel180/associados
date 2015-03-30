@@ -9,7 +9,7 @@ import org.lindbergframework.spring.scope.AccessScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.associados.boleto.BoletoFactory2;
+import br.com.associados.boleto.BoletoFactory;
 import br.com.associados.controller.CadastroController;
 import br.com.associados.web.util.FacesUtil;
 
@@ -17,7 +17,7 @@ import br.com.associados.web.util.FacesUtil;
 @AccessScoped
 public class MBeanBoleto extends mBeanGerneric{
 
-        private BoletoFactory2 boletoFactory;
+        private BoletoFactory boletoFactory;
 
         @Autowired
         private CadastroController cadastroController;
@@ -36,7 +36,7 @@ public class MBeanBoleto extends mBeanGerneric{
         }
 
         public void gerarBoleto(){
-            boletoFactory = new BoletoFactory2();
+            boletoFactory = new BoletoFactory();
             try {
 
         	
@@ -49,7 +49,7 @@ public class MBeanBoleto extends mBeanGerneric{
         }
         
         public void gerarLote(){
-            boletoFactory = new BoletoFactory2();
+            boletoFactory = new BoletoFactory();
           //  boletoFactory.generateLote(quantidade, dtVencimento);
         }
         @Override
