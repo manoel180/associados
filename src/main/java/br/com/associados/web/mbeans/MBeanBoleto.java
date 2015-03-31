@@ -68,6 +68,7 @@ public class MBeanBoleto extends mBeanGerneric {
 	}
     }
 
+    
     @Override
     public void listar() {
 
