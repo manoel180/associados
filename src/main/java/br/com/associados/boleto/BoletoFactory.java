@@ -50,6 +50,7 @@ public class BoletoFactory {
 
 	    c.setTime(b.getDtVencimento());
 
+	    //Cedente
 	    // Quem emite o boleto
 	    Beneficiario beneficiario = Beneficiario
 		    .novoBeneficiario()
