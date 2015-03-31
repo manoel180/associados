@@ -36,7 +36,7 @@ public class Boleto extends AbstractBean implements Serializable {
 	private BigDecimal valor;
 	
 	@ManyToOne
-	@JoinColumn(name="idLote", nullable=true, insertable=false, updatable=false)
+	@JoinColumn(name="idLote",insertable = true, updatable=true )
 	private Lote lote;
 	
 	//bi-directional many-to-one association to Associado
@@ -111,6 +111,20 @@ public class Boleto extends AbstractBean implements Serializable {
 
 	public void setTiposLancamento(TiposLancamento tiposLancamento) {
 		this.tiposLancamento = tiposLancamento;
+	}
+
+	/**
+	 * @return the lote
+	 */
+	public Lote getLote() {
+	    return lote;
+	}
+
+	/**
+	 * @param lote the lote to set
+	 */
+	public void setLote(Lote lote) {
+	    this.lote = lote;
 	}
 
 }

@@ -123,6 +123,7 @@ public class BoletoFactory {
 		lote.getBoletos().add(boletoModel);
 		dt.add(Calendar.MONTH, i);
 		boletoModel = new br.com.associados.model.Boleto();
+		boletoModel.setLote(lote);
 	    }
 	    lotes.add(lote);
 	    lote=new Lote();
