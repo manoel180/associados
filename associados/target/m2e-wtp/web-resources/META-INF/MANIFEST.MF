@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: associados
+Implementation-Version: 0.0.1
+Built-By: manoel
+Implementation-Vendor-Id: br.com.associados
+Build-Jdk: 1.8.0_73
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
