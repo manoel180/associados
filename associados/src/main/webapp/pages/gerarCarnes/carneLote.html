@@ -1,32 +1,33 @@
-	<md-content  layout-gt-sm="row" layout-padding>
+	<md-content  layout-gt-sm="row" layout-padding >
 
 
 		<!-- Vencimento -->
 		<md-input-container layout-xs> 
 			<label>Data	vencimento</label>  
-			<input type='date' ng-model="lote.dtVencimento" >
+			<input type='date' ng-model="lote.dtVencimento" required>
 		</md-input-container>
 
 		<!-- Qtd de Lotes-->
 		<md-input-container> 
 			<label>Quantidade de lotes</label> 
-			<input ng-model="lote.qtdLote">
+			<input ng-model="lote.qtdLote" required>
 		</md-input-container>
 
 		<!-- Qtd de Parcelas-->
 		<md-input-container> 
 			<label>Quantidade de parcelas</label> 
-			<input ng-model="lote.qtdParcela">
+			<input ng-model="lote.qtdParcela" required>
 		</md-input-container>
 
 		<!-- Valor-->
 		<md-input-container> 
 			<label>Valor</label>
-			<input ng-model="lote.valor">
+			<input ng-model="lote.valor" required>
 		</md-input-container>
 
 	</md-content>
 		<md-divider />
 		<md-button  ng-click="gerarBoleto()" class="md-raised">Gerar</md-button>
-
-		<object ng-show="content" data="{{content}}" type="application/pdf" style="width: 100%; height: 400px;"></object>
+<embed src="{{content}}"  ng-show="content"></embed>
+		
+		<div class="alert alert-info" ng-show="loading">Gerando Boletos</div>

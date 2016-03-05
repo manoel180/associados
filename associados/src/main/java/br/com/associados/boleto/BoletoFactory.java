@@ -60,8 +60,8 @@ public class BoletoFactory {
 		    .comAgencia("2905").comDigitoAgencia("X")
 		    .comCodigoBeneficiario("22234").comDigitoCodigoBeneficiario("8")
 		    .comNumeroConvenio("2195571")
-		    .comCarteira("17")
-		    .comNossoNumero("2195571"+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 4));
+		    .comCarteira("18")
+		    .comNossoNumero("2195571"+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 10));
 
 	    boleto = Boleto
 		    .novoBoleto()
@@ -100,7 +100,7 @@ public class BoletoFactory {
 	Map<String, Object> parametros = new HashMap<String, Object>();
 
 	// carrega o caminho físico do arquivo
-	Resource resource = new ClassPathResource("/jasper/boleto-default.jasper");
+	Resource resource = new ClassPathResource("/jasper/win/boleto-default.jasper");
 
 
 	GeradorDeBoleto gerador;

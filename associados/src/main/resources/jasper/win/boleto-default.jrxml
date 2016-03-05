@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-03-05T07:29:29 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="boleto-default" pageWidth="595" pageHeight="842" columnWidth="576" leftMargin="11" rightMargin="8" topMargin="0" bottomMargin="0" uuid="ff653490-88f9-4546-aaa6-53f137c26ccc">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<style name="Celula" forecolor="#646464" fontName="SansSerif" fontSize="6" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica">
+	<style name="Celula" forecolor="#646464" fontName="Tahoma" fontSize="6" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
 		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -13,7 +15,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Txt_Normal" fontName="SansSerif" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica">
+	<style name="Txt_Normal" fontName="Tahoma" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
 		<box topPadding="2" leftPadding="10" bottomPadding="2" rightPadding="2">
 			<pen lineWidth="0.5"/>
 			<topPen lineWidth="0.0"/>
@@ -22,11 +24,11 @@
 			<rightPen lineWidth="0.5"/>
 		</box>
 	</style>
-	<style name="Txt_Negrito" style="Txt_Normal" hAlign="Left" vAlign="Bottom" fontSize="11" isBold="true">
+	<style name="Txt_Negrito" style="Txt_Normal" hTextAlign="Left" hImageAlign="Left" vTextAlign="Bottom" vImageAlign="Bottom" fontSize="11" isBold="true">
 		<box topPadding="2" leftPadding="5" bottomPadding="2" rightPadding="2"/>
 	</style>
 	<style name="Txt_Peq" style="Txt_Normal" fontSize="7"/>
-	<style name="Txt_valor" style="Txt_Normal" hAlign="Right" pattern="###0.00">
+	<style name="Txt_valor" style="Txt_Normal" hTextAlign="Right" hImageAlign="Right" pattern="###0.00">
 		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="10"/>
 	</style>
 	<style name="Txt_Data" style="Txt_Normal" pattern="dd/MM/yyyy"/>
@@ -35,9 +37,7 @@
 			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
 		</field>
 	</subDataset>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/Users/mario/"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="SUB_INSTRUCOES" class="net.sf.jasperreports.engine.JasperReport"/>
 	<queryString>
 		<![CDATA[]]>
@@ -165,9 +165,7 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="SansSerif" isPdfEmbedded="true"/>
-				</textElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{vencimento}.getTime()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -199,7 +197,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Bottom" markup="none">
-					<font size="8" isBold="false" isPdfEmbedded="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{linhaDigitavel}]]></textFieldExpression>
 			</textField>
@@ -293,7 +291,7 @@
 					<rightPen lineWidth="1.25"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font size="8" isPdfEmbedded="true"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroFormatadoComDigito}]]></textFieldExpression>
 			</textField>
@@ -403,9 +401,6 @@
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<bottomPen lineWidth="0.0"/>
 				</box>
-				<textElement>
-					<font isPdfEmbedded="true"/>
-				</textElement>
 				<text><![CDATA[Vencimento]]></text>
 			</staticText>
 			<componentElement>
@@ -423,9 +418,6 @@
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<bottomPen lineWidth="0.0"/>
 				</box>
-				<textElement>
-					<font isPdfEmbedded="true"/>
-				</textElement>
 				<text><![CDATA[Vencimento]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
@@ -437,9 +429,7 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="SansSerif" isPdfEmbedded="true"/>
-				</textElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{vencimento}.getTime()]]></textFieldExpression>
 			</textField>
 			<staticText>

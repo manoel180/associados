@@ -13,7 +13,7 @@ public class GenerateBoleto {
         header.set("Content-Disposition",
                        "attachment; filename=boleto.pdf");
         header.setContentLength(documentBody.length);
-
+System.out.println("terminou de gerar o boleto");
         return new HttpEntity<byte[]>(documentBody, header);
 
     }

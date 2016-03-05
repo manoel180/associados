@@ -55,16 +55,18 @@
 		
 		
 		<dependency>
-			<groupId>com.lowagie</groupId>
-			<artifactId>itext</artifactId>
-			<version>4.2.1</version>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.8</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>6.0.3</version>
+			<version>6.2.0</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
