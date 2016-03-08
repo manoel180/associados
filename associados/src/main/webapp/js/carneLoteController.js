@@ -30,11 +30,11 @@ angular.module('sysconferApp').controller('carneLoteController', function($scope
 				    }
 				 
 				       $scope.$emit('UNLOAD')
-				       $scope.$digest();
+				       //$scope.$digest();
 				       
 				  }).error(function (message){
 					  $scope.$emit('UNLOAD')
-					  $scope.$digest();
+					 // $scope.$digest();
 					  alert("Erro ao gerar lote");
 					  
 				  })
