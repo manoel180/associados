@@ -89,9 +89,7 @@ public class BoletoFactory {
 	this.cadastroController = cadastroController;
 	List<Boleto> boletosLote = new ArrayList<Boleto>();
 	lotes = new ArrayList<Lote>();
-//	for (int i = 1; i <= qtdLote; i++) {
-//	    boletosLote.addAll(showBoleto(dtVencimento, qtdParcela));
-//	}
+
 	gerarLoteBD(qtdParcela, qtdLote, dtVencimento, valor);
 	for(Lote l : lotes){
 	    boletosLote.addAll(showBoleto(l));
