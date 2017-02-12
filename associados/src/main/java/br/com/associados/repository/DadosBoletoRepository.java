@@ -1,0 +1,9 @@
+package br.com.associados.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.associados.entities.DadosBoleto;
+
+public interface DadosBoletoRepository extends CrudRepository<DadosBoleto, Long>{
+
+}
