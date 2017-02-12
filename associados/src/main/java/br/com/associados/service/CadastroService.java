@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.associados.entities.Associado;
 import br.com.associados.entities.Boleto;
 import br.com.associados.entities.Cidade;
+import br.com.associados.entities.DadosBoleto;
 import br.com.associados.entities.Estado;
 import br.com.associados.entities.Funcionalidade;
 import br.com.associados.entities.FuncoesEclesiastica;
@@ -54,7 +55,9 @@ public interface CadastroService {
 
 	void salvarLote(Lote lote);
 
+	void salvarDadosBoleto(DadosBoleto dadosBoleto);
 
+	DadosBoleto getDadosBoleto();
 
 
 }

@@ -1,6 +1,18 @@
 package br.com.associados.entities;
 
-public class DadosBoleto {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class DadosBoleto extends AbstractBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String nomePagador;
 	
@@ -145,7 +157,4 @@ public class DadosBoleto {
 	public void setLocalPagamento(String localPagamento) {
 		this.localPagamento = localPagamento;
 	}
-	
-	
-	
 }

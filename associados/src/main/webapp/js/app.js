@@ -7,9 +7,9 @@ sysconferApp.config(function($routeProvider) {
         templateUrl: '/pages/gerarCarnes/carneLote.html',
         controller: 'carneLoteController'
     })
-    .when('/login', {
-        templateUrl: '/pages/login.html',
-        controller: 'loginController'
+    .when('/dadosBancarios', {
+        templateUrl: '/pages/gerarCarnes/dadosBoleto.html',
+        controller: 'carneLoteController'
     })
     .when('/carneLote', {
         templateUrl: '/pages/gerarCarnes/carneLote.html',
@@ -23,12 +23,4 @@ sysconferApp.config( function($mdThemingProvider){
 	$mdThemingProvider.theme('docs-dark', 'default')
 	    .primaryPalette('blue')
 	    .dark();});
-
-sysconferApp.controller('mainController', function($scope) {
-$scope.pageClass = 'page-home';
-});
-
-sysconferApp.controller('loginController', function($scope) {
-$scope.pageClass = 'page-about';
-});
 

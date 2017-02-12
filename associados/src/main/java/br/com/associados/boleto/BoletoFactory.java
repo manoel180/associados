@@ -15,6 +15,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 
+import br.com.associados.entities.DadosBoleto;
 import br.com.associados.entities.Lote;
 import br.com.associados.service.CadastroService;
 import br.com.caelum.stella.boleto.Banco;
@@ -22,7 +23,6 @@ import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.Datas;
 import br.com.caelum.stella.boleto.Pagador;
-import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
 import br.com.caelum.stella.boleto.utils.StellaStringUtils;
 
@@ -39,8 +39,10 @@ public class BoletoFactory {
     public List<Boleto> showBoleto(Lote l)
 	    throws IOException {
 
+    DadosBoleto dadosBoleto = cadastroController.getDadosBoleto();
+    	
 	// Quem paga o boleto
-	Pagador pagador = Pagador.novoPagador().comNome("Eu amo a minha igreja");
+	Pagador pagador = Pagador.novoPagador().comNome(dadosBoleto.getNomePagador());
 
 	Banco banco = new BancoDoBrasil();
 	List<Boleto> boletos = new ArrayList<Boleto>();
@@ -56,12 +58,15 @@ public class BoletoFactory {
 	    // Quem emite o boleto
 	    Beneficiario beneficiario = Beneficiario
 		    .novoBeneficiario()
-		    .comNomeBeneficiario("PRIMEIRA IGREJA BATISTA DA RESTAURAÇÃO EM MANAUS")
-		    .comAgencia("2905").comDigitoAgencia("X")
-		    .comCodigoBeneficiario("22234").comDigitoCodigoBeneficiario("8")
-		    .comNumeroConvenio("2195571")
-		    .comCarteira("18")
-		    .comNossoNumero("2195571"+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 10));
+		    .comNomeBeneficiario(dadosBoleto.getNomeBeneficiario())//"PRIMEIRA IGREJA BATISTA DA RESTAURAÇÃO EM MANAUS")
+		    .comAgencia(dadosBoleto.getAgencia())//"2905")
+		    .comDigitoAgencia(dadosBoleto.getDigitoAgencia())//"X")
+		    .comCodigoBeneficiario(dadosBoleto.getCodigoBeneficiario())//"22234")
+		    .comDigitoCodigoBeneficiario(dadosBoleto.getDigitoCodigoBeneficiario())//"8")
+		    .comNumeroConvenio(dadosBoleto.getNumeroConvenio())//"2195571")
+		    .comCarteira(dadosBoleto.getCarteira())//"18")
+		    .comNossoNumero(dadosBoleto.getNumeroConvenio()+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 10));
+		    		//"2195571"+StellaStringUtils.leftPadWithZeros(b.getId().toString(), 10));
 
 	    boleto = Boleto
 		    .novoBoleto()
@@ -71,13 +76,10 @@ public class BoletoFactory {
 		    .comValorBoleto(b.getValor().toString())
 		    .comNumeroDoDocumento(b.getId().toString())
 		    .comInstrucoes(pagador.getNome())
-		    .comLocaisDePagamento(
-			    "Pagável em qualquer Banco até o vencimento")
+		    .comLocaisDePagamento(dadosBoleto.getLocalPagamento()) //"Pagável em qualquer Banco até o vencimento")
 		    .comDatas(
 			    Datas.novasDatas()
-				    //.comDocumento(Calendar.getInstance())
 				    .comVencimento(c));
-				    //.comProcessamento(Calendar.getInstance()));
 	    boletos.add(boleto);
 	 
 	}
@@ -89,6 +91,7 @@ public class BoletoFactory {
 	this.cadastroController = cadastroController;
 	List<Boleto> boletosLote = new ArrayList<Boleto>();
 	lotes = new ArrayList<Lote>();
+	
 
 	gerarLoteBD(qtdParcela, qtdLote, dtVencimento, valor);
 	for(Lote l : lotes){

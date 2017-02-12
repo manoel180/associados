@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.associados.entities.Associado;
 import br.com.associados.entities.Boleto;
 import br.com.associados.entities.Cidade;
+import br.com.associados.entities.DadosBoleto;
 import br.com.associados.entities.Estado;
 import br.com.associados.entities.Funcionalidade;
 import br.com.associados.entities.FuncoesEclesiastica;
@@ -20,6 +21,7 @@ import br.com.associados.entities.Usuario;
 import br.com.associados.repository.AssociadoRepository;
 import br.com.associados.repository.BoletoRepository;
 import br.com.associados.repository.CidadeRepository;
+import br.com.associados.repository.DadosBoletoRepository;
 import br.com.associados.repository.EstadoRepository;
 import br.com.associados.repository.FuncaoEclesiasticaRepository;
 import br.com.associados.repository.FuncionalidadeRepository;
@@ -62,6 +64,10 @@ public class CadastroServiceImp implements CadastroService{
 	
 	@Autowired
 	LoteRepository loteRepository; 
+	
+	@Autowired
+	DadosBoletoRepository dadosBoletoRepository; 
+	
 	/**
 	 * Associados
 	 */
@@ -181,6 +187,17 @@ public class CadastroServiceImp implements CadastroService{
 	@Override
 	public void salvarLote(Lote lote) {
 	    loteRepository.save(lote);
+	}
+	
+	@Transactional(readOnly=true)
+	@Override
+	public DadosBoleto getDadosBoleto() {
+	    return dadosBoletoRepository.findOne(1L);
+	}
+
+	@Override
+	public void salvarDadosBoleto(DadosBoleto dadosBoleto) {
+		dadosBoletoRepository.save(dadosBoleto);
 	}
 	
 }

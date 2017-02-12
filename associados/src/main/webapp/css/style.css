@@ -1,5 +1,24 @@
 /* BASE STYLES
 ============================================================================= */
+md-datepicker {
+  padding-top: 3px;
+}
+button.md-datepicker-button.md-icon-button.md-button {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  min-height: 30px;
+}
+div.md-datepicker-input-container {
+  margin-left: 8px;
+  padding-bottom: 4px;
+}
+.md-datepicker-open > div.md-datepicker-input-container > input.md-datepicker-input {
+  height: inherit;
+  margin-left: 20px;
+}
 
 
 .brand

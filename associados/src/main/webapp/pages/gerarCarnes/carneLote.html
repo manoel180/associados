@@ -1,16 +1,17 @@
-	<md-content  layout-gt-sm="row" layout-padding >
-
-
+	<md-content  layout-gt-sm="row" layout-padding ng-cloak>
+      
+      
 		<!-- Vencimento -->
-		<md-input-container layout-xs> 
-			<label>Data	vencimento</label>  
-			<input type='date' ng-model="lote.dtVencimento" required>
+		<md-input-container>
+			<label >Data vencimento</label>
+			<input type="date" 
+			ng-model="lote.dtVencimento" />
 		</md-input-container>
 
 		<!-- Qtd de Lotes-->
 		<md-input-container> 
 			<label>Quantidade de lotes</label> 
-			<input ng-model="lote.qtdLote" required>
+			<input ng-model="lote.qtdLote" required  ng-maxlength="3" maxlength="3">
 		</md-input-container>
 
 		<!-- Qtd de Parcelas-->
@@ -29,4 +30,6 @@
 		<md-divider />
 		<md-button  ng-click="gerarBoleto()" class="md-raised">Gerar</md-button>
 		
-		<div class="alert alert-info" ng-show="loading">Gerando Boletos</div>
+		<div class="alert alert-info" ng-show="loading">
+		<img src="../../img/ajax-loader.gif">
+		Gerando Boletos - Aguarde abrir o documento pdf</div>
