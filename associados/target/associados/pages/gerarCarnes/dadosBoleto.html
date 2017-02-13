@@ -1,0 +1,65 @@
+	<md-content layout-wrap layout-gt-sm="row" >
+
+
+		<!-- Nome Pagador -->
+		<div flex="66">
+		<md-input-container layout-xs > 
+			<label>Nome Pagador</label>  
+			<input  ng-model="dadosBoleto.nomePagador" required  >
+		</md-input-container>
+		</div>
+
+		<!-- Nome Beneficiario-->
+		<md-input-container> 
+			<label>Nome Beneficiário</label> 
+			<input ng-model="dadosBoleto.nomeBeneficiario" required>
+		</md-input-container>
+
+		<!-- Agencia-->
+		<md-input-container> 
+			<label>Agência</label> 
+			<input ng-model="dadosBoleto.agencia" required>
+		</md-input-container>
+
+		<!-- digito Agencia-->
+		<md-input-container> 
+			<label>Digito Agência</label>
+			<input ng-model="dadosBoleto.digitoAgencia" required>
+		</md-input-container>
+		
+		<!-- codigo beneficiario-->
+		<md-input-container> 
+			<label>Código Beneficiário</label>
+			<input ng-model="dadosBoleto.codigoBeneficiario" required>
+		</md-input-container>
+		
+		<!-- digito codigo beneficiario-->
+		<md-input-container> 
+			<label>Digito Código Beneficiário</label>
+			<input ng-model="dadosBoleto.digitoCodigoBeneficiario" required>
+		</md-input-container>
+		
+		<!-- numero Convenio-->
+		<md-input-container> 
+			<label>Convênio</label>
+			<input ng-model="dadosBoleto.numeroConvenio" required>
+		</md-input-container>
+		
+		<!-- carteira-->
+		<md-input-container> 
+			<label>Carteira</label>
+			<input ng-model="dadosBoleto.carteira" required>
+		</md-input-container>
+		
+		<!-- local pagamento-->
+		<md-input-container> 
+			<label>Local Pagamento</label>
+			<input ng-model="dadosBoleto.localPagamento" required>
+		</md-input-container>
+
+
+	</md-content>
+		<md-divider />
+		<md-button  ng-click="salvarDadosBoleto()" class="md-raised">Salvar</md-button>
+		
+		
